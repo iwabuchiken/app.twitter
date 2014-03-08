@@ -1,0 +1,76 @@
+# a p + gitk
+a p && pushd C:\WORKS\WS\WS_Android_20130929_122122\app.twitter && gitk
+
+# Gitk / no 'a p'
+pushd C:\WORKS\WS\WS_Android_20130929_122122\app.twitter && gitk
+
+
+a
+pushd C:\WORKS\WS\WS_Android_20130929_122122\app.twitter
+
+pushd C:\WORKS\WS\WS_Android_20130929_122122\app.twitter && gitk
+
+a p && pushd C:\WORKS\WS\WS_Android_20130929_122122\app.twitter && gitk
+
+
+C:\WORKS\PROGRAMS\FreeMind\FreeMind.exe C:\WORKS\WS\WS_Android~\FM\IC\IC.mm
+gitk
+
+javac ic\utils\Experiments.java
+java ic.utils.Experiments
+
+C:\WORKS\WORKSPACES_ANDROID\FM\a
+
+
+[Git]
+copy ..\ImageFileManager6\.gitignore .
+
+g init && g a . && gitk
+g a .
+gitk
+
+git remote add origin git@github.com:iwabuchiken/Experiments.git
+
+g p origin master
+
+git log --grep=B4 -3
+git log --grep=B5 -3
+
+git log --grep=master -3
+
+git log --grep=m -3
+
+git log --grep=refresh -3
+
+#REF=> http://tobysoft.net/wiki/index.php?git%2F%A5%B3%A5%DE%A5%F3%A5%C9%A4%CE%BE%CA%CE%AC(alias)%C0%DF%C4%EA%A4%F2%A4%B9%A4%EB%CA%FD%CB%A1
+git config --global alias.co checkout
+git config --global alias.b branch
+
+pushd C:\WORKS\WORKSPACES_ANDROID\FM
+g a .
+g c -a
+
+gitk
+
+
+[Git for mm]
+pushd C:\WORKS\WORKSPACES_ANDROID\FM
+
+[svn]
+pushd C:\WORKS\WORKSPACES_ANDROID\Sample\05_Techbooster
+svn co https://techbooster.googlecode.com/svn/trunk/ContextMenu/ ContextMenu
+git svn clone https://techbooster.googlecode.com/svn/trunk/Gps/
+
+pushd C:\WORKS\WS\WS_Android_20130929_122122\techbooster
+
+[GIMP]
+pushd C:\WORKS\WORKSPACES_ANDROID\GIMP\Icons
+
+[adb]
+adb uninstall ic.main
+
+[sqlite]
+pragma table_info(locations);
+
+==================================
+antenna1.png	http://www.flaticon.com/categories/technology
