@@ -4,5 +4,12 @@
         android:id="@+id/action_settings"
         android:orderInCategory="100"
         android:title="@string/action_settings"/>
+    <item 
+        android:id="@+id/menu_main_logout"
+        android:title="@string/menu_main_logout"
+        android:icon="@drawable/menu_icon_logout_64x64"
+        >
+        
+    </item>
 
 </menu>

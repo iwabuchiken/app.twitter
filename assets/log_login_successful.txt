@@ -1,0 +1,16 @@
+03-10 09:04:45.050: D/[MainActv.java : 96 : onCreate](3798): Starting => onCreate()
+03-10 09:04:45.060: D/[MainActv.java : 150 : onCreate](3798): Twitter => Not yet logged in
+03-10 09:04:45.060: D/[MainActv.java : 228 : onCreate](3798): uri => null
+03-10 09:04:46.931: D/[MainActv.java : 332 : loginToTwitter](3798): Starting => login process
+03-10 09:04:47.020: D/[MainActv.java : 350 : loginToTwitter](3798): twitter inctance => Created
+03-10 09:04:47.030: D/[MainActv.java : 361 : loginToTwitter](3798): Setup => Done. Starting to get a request token...
+03-10 09:04:51.290: D/[MainActv.java : 376 : loginToTwitter](3798): requestToken => Wrz31LiihFyMV5xAAxk5V71FNYFswuKYEjAOypaQHE
+03-10 09:04:51.290: D/[MainActv.java : 390 : loginToTwitter](3798): Starting activity... (AuthenticationURL => https://api.twitter.com/oauth/authenticate?oauth_token=Wrz31LiihFyMV5xAAxk5V71FNYFswuKYEjAOypaQHE)
+03-10 09:05:04.200: D/[MainActv.java : 96 : onCreate](3798): Starting => onCreate()
+03-10 09:05:04.200: D/[MainActv.java : 150 : onCreate](3798): Twitter => Not yet logged in
+03-10 09:05:04.200: D/[MainActv.java : 167 : onCreate](3798): uri => not null (uri=oauth://t4jsample?oauth_token=Wrz31LiihFyMV5xAAxk5V71FNYFswuKYEjAOypaQHE&oauth_verifier=0awHTYMbdmZNXL69AzL0UpoipUC8PJFf32eur8Gh10)
+03-10 09:05:06.771: E/Twitter OAuth Token(3798): > 436497344-lqK3qca5XgwZqUbjLzYdidJyFRpB4ov5REeMO5Qa
+03-10 09:05:07.510: I/dalvikvm(3798): Total arena pages for JIT: 11
+03-10 09:05:08.440: I/global(3798): Loaded time zone names for en_US in 540ms.
+03-10 09:05:08.720: D/dalvikvm(3798): GC_CONCURRENT freed 1412K, 55% free 3152K/6919K, external 2357K/2773K, paused 2ms+2ms
+03-10 09:05:08.770: I/global(3798): Loaded time zone names for en_US in 328ms.

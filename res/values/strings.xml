@@ -7,4 +7,7 @@
     
     <string name="title_activity_main">Tweeting</string>
 
+    <!-- Menu: main -->
+    	<string name="menu_main_logout">Logout</string>
+    
 </resources>
