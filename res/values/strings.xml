@@ -9,5 +9,6 @@
 
     <!-- Menu: main -->
     	<string name="menu_main_logout">Logout</string>
+    	<string name="menu_main_query">Query</string>
     
 </resources>
