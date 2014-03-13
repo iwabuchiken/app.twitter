@@ -20,6 +20,7 @@ import twitter4j.conf.Configuration;
 import twitter4j.conf.ConfigurationBuilder;
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -27,6 +28,7 @@ import android.content.pm.ActivityInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.text.Html;
 import android.util.Log;
 import android.view.View;
@@ -145,6 +147,134 @@ public class MainActv extends Activity {
         // Listeners
         _Setup_SetListeners();
         
+        // OAuth
+        _Setup_OAuth();
+        
+        // General settings
+        _Setup_General();
+        
+//        /** This if conditions is tested once is
+//         * redirected from twitter page. Parse the uri to get oAuth
+//         * Verifier
+//         * */
+//        if (!isTwitterLoggedInAlready()) {
+//        	
+//        	// Log
+//			log_msg = "Twitter => Not yet logged in";
+//
+//			Log.d("["
+//					+ "MainActv.java : "
+//					+ +Thread.currentThread().getStackTrace()[2]
+//							.getLineNumber() + " : "
+//					+ Thread.currentThread().getStackTrace()[2].getMethodName()
+//					+ "]", log_msg);
+//        	
+//            Uri uri = getIntent().getData();
+//            if (uri != null
+//            		&& uri.toString().startsWith(CONS.URLS.TWITTER_CALLBACK_URL)) {
+//            	
+//            	// Log
+//				log_msg = "uri => not null ("
+//						+ "uri="
+//						+ uri.toString()
+//						+ ")";
+//
+//				Log.d("["
+//						+ "MainActv.java : "
+//						+ +Thread.currentThread().getStackTrace()[2]
+//								.getLineNumber()
+//						+ " : "
+//						+ Thread.currentThread().getStackTrace()[2]
+//								.getMethodName() + "]", log_msg);
+//            	
+//                // oAuth verifier
+//                String verifier = uri
+//                        .getQueryParameter(CONS.URLS.URL_TWITTER_OAUTH_VERIFIER);
+//     
+//                try {
+//                    // Get the access token
+//                    AccessToken accessToken = twitter.getOAuthAccessToken(
+//                            requestToken, verifier);
+//     
+//                    // Shared Preferences
+//                    Editor e = CONS.PREFS.mSharedPreferences.edit();
+//     
+//                    // After getting access token, access token secret
+//                    // store them in application preferences
+//                    e.putString(CONS.PREFS.PREF_KEY_OAUTH_TOKEN, accessToken.getToken());
+//                    e.putString(CONS.PREFS.PREF_KEY_OAUTH_SECRET,
+//                            accessToken.getTokenSecret());
+//                    // Store login status - true
+//                    e.putBoolean(CONS.PREFS.PREF_KEY_TWITTER_LOGIN, true);
+//                    e.commit(); // save changes
+//     
+//                    Log.e("Twitter OAuth Token", "> " + accessToken.getToken());
+//     
+//                    // Hide login button
+//                    CONS.UIS.btnLoginTwitter.setVisibility(View.GONE);
+//     
+//                    // Show Update Twitter
+//                    CONS.UIS.lblUpdate.setVisibility(View.VISIBLE);
+//                    CONS.UIS.txtUpdate.setVisibility(View.VISIBLE);
+//                    CONS.UIS.btnUpdateStatus.setVisibility(View.VISIBLE);
+//                    CONS.UIS.btnLogoutTwitter.setVisibility(View.VISIBLE);
+//                     
+//                    // Getting user details from twitter
+//                    // For now i am getting his name only
+//                    long userID = accessToken.getUserId();
+//                    User user = twitter.showUser(userID);
+//                    String username = user.getName();
+//                     
+//                    // Displaying in xml ui
+//                    CONS.UIS.lblUserName.setText(Html.fromHtml("<b>Welcome " + username + "</b>"));
+//                    
+//                } catch (Exception e) {
+//                	
+//                    // Check log for login errors
+//                    Log.e("Twitter Login Error", "> " + e.getMessage());
+//                    
+//                }//try
+//                
+//            } else {//if (uri != null
+//            	
+//            	// Log
+//				log_msg = "uri => null";
+//
+//				Log.d("["
+//						+ "MainActv.java : "
+//						+ +Thread.currentThread().getStackTrace()[2]
+//								.getLineNumber()
+//						+ " : "
+//						+ Thread.currentThread().getStackTrace()[2]
+//								.getMethodName() + "]", log_msg);
+//            	
+//            }//if (uri != null
+//            
+//        } else {//if (!isTwitterLoggedInAlready())
+//        	
+//        	// Log
+//			log_msg = "Already logged in";
+//
+//			Log.d("["
+//					+ "MainActv.java : "
+//					+ +Thread.currentThread().getStackTrace()[2]
+//							.getLineNumber() + " : "
+//					+ Thread.currentThread().getStackTrace()[2].getMethodName()
+//					+ "]", log_msg);
+//        	
+//        }//if (!isTwitterLoggedInAlready())
+        
+	}//protected void onCreate(Bundle savedInstanceState)
+
+	private void _Setup_General() {
+		// TODO Auto-generated method stub
+		CONS.General.vib =
+				(Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
+		
+	}
+
+	private void _Setup_OAuth() {
+		// TODO Auto-generated method stub
         /** This if conditions is tested once is
          * redirected from twitter page. Parse the uri to get oAuth
          * Verifier
@@ -152,7 +282,7 @@ public class MainActv extends Activity {
         if (!isTwitterLoggedInAlready()) {
         	
         	// Log
-			log_msg = "Twitter => Not yet logged in";
+        	String log_msg = "Twitter => Not yet logged in";
 
 			Log.d("["
 					+ "MainActv.java : "
@@ -245,7 +375,7 @@ public class MainActv extends Activity {
         } else {//if (!isTwitterLoggedInAlready())
         	
         	// Log
-			log_msg = "Already logged in";
+        	String log_msg = "Already logged in";
 
 			Log.d("["
 					+ "MainActv.java : "
@@ -255,8 +385,8 @@ public class MainActv extends Activity {
 					+ "]", log_msg);
         	
         }//if (!isTwitterLoggedInAlready())
-        
-	}//protected void onCreate(Bundle savedInstanceState)
+
+	}
 
 	private void _Setup_UIs() {
 		
@@ -316,7 +446,8 @@ public class MainActv extends Activity {
 		
 		case R.id.menu_main_logout://--------------------
 			
-			this.logoutFromTwitter();
+			case_Menu_Logout();
+//			this.logoutFromTwitter();
 			
 			break;
 			
@@ -326,6 +457,17 @@ public class MainActv extends Activity {
 			
 			break;
 			
+		case R.id.menu_main_timeline://--------------------
+			
+			case_Menu_TimeLine();
+			
+			break;
+			
+		case R.id.menu_main_tweet://--------------------
+			
+			case_Menu_Tweet();
+			
+			break;
 			
 		default://-------------------------------------
 			break;
@@ -335,6 +477,147 @@ public class MainActv extends Activity {
 		return super.onOptionsItemSelected(item);
 		
 	}//public boolean onOptionsItemSelected(MenuItem item)
+
+	private void case_Menu_Logout() {
+		// TODO Auto-generated method stub
+		if (!isTwitterLoggedInAlready()) {
+			
+			// Log
+			String log_msg = "Already logged out";
+
+			Log.d("["
+					+ "MainActv.java : "
+					+ +Thread.currentThread().getStackTrace()[2]
+							.getLineNumber() + " : "
+					+ Thread.currentThread().getStackTrace()[2].getMethodName()
+					+ "]", log_msg);
+			
+			// debug
+			String toa_msg = "Already logged out";
+			Toast.makeText(this, toa_msg, Toast.LENGTH_SHORT).show();
+			
+		} else {
+			
+			this.logoutFromTwitter();
+			
+		}
+	}
+
+	private void case_Menu_Tweet() {
+		// TODO Auto-generated method stub
+//		Twitter twitter = TwitterFactory.getSingleton();
+		
+		String msg = "ABCDE";
+
+		if (isTwitterLoggedInAlready()) {
+			
+		    try {
+		    	
+				Status status = twitter.updateStatus(msg);
+				
+				// Log
+				String log_msg = "update => done: " + status.getText();
+	
+				Log.d("["
+						+ "MainActv.java : "
+						+ +Thread.currentThread().getStackTrace()[2]
+								.getLineNumber() + " : "
+						+ Thread.currentThread().getStackTrace()[2].getMethodName()
+						+ "]", log_msg);
+				
+				// debug
+				String toa_msg = "update => done: " + status.getText();
+				Toast.makeText(this, toa_msg, Toast.LENGTH_SHORT).show();
+				
+			} catch (TwitterException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	    
+		} else {//if (isTwitterLoggedInAlready)
+			
+			// Log
+			String log_msg = "Login => Not yet";
+
+			Log.d("["
+					+ "MainActv.java : "
+					+ +Thread.currentThread().getStackTrace()[2]
+							.getLineNumber()
+					+ " : "
+					+ Thread.currentThread().getStackTrace()[2]
+							.getMethodName() + "]", log_msg);
+			
+			// debug
+			String toa_msg = "Login => Not yet";
+			Toast.makeText(this, toa_msg, Toast.LENGTH_SHORT).show();
+			
+		}//if (isTwitterLoggedInAlready)
+	    
+	}//private void case_Menu_Tweet()
+
+	private void case_Menu_TimeLine() {
+		// TODO Auto-generated method stub
+		if (isTwitterLoggedInAlready()) {
+			
+			try {
+				List<Status> statuses = twitter.getHomeTimeline();
+				
+				// Log
+				String log_msg = "statuses.size() => " + statuses.size();
+
+				Log.d("["
+						+ "MainActv.java : "
+						+ +Thread.currentThread().getStackTrace()[2]
+								.getLineNumber()
+						+ " : "
+						+ Thread.currentThread().getStackTrace()[2]
+								.getMethodName() + "]", log_msg);
+				
+				
+				for (Status st : statuses) {
+					
+					// Log
+					log_msg = "text=" + st.getText()
+								+ "(id="
+								+ st.getId()
+								+ ")";
+
+					Log.d("["
+							+ "MainActv.java : "
+							+ +Thread.currentThread().getStackTrace()[2]
+									.getLineNumber()
+							+ " : "
+							+ Thread.currentThread().getStackTrace()[2]
+									.getMethodName() + "]", log_msg);
+				}
+				
+			} catch (TwitterException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		} else {//if (isTwitterLoggedInAlready)
+			
+			// Log
+			String log_msg = "Login => Not yet";
+
+			Log.d("["
+					+ "MainActv.java : "
+					+ +Thread.currentThread().getStackTrace()[2]
+							.getLineNumber()
+					+ " : "
+					+ Thread.currentThread().getStackTrace()[2]
+							.getMethodName() + "]", log_msg);
+			
+			// debug
+			String toa_msg = "Login => Not yet";
+			Toast.makeText(this, toa_msg, Toast.LENGTH_SHORT).show();
+			
+		}//if (isTwitterLoggedInAlready)
+ 
+		
+		
+	}
 
 	private void case_Menu_Query() {
 		// TODO Auto-generated method stub

@@ -1,12 +1,19 @@
 package app.twitter.utils;
 
 import android.content.SharedPreferences;
+import android.os.Vibrator;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
 public class CONS {
 
+	public static class General {
+		
+		public static Vibrator vib;
+		
+	}
+	
 	public static class UIS {
 		
 	    // Login button

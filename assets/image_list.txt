@@ -4,3 +4,5 @@
 4	menu_icon_logout_64x64	1394425190_27.png	https://www.iconfinder.com/icons/111007/cable_icon#size=128
 5	menu_icon_logout_32x32	1394425190_27.png	https://www.iconfinder.com/icons/111007/cable_icon#size=32
 6	menu_icon_query_32x32.png	1394513207_Money.png	https://www.iconfinder.com/icons/56265/cash_investment_money_office_pay_payment_icon#size=128
+7	menu_icon_timeline_32x32.png	1394690162_Delivery.png	https://www.iconfinder.com/icons/56263/logistic_icon#size=128
+8	menu_icon_tweet_32x32.png	1394691760_Cart_by_Artdesigner.lv.png	https://www.iconfinder.com/icons/83151/artdesigner.lv_by_cart_icon#size=128

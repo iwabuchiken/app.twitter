@@ -27,7 +27,9 @@ public final class R {
         public static final int menu_icon_logout_32x32=0x7f020003;
         public static final int menu_icon_logout_64x64=0x7f020004;
         public static final int menu_icon_query_32x32=0x7f020005;
-        public static final int success=0x7f020006;
+        public static final int menu_icon_timeline_32x32=0x7f020006;
+        public static final int menu_icon_tweet_32x32=0x7f020007;
+        public static final int success=0x7f020008;
     }
     public static final class id {
         public static final int action_settings=0x7f080006;
@@ -38,6 +40,8 @@ public final class R {
         public static final int lblUserName=0x7f080001;
         public static final int menu_main_logout=0x7f080007;
         public static final int menu_main_query=0x7f080008;
+        public static final int menu_main_timeline=0x7f080009;
+        public static final int menu_main_tweet=0x7f08000a;
         public static final int txtUpdateStatus=0x7f080003;
     }
     public static final class layout {
@@ -54,6 +58,8 @@ public final class R {
          */
         public static final int menu_main_logout=0x7f050004;
         public static final int menu_main_query=0x7f050005;
+        public static final int menu_main_timeline=0x7f050006;
+        public static final int menu_main_tweet=0x7f050007;
         public static final int title_activity_main=0x7f050003;
     }
     public static final class style {

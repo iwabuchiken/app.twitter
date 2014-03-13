@@ -10,5 +10,7 @@
     <!-- Menu: main -->
     	<string name="menu_main_logout">Logout</string>
     	<string name="menu_main_query">Query</string>
+    	<string name="menu_main_timeline">Timeline</string>
+    	<string name="menu_main_tweet">Tweet</string>
     
 </resources>
