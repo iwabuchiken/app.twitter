@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:background="@drawable/background_main_actv_512x512"
     android:orientation="vertical" >
      
     <!-- Twitter Login Button -->
@@ -40,22 +41,28 @@
         android:visibility="gone"/>
      
     <!-- Tweet Button -->
-    <Button android:id="@+id/btnUpdateStatus"
+
+    <Button
+        android:id="@+id/btnUpdateStatus"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Tweet"
         android:layout_marginLeft="10dip"
         android:layout_marginRight="10dip"
-        android:visibility="gone"/>
+        android:text="Tweet"
+        android:textSize="25sp"
+        android:visibility="gone" />
      
     <!-- Twitter Logout button -->
-    <Button android:id="@+id/btnLogoutTwitter"
+
+    <Button
+        android:id="@+id/btnLogoutTwitter"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Logout from Twitter"
         android:layout_marginLeft="10dip"
         android:layout_marginRight="10dip"
         android:layout_marginTop="50dip"
-        android:visibility="gone"/>
+        android:text="Logout from Twitter"
+        android:textSize="25sp"
+        android:visibility="gone" />
  
 </LinearLayout>
