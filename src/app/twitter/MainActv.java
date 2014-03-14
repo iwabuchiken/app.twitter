@@ -108,6 +108,8 @@ public class MainActv extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.actv_main);
 		
+		this.setTitle(this.getClass().getName());
+		
 		// Log
 		String log_msg = "Starting => onCreate()";
 
@@ -184,8 +186,10 @@ public class MainActv extends Activity {
 			// Show Update Twitter
 			CONS.UIS.lblUpdate.setVisibility(View.VISIBLE);
 			CONS.UIS.txtUpdate.setVisibility(View.VISIBLE);
+			
 			CONS.UIS.btnUpdateStatus.setVisibility(View.VISIBLE);
 			CONS.UIS.btnLogoutTwitter.setVisibility(View.VISIBLE);
+			CONS.UIS.btnTimeLine.setVisibility(View.VISIBLE);
 			
 		} else {//if (isTwitterLoggedInAlready())
 			
@@ -279,6 +283,7 @@ public class MainActv extends Activity {
                     CONS.UIS.txtUpdate.setVisibility(View.VISIBLE);
                     CONS.UIS.btnUpdateStatus.setVisibility(View.VISIBLE);
                     CONS.UIS.btnLogoutTwitter.setVisibility(View.VISIBLE);
+                    CONS.UIS.btnTimeLine.setVisibility(View.VISIBLE);
                      
                     // Getting user details from twitter
                     // For now i am getting his name only
@@ -342,6 +347,8 @@ public class MainActv extends Activity {
 		CONS.UIS.btnLoginTwitter = (Button) findViewById(R.id.btnLoginTwitter);
         CONS.UIS.btnUpdateStatus = (Button) findViewById(R.id.btnUpdateStatus);
         CONS.UIS.btnLogoutTwitter = (Button) findViewById(R.id.btnLogoutTwitter);
+        CONS.UIS.btnTimeLine = (Button) findViewById(R.id.btnTimeLine);
+        
         CONS.UIS.txtUpdate = (EditText) findViewById(R.id.txtUpdateStatus);
         CONS.UIS.lblUpdate = (TextView) findViewById(R.id.lblUpdate);
         CONS.UIS.lblUserName = (TextView) findViewById(R.id.lblUserName);
@@ -374,9 +381,22 @@ public class MainActv extends Activity {
                 logoutFromTwitter();
             }
         });
+        
+        /**
+         * Button click event: Timeline
+         * */
+        CONS.UIS.btnTimeLine.setOnClickListener(new View.OnClickListener() {
+        	
+        	@Override
+        	public void onClick(View arg0) {
+        		// Call logout twitter function
+        		timeLine();
+        	}
+
+        });
 
 	}//private void _Setup_SetListeners()
-	
+
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -886,5 +906,9 @@ public class MainActv extends Activity {
 		Toast.makeText(this, toa_msg, Toast.LENGTH_SHORT).show();
 		
     }//private void logoutFromTwitter()
-    
+
+    private void timeLine() {
+		// TODO Auto-generated method stub
+		
+	}
 }//public class MainActv extends Activity

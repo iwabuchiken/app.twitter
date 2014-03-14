@@ -8,6 +8,16 @@
     <!-- Twitter Login Button -->
 
     <Button
+        android:id="@+id/Button01"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:text="Tweet"
+        android:textSize="25sp"
+        android:visibility="gone" />
+
+    <Button
         android:id="@+id/btnLoginTwitter"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -49,6 +59,18 @@
         android:layout_marginLeft="10dip"
         android:layout_marginRight="10dip"
         android:text="Tweet"
+        android:textSize="25sp"
+        android:visibility="gone" />
+     
+    <!-- Timeline Button -->
+
+    <Button
+        android:id="@+id/btnTimeLine"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:text="@string/btn_lbl_time_line"
         android:textSize="25sp"
         android:visibility="gone" />
      

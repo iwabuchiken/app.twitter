@@ -22,6 +22,9 @@ public class CONS {
 	    public static Button btnUpdateStatus;
 	    // Logout button
 	    public static Button btnLogoutTwitter;
+	    // Timeline button
+	    public static Button btnTimeLine;
+	    
 	    // EditText for update
 	    public static EditText txtUpdate;
 	    // lbl update

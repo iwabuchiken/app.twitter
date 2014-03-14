@@ -25,4 +25,7 @@
     	<string name="menu_main_tweet">Tweet</string>
     	<string name="menu_main_refresh_screen">Refresh screen</string>
     
+    <!-- UI labels -->
+    	<string name="btn_lbl_time_line">Timeline</string>
+    
 </resources>
