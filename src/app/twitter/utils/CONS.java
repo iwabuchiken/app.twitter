@@ -1,5 +1,7 @@
 package app.twitter.utils;
 
+import twitter4j.Twitter;
+import twitter4j.auth.RequestToken;
 import android.content.SharedPreferences;
 import android.os.Vibrator;
 import android.widget.Button;
@@ -8,6 +10,24 @@ import android.widget.TextView;
 
 public class CONS {
 
+	public static class TwitterData {
+		
+		public static String TWITTER_CONSUMER_KEY =
+				"GPH7OdrScUbYQ1RpyLkzYg";
+		//"LsCQaPOwd8k7WkyRFRZF4Q";
+		
+		public static String TWITTER_CONSUMER_SECRET =
+						"bEWx5aLKLfNQQvqHCugZC7phMDqhKPT12Uwjajbr7o";
+		//"KJbJu5IQrlwxW7Cwnax3mMzAc4j3n6Wd2dG125srgk";
+
+		 // Twitter
+	    public static Twitter twitter;
+	    public static RequestToken requestToken;
+	    
+	    public static int numOfTweets	= 40;
+		
+	}
+	
 	public static class General {
 		
 		public static Vibrator vib;
@@ -203,6 +223,10 @@ public class CONS {
 	}//public static class ReturnValues
 
 	public static class Others {
+		
+		public static Vibrator vib;
+		
+		public static final int VIB_LENGTH = 50;
 		
 		public static enum TimeLabelTypes {
 			

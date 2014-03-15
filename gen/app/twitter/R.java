@@ -43,10 +43,7 @@ public final class R {
         public static final int lblUpdate=0x7f080003;
         public static final int lblUserName=0x7f080002;
         public static final int menu_main_logout=0x7f080009;
-        public static final int menu_main_query=0x7f08000a;
-        public static final int menu_main_refresh_screen=0x7f08000d;
-        public static final int menu_main_timeline=0x7f08000b;
-        public static final int menu_main_tweet=0x7f08000c;
+        public static final int menu_main_tweet=0x7f08000a;
         public static final int txtUpdateStatus=0x7f080004;
     }
     public static final class layout {

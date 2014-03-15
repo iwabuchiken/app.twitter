@@ -13,31 +13,10 @@
     </item>
     
     <item 
-        android:id="@+id/menu_main_query"
-        android:title="@string/menu_main_query"
-        android:icon="@drawable/menu_icon_query_32x32"
-        >
-    </item>
-    
-    <item 
-        android:id="@+id/menu_main_timeline"
-        android:title="@string/menu_main_timeline"
-        android:icon="@drawable/menu_icon_timeline_32x32"
-        >
-    </item>
-    
-    <item 
         android:id="@+id/menu_main_tweet"
         android:title="@string/menu_main_tweet"
         android:icon="@drawable/menu_icon_tweet_32x32"
         >
     </item>
     
-    <item 
-        android:id="@+id/menu_main_refresh_screen"
-        android:title="@string/menu_main_refresh_screen"
-        android:icon="@drawable/menu_icon_refresh_screen_32x32"
-        >
-    </item>
-
 </menu>
