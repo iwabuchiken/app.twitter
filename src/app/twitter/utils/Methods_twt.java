@@ -17,6 +17,7 @@ import android.net.Uri;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
+import app.twitter.TLActv;
 
 public class Methods_twt {
 
@@ -157,7 +158,9 @@ public class Methods_twt {
     }//private void logoutFromTwitter()
 
     /*********************************
-	 * @return null => Login undone
+	 * @return null => 1. Login undone<br>
+	 * 				2. Access token => null<br>
+	 * 				3. TwitterException
 	 *********************************/
     public static List<Status>
     get_TimeLine(Activity actv, int numOfTweets) {
@@ -202,6 +205,9 @@ public class Methods_twt {
 		} catch (TwitterException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
+			
+			return null;
+			
 		}
 
     	
@@ -211,7 +217,8 @@ public class Methods_twt {
 			
 			Paging pg = new Paging();
 			
-			int numberOfTweets = 50;
+			int numberOfTweets = 40;
+//			int numberOfTweets = 50;
 //			int numberOfTweets = 100;
 			long lastID = Long.MAX_VALUE;
 			
@@ -373,5 +380,43 @@ public class Methods_twt {
 					+ "]", log_msg);
 			
 	}//setPref_ResetLoggedIn(Activity actv)
+
+	public static void start_TimeLine(Activity actv, int numOfTweets) {
+		// TODO Auto-generated method stub
+		CONS.TwitterData.statuses = Methods_twt.get_TimeLine(actv, numOfTweets);
+//		List<Status> statuses = Methods_twt.get_TimeLine(actv, numOfTweets);
+		
+		if (CONS.TwitterData.statuses == null) {
+			
+			// Log
+			String log_msg = "statuses => null";
+
+			Log.d("["
+					+ "Methods_twt.java : "
+					+ +Thread.currentThread().getStackTrace()[2]
+							.getLineNumber() + " : "
+					+ Thread.currentThread().getStackTrace()[2].getMethodName()
+					+ "]", log_msg);
+			
+			return;
+			
+		}
+		
+		/*********************************
+		 * Start: Activity
+		 *********************************/
+		Intent i = new Intent();
+		
+		i.setClass(actv, TLActv.class);
+		
+		/*********************************
+		 * 3. Start
+		 *********************************/
+		actv.startActivity(i);
+		
+		//REF no animation http://stackoverflow.com/questions/6972295/switching-activities-without-animation answered Nov 19 '13 at 21:42
+		actv.overridePendingTransition(0, 0);
+
+	}
 	
 }//public class Methods_twt

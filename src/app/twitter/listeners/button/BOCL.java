@@ -81,9 +81,10 @@ public class BOCL implements OnClickListener {
 	}
 	
 	private void _case_TimeLine() {
-		// TODO Auto-generated method stub
-		Methods_twt.get_TimeLine(actv, CONS.TwitterData.numOfTweets);
 		
-	}
+		Methods_twt.start_TimeLine(actv, CONS.TwitterData.numOfTweets);
+//		Methods_twt.get_TimeLine(actv, CONS.TwitterData.numOfTweets);
+		
+	}//private void _case_TimeLine()
 
 }//public class BOCL implements OnClickListener

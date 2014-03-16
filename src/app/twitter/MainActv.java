@@ -5,6 +5,7 @@ import java.util.List;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -42,26 +43,15 @@ import app.twitter.listeners.button.BOCL;
 import app.twitter.utils.AlertDialogManager;
 import app.twitter.utils.CONS;
 import app.twitter.utils.ConnectionDetector;
+import app.twitter.utils.Methods;
 import app.twitter.utils.Methods_twt;
 import app.twitter.utils.Tags;
 
 public class MainActv extends Activity {
 
-//	static String TWITTER_CONSUMER_KEY =
-//					"GPH7OdrScUbYQ1RpyLkzYg";
-////	"LsCQaPOwd8k7WkyRFRZF4Q";
-//	
-//    static String TWITTER_CONSUMER_SECRET =
-//    				"bEWx5aLKLfNQQvqHCugZC7phMDqhKPT12Uwjajbr7o";
-////    "KJbJu5IQrlwxW7Cwnax3mMzAc4j3n6Wd2dG125srgk";
- 
     // Progress dialog
     ProgressDialog pDialog;
     
-// // Twitter
-//    private static Twitter twitter;
-//    private static RequestToken requestToken;
-     
     @Override
 	protected void onStart() {
 		// TODO Auto-generated method stub
@@ -476,6 +466,14 @@ public class MainActv extends Activity {
 		return super.onOptionsItemSelected(item);
 		
 	}//public boolean onOptionsItemSelected(MenuItem item)
+
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		
+		Methods.confirm_quit(this, keyCode);
+		
+		return super.onKeyDown(keyCode, event);
+	}
 
 	private void case_RefreshScreen() {
 		// TODO Auto-generated method stub

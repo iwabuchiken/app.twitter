@@ -1,5 +1,8 @@
 package app.twitter.utils;
 
+import java.util.List;
+
+import twitter4j.Status;
 import twitter4j.Twitter;
 import twitter4j.auth.RequestToken;
 import android.content.SharedPreferences;
@@ -26,6 +29,8 @@ public class CONS {
 	    
 	    public static int numOfTweets	= 40;
 		
+	    public static List<Status> statuses	= null;
+	    
 	}
 	
 	public static class General {

@@ -27,6 +27,7 @@
                 <data android:scheme="oauth" android:host="t4jsample"/>
             </intent-filter>
         </activity>
+        <activity android:name=".TLActv"></activity>
     </application>
      
     <!-- Permission - Internet Connect -->
