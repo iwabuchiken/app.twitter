@@ -1,5 +1,7 @@
 package app.twitter;
 
+import java.util.List;
+
 import android.app.ListActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,7 +10,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
+import app.twitter.adapters.Adp_Twt;
+import app.twitter.models.Twt;
 import app.twitter.utils.CONS;
+import app.twitter.utils.Methods_twt;
 
 public class TLActv extends ListActivity {
 
@@ -109,7 +114,52 @@ public class TLActv extends ListActivity {
 		/*********************************
 		 * Build: Adapter
 		 *********************************/
+		List<Twt> twts = Methods_twt.get_TwtsFromStatuses(
+									this,
+									CONS.TwitterData.statuses);
 		
+		Adp_Twt adp_Twt = new Adp_Twt(
+							this,
+							R.layout.list_row_twt_list,
+							twts);
+		
+		this.setListAdapter(adp_Twt);
+		
+		// Log
+		String log_msg = "getTwtCreatedAt() => "
+						+ twts.get(0).getTwtCreatedAt();
+
+		Log.d("[" + "TLActv.java : "
+				+ +Thread.currentThread().getStackTrace()[2].getLineNumber()
+				+ " : "
+				+ Thread.currentThread().getStackTrace()[2].getMethodName()
+				+ "]", log_msg);
+		
+//		// Log
+//		if (twts == null) {
+//			
+//			// Log
+//			String log_msg = "twts => null";
+//
+//			Log.d("["
+//					+ "TLActv.java : "
+//					+ +Thread.currentThread().getStackTrace()[2]
+//							.getLineNumber() + " : "
+//					+ Thread.currentThread().getStackTrace()[2].getMethodName()
+//					+ "]", log_msg);
+//			
+//			
+//		} else {//if (twts == null)
+//			
+//			String log_msg = "" + String.valueOf(twts.size());
+//			
+//			Log.d("[" + "TLActv.java : "
+//					+ +Thread.currentThread().getStackTrace()[2].getLineNumber()
+//					+ " : "
+//					+ Thread.currentThread().getStackTrace()[2].getMethodName()
+//					+ "]", log_msg);
+//			
+//		}//if (twts == null)
 		
 		
 	}//protected void onStart()

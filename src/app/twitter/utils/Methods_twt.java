@@ -18,6 +18,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 import app.twitter.TLActv;
+import app.twitter.models.Twt;
 
 public class Methods_twt {
 
@@ -418,5 +419,35 @@ public class Methods_twt {
 		actv.overridePendingTransition(0, 0);
 
 	}
+
+	public static List<Twt>
+	get_TwtsFromStatuses
+	(Activity actv, List<Status> statuses) {
+		// TODO Auto-generated method stub
+		List<Twt> twts = new ArrayList<Twt>();
+		
+		for (Status st : statuses) {
+			
+			Twt twt = new Twt.Builder()
+						.setTwtCreatedAt(st.getCreatedAt().toLocaleString())
+						.setTwtId(st.getId())
+						.setText(st.getText())
+						.build();
+			
+			if (twt != null) {
+				
+				twts.add(twt);
+				
+			} else {//if (twt != null)
+				
+				continue;
+				
+			}//if (twt != null)
+			
+		}//for (Status st : statuses)
+		
+		return twts;
+		
+	}//get_TwtsFromStatuses
 	
 }//public class Methods_twt

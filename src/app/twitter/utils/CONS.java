@@ -80,6 +80,19 @@ public class CONS {
 	    public static final String PREF_KEY_OAUTH_SECRET = "oauth_token_secret";
 	    public static final String PREF_KEY_TWITTER_LOGIN = "isTwitterLogedIn";
 
+	    public static final String pName_TWT	= "pref_twt";
+		
+		public static final String pKey_CurrentItemPosition
+									= "current_item_position";
+		
+		public static final int pVal_CurrentItemPosition_Initial
+									= -1;
+		
+		public static int pVal_CurrentItemPosition;
+		
+		
+		public static final String pKey_ShowMemoDialog
+									= "show_memo_dialog";
 		
 	}//public static class PREFS
 

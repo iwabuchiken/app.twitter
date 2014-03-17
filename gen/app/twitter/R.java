@@ -74,9 +74,9 @@ public final class R {
         public static final int btnUpdateStatus=0x7f090005;
         public static final int lblUpdate=0x7f090003;
         public static final int lblUserName=0x7f090002;
-        public static final int listrow_loc_list_tv_date=0x7f09000e;
-        public static final int listrow_loc_list_tv_lat=0x7f090010;
-        public static final int listrow_loc_list_tv_time=0x7f09000f;
+        public static final int listrow_twt_list_tv_date=0x7f09000e;
+        public static final int listrow_twt_list_tv_time=0x7f09000f;
+        public static final int listrow_twt_list_tv_txt=0x7f090010;
         public static final int menu_main_logout=0x7f090012;
         public static final int menu_main_tweet=0x7f090013;
         public static final int thumb_activity_LL_buttons=0x7f090008;
@@ -90,7 +90,7 @@ public final class R {
     public static final class layout {
         public static final int actv_main=0x7f030000;
         public static final int actv_tl=0x7f030001;
-        public static final int list_row_loc_list=0x7f030002;
+        public static final int list_row_twt_list=0x7f030002;
     }
     public static final class menu {
         public static final int main_actv=0x7f080000;
