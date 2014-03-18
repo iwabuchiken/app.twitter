@@ -63,12 +63,24 @@ public class BOCL implements OnClickListener {
 			
 			break;
 			
+		case TWEET:
+			
+			_case_Tweet();
+			
+			break;
+			
 		default:
 			break;
 			
 		}//switch (tag)
 		
 	}//public void onClick(View v)
+
+	private void _case_Tweet() {
+		// TODO Auto-generated method stub
+		Methods_twt.start_TwtActv(actv);
+		
+	}
 
 	private void _case_Login() {
 		// TODO Auto-generated method stub

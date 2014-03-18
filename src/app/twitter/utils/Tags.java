@@ -9,6 +9,9 @@ public class Tags {
 		LOGOUT,
 		
 		TIMELINE,
+		
+		TWEET,
+		
 	}
 	
 	public static enum ListTags {

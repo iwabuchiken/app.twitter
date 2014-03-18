@@ -25,7 +25,17 @@
     	<string name="menu_main_tweet">Tweet</string>
     	<string name="menu_main_refresh_screen">Refresh screen</string>
     
+    <!-- Menu: Tweet -->
+    	<string name="menu_twt_add_pattern">Add pattern</string>
+    	
     <!-- UI labels -->
     	<string name="btn_lbl_time_line">Timeline</string>
+    	<string name="btn_lbl_memo_patterns">Pattern</string>
     
+    <!-- actv_twt.xml -->
+    	<string name="dlg_add_memos_bt_tweet">Tweet</string>
+    	<string name="dlg_add_memos_bt_back">Back</string>
+    	<string name="dlg_add_memos_bt_add_patterns">Pattern</string>
+    	
+    	
 </resources>

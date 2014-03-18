@@ -28,6 +28,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".TLActv"></activity>
+        <activity android:name=".TwtActv"></activity>
     </application>
      
     <!-- Permission - Internet Connect -->

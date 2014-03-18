@@ -197,6 +197,7 @@ public class MainActv extends Activity {
 			CONS.UIS.btnUpdateStatus.setVisibility(View.VISIBLE);
 			CONS.UIS.btnLogoutTwitter.setVisibility(View.VISIBLE);
 			CONS.UIS.btnTimeLine.setVisibility(View.VISIBLE);
+			CONS.UIS.btnTweet.setVisibility(View.VISIBLE);
 			
 		} else {//if (isTwitterLoggedInAlready())
 			
@@ -357,6 +358,7 @@ public class MainActv extends Activity {
         CONS.UIS.btnUpdateStatus = (Button) findViewById(R.id.btnUpdateStatus);
         CONS.UIS.btnLogoutTwitter = (Button) findViewById(R.id.btnLogoutTwitter);
         CONS.UIS.btnTimeLine = (Button) findViewById(R.id.btnTimeLine);
+        CONS.UIS.btnTweet = (Button) findViewById(R.id.btnTweet);
         
         CONS.UIS.txtUpdate = (EditText) findViewById(R.id.txtUpdateStatus);
         CONS.UIS.lblUpdate = (TextView) findViewById(R.id.lblUpdate);
@@ -372,16 +374,6 @@ public class MainActv extends Activity {
 		CONS.UIS.btnLoginTwitter.setTag(Tags.ButtonTags.LOGIN);
         CONS.UIS.btnLoginTwitter.setOnClickListener(new BOCL(this));
         
-//        CONS.UIS.btnLoginTwitter.setOnClickListener(new View.OnClickListener() {
-//     
-//            @Override
-//            public void onClick(View arg0) {
-//                // Call login twitter function
-//                loginToTwitter();
-//                
-//            }
-//        });
-        
         /**
          * Button click event for logout from twitter
          * */
@@ -389,27 +381,18 @@ public class MainActv extends Activity {
         
         CONS.UIS.btnLogoutTwitter.setOnClickListener(new BOCL(this));
          
-//            @Override
-//            public void onClick(View arg0) {
-//                // Call logout twitter function
-//                logoutFromTwitter();
-//            }
-//        });
-        
         /**
          * Button click event: Timeline
          * */
         CONS.UIS.btnTimeLine.setTag(Tags.ButtonTags.TIMELINE);
         CONS.UIS.btnTimeLine.setOnClickListener(new BOCL(this));
         	
-//        	@Override
-//        	public void onClick(View arg0) {
-//        		// Call logout twitter function
-//        		timeLine();
-//        	}
-//
-//        });
-
+        /**
+         * Button click event: Tweet
+         * */
+        CONS.UIS.btnTweet.setTag(Tags.ButtonTags.TWEET);
+        CONS.UIS.btnTweet.setOnClickListener(new BOCL(this));
+        
 	}//private void _Setup_SetListeners()
 
 

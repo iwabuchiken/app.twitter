@@ -49,6 +49,8 @@ public class CONS {
 	    public static Button btnLogoutTwitter;
 	    // Timeline button
 	    public static Button btnTimeLine;
+	    // Tweet button
+	    public static Button btnTweet;
 	    
 	    // EditText for update
 	    public static EditText txtUpdate;

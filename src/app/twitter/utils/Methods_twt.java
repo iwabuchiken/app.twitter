@@ -18,6 +18,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 import app.twitter.TLActv;
+import app.twitter.TwtActv;
 import app.twitter.models.Twt;
 
 public class Methods_twt {
@@ -449,5 +450,21 @@ public class Methods_twt {
 		return twts;
 		
 	}//get_TwtsFromStatuses
+
+	public static void start_TwtActv(Activity actv) {
+		// TODO Auto-generated method stub
+		Intent i = new Intent();
+		
+		i.setClass(actv, TwtActv.class);
+		
+		/*********************************
+		 * 3. Start
+		 *********************************/
+		actv.startActivity(i);
+		
+		//REF no animation http://stackoverflow.com/questions/6972295/switching-activities-without-animation answered Nov 19 '13 at 21:42
+		
+		actv.overridePendingTransition(0, 0);
+	}
 	
 }//public class Methods_twt
