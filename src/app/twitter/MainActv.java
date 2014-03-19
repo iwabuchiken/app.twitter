@@ -191,10 +191,10 @@ public class MainActv extends Activity {
 			_Setup_UIs();
 			
 			// Show Update Twitter
-			CONS.UIS.lblUpdate.setVisibility(View.VISIBLE);
-			CONS.UIS.txtUpdate.setVisibility(View.VISIBLE);
+//			CONS.UIS.lblUpdate.setVisibility(View.VISIBLE);
+//			CONS.UIS.txtUpdate.setVisibility(View.VISIBLE);
 			
-			CONS.UIS.btnUpdateStatus.setVisibility(View.VISIBLE);
+//			CONS.UIS.btnUpdateStatus.setVisibility(View.VISIBLE);
 			CONS.UIS.btnLogoutTwitter.setVisibility(View.VISIBLE);
 			CONS.UIS.btnTimeLine.setVisibility(View.VISIBLE);
 			CONS.UIS.btnTweet.setVisibility(View.VISIBLE);
@@ -215,7 +215,7 @@ public class MainActv extends Activity {
 		}//if (isTwitterLoggedInAlready())
 		
         
-	}
+	}//private void _Setup_RefreshScreen()
 
 	private void _Setup_General() {
 		// TODO Auto-generated method stub
@@ -270,6 +270,20 @@ public class MainActv extends Activity {
                     		CONS.TwitterData.twitter.getOAuthAccessToken(
                     				CONS.TwitterData.requestToken, verifier);
      
+                    
+                    // Log
+					log_msg = "Token=" + accessToken.getToken()
+								+ "/"
+								+ "TokenSecret=" + accessToken.getTokenSecret();
+
+					Log.d("["
+							+ "MainActv.java : "
+							+ +Thread.currentThread().getStackTrace()[2]
+									.getLineNumber()
+							+ " : "
+							+ Thread.currentThread().getStackTrace()[2]
+									.getMethodName() + "]", log_msg);
+                    
                     // Shared Preferences
                     Editor e = CONS.PREFS.mSharedPreferences.edit();
      
@@ -288,9 +302,9 @@ public class MainActv extends Activity {
                     CONS.UIS.btnLoginTwitter.setVisibility(View.GONE);
      
                     // Show Update Twitter
-                    CONS.UIS.lblUpdate.setVisibility(View.VISIBLE);
-                    CONS.UIS.txtUpdate.setVisibility(View.VISIBLE);
-                    CONS.UIS.btnUpdateStatus.setVisibility(View.VISIBLE);
+//                    CONS.UIS.lblUpdate.setVisibility(View.VISIBLE);
+//                    CONS.UIS.txtUpdate.setVisibility(View.VISIBLE);
+//                    CONS.UIS.btnUpdateStatus.setVisibility(View.VISIBLE);
                     CONS.UIS.btnLogoutTwitter.setVisibility(View.VISIBLE);
                     CONS.UIS.btnTimeLine.setVisibility(View.VISIBLE);
                      
@@ -355,14 +369,14 @@ public class MainActv extends Activity {
 		
 		// TODO Auto-generated method stub
 		CONS.UIS.btnLoginTwitter = (Button) findViewById(R.id.btnLoginTwitter);
-        CONS.UIS.btnUpdateStatus = (Button) findViewById(R.id.btnUpdateStatus);
+//        CONS.UIS.btnUpdateStatus = (Button) findViewById(R.id.btnUpdateStatus);
         CONS.UIS.btnLogoutTwitter = (Button) findViewById(R.id.btnLogoutTwitter);
         CONS.UIS.btnTimeLine = (Button) findViewById(R.id.btnTimeLine);
         CONS.UIS.btnTweet = (Button) findViewById(R.id.btnTweet);
         
-        CONS.UIS.txtUpdate = (EditText) findViewById(R.id.txtUpdateStatus);
-        CONS.UIS.lblUpdate = (TextView) findViewById(R.id.lblUpdate);
-        CONS.UIS.lblUserName = (TextView) findViewById(R.id.lblUserName);
+//        CONS.UIS.txtUpdate = (EditText) findViewById(R.id.txtUpdateStatus);
+//        CONS.UIS.lblUpdate = (TextView) findViewById(R.id.lblUpdate);
+//        CONS.UIS.lblUserName = (TextView) findViewById(R.id.lblUserName);
         
 	}
 

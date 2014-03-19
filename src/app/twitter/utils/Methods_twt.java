@@ -32,7 +32,7 @@ public class Methods_twt {
 			String log_msg = "Starting => login process";
 
 			Log.d("["
-					+ "MainActv.java : "
+					+ "Methods_twt.java : "
 					+ +Thread.currentThread().getStackTrace()[2]
 							.getLineNumber() + " : "
 					+ Thread.currentThread().getStackTrace()[2].getMethodName()
@@ -50,7 +50,7 @@ public class Methods_twt {
 			log_msg = "twitter inctance => Created";
 
 			Log.d("["
-					+ "MainActv.java : "
+					+ "Methods_twt.java : "
 					+ +Thread.currentThread().getStackTrace()[2]
 							.getLineNumber() + " : "
 					+ Thread.currentThread().getStackTrace()[2].getMethodName()
@@ -65,7 +65,7 @@ public class Methods_twt {
 					+ " Starting to get a request token...";
 
 			Log.d("["
-					+ "MainActv.java : "
+					+ "Methods_twt.java : "
 					+ +Thread.currentThread().getStackTrace()[2]
 							.getLineNumber() + " : "
 					+ Thread.currentThread().getStackTrace()[2].getMethodName()
@@ -80,7 +80,7 @@ public class Methods_twt {
 							+ CONS.TwitterData.requestToken.getToken();
 
 				Log.d("["
-						+ "MainActv.java : "
+						+ "Methods_twt.java : "
 						+ +Thread.currentThread().getStackTrace()[2]
 								.getLineNumber()
 						+ " : "
@@ -94,7 +94,7 @@ public class Methods_twt {
 							+ ")";
 
 				Log.d("["
-						+ "MainActv.java : "
+						+ "Methods_twt.java : "
 						+ +Thread.currentThread().getStackTrace()[2]
 								.getLineNumber()
 						+ " : "
@@ -147,7 +147,7 @@ public class Methods_twt {
         // Log
 		String log_msg = "Logout => Done";
 
-		Log.d("[" + "MainActv.java : "
+		Log.d("[" + "Methods_twt.java : "
 				+ +Thread.currentThread().getStackTrace()[2].getLineNumber()
 				+ " : "
 				+ Thread.currentThread().getStackTrace()[2].getMethodName()
@@ -243,7 +243,7 @@ public class Methods_twt {
 				log_msg = "statuses.size() => " + statuses.size();
 				
 				Log.d("["
-						+ "MainActv.java : "
+						+ "Methods_twt.java : "
 						+ +Thread.currentThread().getStackTrace()[2]
 								.getLineNumber()
 								+ " : "
@@ -266,7 +266,7 @@ public class Methods_twt {
 								+ ")";
 
 				Log.d("["
-						+ "MainActv.java : "
+						+ "Methods_twt.java : "
 						+ +Thread.currentThread().getStackTrace()[2]
 								.getLineNumber()
 						+ " : "
@@ -281,7 +281,7 @@ public class Methods_twt {
 			log_msg = "Login => Not yet";
 
 			Log.d("["
-					+ "MainActv.java : "
+					+ "Methods_twt.java : "
 					+ +Thread.currentThread().getStackTrace()[2]
 							.getLineNumber()
 					+ " : "
@@ -310,6 +310,9 @@ public class Methods_twt {
         TwitterFactory factory = new TwitterFactory(configuration);
         CONS.TwitterData.twitter = factory.getInstance();
 
+        
+//        CONS.TwitterData.twitter.set
+        
     }
 
 	public static void validate_Login(Activity actv) {
@@ -363,11 +366,11 @@ public class Methods_twt {
 	        // I am showing the hiding/showing buttons again
 	        // You might not needed this code
 	        CONS.UIS.btnLogoutTwitter.setVisibility(View.GONE);
-	        CONS.UIS.btnUpdateStatus.setVisibility(View.GONE);
-	        CONS.UIS.txtUpdate.setVisibility(View.GONE);
-	        CONS.UIS.lblUpdate.setVisibility(View.GONE);
-	        CONS.UIS.lblUserName.setText("");
-	        CONS.UIS.lblUserName.setVisibility(View.GONE);
+//	        CONS.UIS.btnUpdateStatus.setVisibility(View.GONE);
+//	        CONS.UIS.txtUpdate.setVisibility(View.GONE);
+//	        CONS.UIS.lblUpdate.setVisibility(View.GONE);
+//	        CONS.UIS.lblUserName.setText("");
+//	        CONS.UIS.lblUserName.setVisibility(View.GONE);
 	     
 	        CONS.UIS.btnLoginTwitter.setVisibility(View.VISIBLE);
 
@@ -466,5 +469,75 @@ public class Methods_twt {
 		
 		actv.overridePendingTransition(0, 0);
 	}
+
+	public static void backTo_MainActv(Activity actv) {
+		// TODO Auto-generated method stub
+		actv.finish();
+		
+		actv.overridePendingTransition(0, 0);
+		
+	}
+
+	public static void send_Tweet(Activity actv) {
+		// TODO Auto-generated method stub
+		if (Methods_twt.isTwitterLoggedInAlready()) {
+			
+			String msg = CONS.UIS_Twt.et_Twt.getText().toString();
+			
+			// Log
+			String log_msg = "msg=" + msg;
+
+			Log.d("["
+					+ "Methods_twt.java : "
+					+ +Thread.currentThread().getStackTrace()[2]
+							.getLineNumber() + " : "
+					+ Thread.currentThread().getStackTrace()[2].getMethodName()
+					+ "]", log_msg);
+			
+		    try {
+		    	
+				Status status = CONS.TwitterData.twitter.updateStatus(msg);
+				
+				// Log
+				log_msg = "update => done: " + status.getText();
+	
+				Log.d("["
+						+ "Methods_twt.java : "
+						+ +Thread.currentThread().getStackTrace()[2]
+								.getLineNumber() + " : "
+						+ Thread.currentThread().getStackTrace()[2].getMethodName()
+						+ "]", log_msg);
+				
+				// debug
+				String toa_msg = "update => done: " + status.getText();
+				Toast.makeText(actv, toa_msg, Toast.LENGTH_SHORT).show();
+				
+			} catch (TwitterException e) {
+				// TODO Auto-generated catch block
+				
+				e.printStackTrace();
+				
+			}//try
+	    
+		} else {//if (isTwitterLoggedInAlready)
+			
+			// Log
+			String log_msg = "Login => Not yet";
+
+			Log.d("["
+					+ "Methods_twt.java : "
+					+ +Thread.currentThread().getStackTrace()[2]
+							.getLineNumber()
+					+ " : "
+					+ Thread.currentThread().getStackTrace()[2]
+							.getMethodName() + "]", log_msg);
+			
+			// debug
+			String toa_msg = "Login => Not yet";
+			Toast.makeText(actv, toa_msg, Toast.LENGTH_SHORT).show();
+			
+		}//if (isTwitterLoggedInAlready)
+
+	}//public static void send_Tweet(Activity actv)
 	
 }//public class Methods_twt

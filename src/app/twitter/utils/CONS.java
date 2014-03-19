@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import android.os.Vibrator;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.GridView;
 import android.widget.TextView;
 
 public class CONS {
@@ -36,6 +37,20 @@ public class CONS {
 	public static class General {
 		
 		public static Vibrator vib;
+		
+	}
+	
+	public static class UIS_Twt {
+		
+		public static Button btn_Back;
+		
+		public static Button btn_Twt;
+		
+		public static Button btn_Pattern;
+		
+		public static EditText et_Twt;
+		
+		public static GridView gv_Pattern;
 		
 	}
 	

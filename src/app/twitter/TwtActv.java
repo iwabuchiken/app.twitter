@@ -1,19 +1,17 @@
 package app.twitter;
 
-import java.util.List;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ListView;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
-import app.twitter.adapters.Adp_Twt;
-import app.twitter.models.Twt;
+import app.twitter.listeners.button.BOCL;
 import app.twitter.utils.CONS;
 import app.twitter.utils.Methods_twt;
+import app.twitter.utils.Tags;
 
 public class TwtActv extends Activity {
 
@@ -86,7 +84,33 @@ public class TwtActv extends Activity {
 		// TODO Auto-generated method stub
 		super.onStart();
 		
+		_Setup_UIs();
+		
+		_Setup_Listeners();
+		
 	}//protected void onStart()
+
+	private void _Setup_Listeners() {
+		// TODO Auto-generated method stub
+		CONS.UIS_Twt.btn_Back.setTag(Tags.ButtonTags.BACK);
+		CONS.UIS_Twt.btn_Back.setOnClickListener(new BOCL(this));
+		
+		CONS.UIS_Twt.btn_Twt.setTag(Tags.ButtonTags.SEND_TWEET);
+		CONS.UIS_Twt.btn_Twt.setOnClickListener(new BOCL(this));
+		
+	}//private void _Setup_Listeners()
+
+	private void _Setup_UIs() {
+		
+		CONS.UIS_Twt.btn_Back = (Button) findViewById(R.id.dlg_add_memos_bt_back);
+		CONS.UIS_Twt.btn_Twt = (Button) findViewById(R.id.dlg_add_memos_bt_tweet);
+		CONS.UIS_Twt.btn_Pattern =
+						(Button) findViewById(R.id.dlg_add_memos_bt_pattern);
+		
+		CONS.UIS_Twt.et_Twt =
+				(EditText) findViewById(R.id.dlg_add_memos_et_content);
+		
+	}
 
 	@Override
 	protected void onStop() {

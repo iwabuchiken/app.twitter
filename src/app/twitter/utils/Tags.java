@@ -3,14 +3,11 @@ package app.twitter.utils;
 public class Tags {
 
 	public static enum ButtonTags {
+		// actv_main
+		LOGIN, LOGOUT, TIMELINE, TWEET,
 		
-		LOGIN,
-		
-		LOGOUT,
-		
-		TIMELINE,
-		
-		TWEET,
+		// actv_twt
+		BACK, SEND_TWEET, PATTERN,
 		
 	}
 	

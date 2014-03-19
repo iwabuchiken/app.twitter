@@ -45,27 +45,39 @@ public class BOCL implements OnClickListener {
 		//
 		switch (tag) {
 		
-		case LOGIN:
+		case LOGIN://-------------------------------------
 			
 			_case_Login();
 			
 			break;
 			
-		case LOGOUT:
+		case LOGOUT://-------------------------------------
 			
 			_case_Logout();
 			
 			break;
 			
-		case TIMELINE:
+		case TIMELINE://-------------------------------------
 			
 			_case_TimeLine();
 			
 			break;
 			
-		case TWEET:
+		case TWEET://-------------------------------------
 			
 			_case_Tweet();
+			
+			break;
+			
+		case BACK://-------------------------------------
+			
+			_case_Back();
+			
+			break;
+			
+		case SEND_TWEET://-------------------------------------
+			
+			_case_SendTweet();
 			
 			break;
 			
@@ -75,6 +87,19 @@ public class BOCL implements OnClickListener {
 		}//switch (tag)
 		
 	}//public void onClick(View v)
+
+	private void _case_SendTweet() {
+		// TODO Auto-generated method stub
+		Methods_twt.send_Tweet(actv);
+		
+	}
+
+	private void _case_Back() {
+		// TODO Auto-generated method stub
+		
+		Methods_twt.backTo_MainActv(actv);
+		
+	}
 
 	private void _case_Tweet() {
 		// TODO Auto-generated method stub
