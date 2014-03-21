@@ -24,6 +24,7 @@
     	<string name="menu_main_timeline">Timeline</string>
     	<string name="menu_main_tweet">Tweet</string>
     	<string name="menu_main_refresh_screen">Refresh screen</string>
+    	<string name="menu_main_admin">Admin</string>
     
     <!-- Menu: Tweet -->
     	<string name="menu_twt_add_pattern">Add pattern</string>
@@ -37,5 +38,8 @@
     	<string name="dlg_add_memos_bt_back">Back</string>
     	<string name="dlg_add_memos_bt_add_patterns">Pattern</string>
     	
+    <!-- Dialog: Admin -->
+    	<string name="dlg_admin_title">Admin</string>
+    	<string name="dlg_admin_exec_sql">Exec sql</string>
     	
 </resources>

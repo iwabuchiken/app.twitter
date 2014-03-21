@@ -38,6 +38,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import app.twitter.dialogs.Methods_Dlg;
 import app.twitter.listeners.button.BOCL;
 import app.twitter.utils.AlertDialogManager;
 import app.twitter.utils.CONS;
@@ -443,29 +444,12 @@ public class MainActv extends Activity {
 			
 			break;
 			
-//		case R.id.menu_main_query://--------------------
-//
-//			case_Menu_Query();
-//			
-//			break;
-//			
-//		case R.id.menu_main_timeline://--------------------
-//			
-//			case_Menu_TimeLine();
-//			
-//			break;
+		case R.id.menu_main_admin://--------------------
 			
-		case R.id.menu_main_tweet://--------------------
-			
-			case_Menu_Tweet();
+			case_Menu_Admin();
+//			this.logoutFromTwitter();
 			
 			break;
-			
-//		case R.id.menu_main_refresh_screen://--------------------
-//			
-//			case_RefreshScreen();
-//			
-//			break;
 			
 		default://-------------------------------------
 			break;
@@ -475,6 +459,14 @@ public class MainActv extends Activity {
 		return super.onOptionsItemSelected(item);
 		
 	}//public boolean onOptionsItemSelected(MenuItem item)
+
+	private void case_Menu_Admin() {
+		// TODO Auto-generated method stub
+		
+		Methods_Dlg.dlg_DbAdmin(this);
+		
+	}
+
 
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {

@@ -112,7 +112,8 @@ public class Methods {
 		String db_src = StringUtils.join(
 					new String[]{
 							CONS.DB.dpath_Db,
-							CONS.DB.dbName_LM},
+							CONS.DB.dbName_twt},
+//							CONS.DB.dbName_LM},
 					File.separator);
 		
 		String db_dst = StringUtils.join(

@@ -8,3 +8,4 @@
 8	menu_icon_tweet_32x32.png	1394691760_Cart_by_Artdesigner.lv.png	https://www.iconfinder.com/icons/83151/artdesigner.lv_by_cart_icon#size=128
 9	menu_icon_refresh_screen_32x32.png	1394777311_519665-170_CurvedArrowRightDown.png	https://www.iconfinder.com/icons/183290/arrow_curved_right_undo_icon#size=128
 10	background_main_actv_512x512.png	biomineralization.png	https://twitter.com/bishoyh
+11	menu_icon_admin_32x32.png	1395384533_Stop.png	https://www.iconfinder.com/icons/27882/stop_icon#size=128

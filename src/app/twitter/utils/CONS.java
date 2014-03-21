@@ -38,6 +38,7 @@ public class CONS {
 		
 		public static Vibrator vib;
 		
+		public static int VIB_LENGTH = 50;
 	}
 	
 	public static class UIS_Twt {
@@ -117,54 +118,47 @@ public class CONS {
 		/*********************************
 		 * DB names
 		 *********************************/
-		public static final String dbName_LM = "db_LM.db";
+		public static final String dbName_twt = "db_TWT.db";
 		
 		/*********************************
-		 * Table: locations
+		 * Table: patterns
 		 *********************************/
-		public static final String tname_Location	= "locations";
+		public static final String tname_Patterns	= "patterns";
 		
-		public static final String[] cols_Locations_Names	= {
+		public static final String[] cols_Patterns_Names	= {
+			
 				android.provider.BaseColumns._ID,	// 0
 				"created_at",						// 1
 				"modified_at",						// 2
 
-				"longitude",						// 3
-				"latitude",							// 4
-				"memo",								// 5
-				
+				"word",						// 3
 				"uploaded_at"						// 6
+				
 		};
 		
-		public static final String[] cols_Locations_Types	= {
-			"INTEGER",			// 0
-			"TEXT",			// 1
-			"TEXT",			// 2
+		public static final String[] cols_Patterns_Types	= {
 			
-			"INTEGER",		// 3
-			"INTEGER",		// 4
-			"TEXT",			// 5
-			
-			"TEXT",			// 6
+				"INTEGER",			// 0
+				"TEXT",			// 1
+				"TEXT",			// 2
+				
+				"TEXT",		// 3
+				"TEXT",		// 4
+				
 		};
 		
-		public static final String[] cols_Locations_Names_skimmed	= {
+		public static final String[] cols_Patterns_Names_skimmed	= {
 			
-			"longitude",						// 0
-			"latitude",							// 1
-			"memo",								// 2
-			
+			"word",						// 0
 			"uploaded_at"						// 3
 			
 		};
 		
-		public static final String[] cols_Locations_Types_skimmed	= {
+		public static final String[] cols_Patterns_Types_skimmed	= {
 			
 				"TEXT",				// 0
 				"TEXT",				// 1
-				"TEXT",				// 2
 				
-				"TEXT",				// 3
 		};
 		
 		/*********************************
@@ -173,14 +167,14 @@ public class CONS {
 		public static String dpath_ExternalStorage = "/mnt/sdcard-ext";
 
 //		public static String dirPath_db = "/data/data/shoppinglist.main/databases";
-		public static String dpath_Db = "/data/data/experiments.main/databases";
+		public static String dpath_Db = "/data/data/app.twitter/databases";
 		
-		public static String fname_Db_Backup_trunk = "LM_backup";
+		public static String fname_Db_Backup_trunk = "TWT_backup";
 
 		public static String fname_Db_Backup_ext = ".bk";
 
 		public static String dpath_Db_Backup = 
-							dpath_ExternalStorage + "/LM_backup";
+							dpath_ExternalStorage + "/TWT_backup";
 
 		/*********************************
 		 * SQL
@@ -282,4 +276,27 @@ public class CONS {
 		
 	}//public static class Others
 
+	public static class Sqls {
+		
+		public static String _CreateTable_Patterns_20140321_113430 =
+				"CREATE TABLE"
+				+ " "
+				+ CONS.DB.tname_Patterns
+				+ " "
+				+ "("
+				+ CONS.DB.SQLToken_ID
+				+ " "
+				+ CONS.DB.SQLToken_TimeStamps
+				
+				+ CONS.DB.cols_Patterns_Names_skimmed[0]
+				+ " "
+				+ CONS.DB.cols_Patterns_Types_skimmed[0]
+				
+				+ ", "
+				+ CONS.DB.cols_Patterns_Names_skimmed[1]
+				+ " "
+				+ CONS.DB.cols_Patterns_Types_skimmed[1]
+				+ ")";
+				
+	}//public static class Sqls
 }

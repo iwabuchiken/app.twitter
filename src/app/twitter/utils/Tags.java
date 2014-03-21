@@ -16,7 +16,7 @@ public class Tags {
 		actv_main_lv,
 		
 		// Main
-		dbadmin_adapter,
+		admin_adapter,
 		
 		actv_main_lv_locs,
 		
@@ -36,7 +36,7 @@ public class Tags {
 
 	public static enum DialogItemTags {
 		// dlg_db_admin.xml
-		Db_Admin_LV,
+		Admin_LV,
 		
 	}//public static enum DialogItemTags
 

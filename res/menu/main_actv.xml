@@ -13,9 +13,9 @@
     </item>
     
     <item 
-        android:id="@+id/menu_main_tweet"
-        android:title="@string/menu_main_tweet"
-        android:icon="@drawable/menu_icon_tweet_32x32"
+        android:id="@+id/menu_main_admin"
+        android:title="@string/menu_main_admin"
+        android:icon="@drawable/menu_icon_admin_32x32"
         >
     </item>
     
