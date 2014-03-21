@@ -7,6 +7,7 @@ import twitter4j.Paging;
 import twitter4j.Status;
 import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
+import twitter4j.auth.AccessToken;
 import twitter4j.conf.Configuration;
 import twitter4j.conf.ConfigurationBuilder;
 import android.app.Activity;
@@ -136,13 +137,18 @@ public class Methods_twt {
         // I am showing the hiding/showing buttons again
         // You might not needed this code
         CONS.UIS.btnLogoutTwitter.setVisibility(View.GONE);
-        CONS.UIS.btnUpdateStatus.setVisibility(View.GONE);
-        CONS.UIS.txtUpdate.setVisibility(View.GONE);
-        CONS.UIS.lblUpdate.setVisibility(View.GONE);
-        CONS.UIS.lblUserName.setText("");
-        CONS.UIS.lblUserName.setVisibility(View.GONE);
+//        CONS.UIS.btnUpdateStatus.setVisibility(View.GONE);
+//        CONS.UIS.txtUpdate.setVisibility(View.GONE);
+//        CONS.UIS.lblUpdate.setVisibility(View.GONE);
+//        CONS.UIS.lblUserName.setText("");
+//        CONS.UIS.lblUserName.setVisibility(View.GONE);
      
         CONS.UIS.btnLoginTwitter.setVisibility(View.VISIBLE);
+        CONS.UIS.btnTimeLine.setVisibility(View.GONE);
+        CONS.UIS.btnTweet.setVisibility(View.GONE);
+        
+        // twitter instance => null
+        CONS.TwitterData.twitter = null;
         
         // Log
 		String log_msg = "Logout => Done";
@@ -310,13 +316,13 @@ public class Methods_twt {
         TwitterFactory factory = new TwitterFactory(configuration);
         CONS.TwitterData.twitter = factory.getInstance();
 
-        
-//        CONS.TwitterData.twitter.set
-        
     }
 
 	public static void validate_Login(Activity actv) {
 		// TODO Auto-generated method stub
+		
+		// Token => exists?
+		Methods_twt.validate_Login_2(actv);
 		
 		if (CONS.TwitterData.twitter == null) {
 			
@@ -539,5 +545,90 @@ public class Methods_twt {
 		}//if (isTwitterLoggedInAlready)
 
 	}//public static void send_Tweet(Activity actv)
+
+	public static void validate_Login_2(Activity actv) {
+		// TODO Auto-generated method stub
+		if (CONS.TwitterData.twitter == null) {
+			
+			String accessToken = CONS.PREFS.mSharedPreferences
+							.getString(CONS.PREFS.PREF_KEY_OAUTH_TOKEN, null);
+			
+			String accessTokenSecret = CONS.PREFS.mSharedPreferences
+					.getString(CONS.PREFS.PREF_KEY_OAUTH_SECRET, null);
+			
+			// Log
+			String log_msg = "token=" + accessToken
+							+ "/"
+							+ "secret=" + accessTokenSecret;
+
+			Log.d("["
+					+ "Methods_twt.java : "
+					+ +Thread.currentThread().getStackTrace()[2]
+							.getLineNumber() + " : "
+					+ Thread.currentThread().getStackTrace()[2].getMethodName()
+					+ "]", log_msg);
+			
+			if (accessToken != null && accessTokenSecret != null) {
+				//REF http://twitter4j.org/en/code-examples.html
+				AccessToken at = new AccessToken(accessToken, accessTokenSecret);
+				
+				TwitterFactory factory = new TwitterFactory();
+				CONS.TwitterData.twitter = factory.getInstance();
+				
+				CONS.TwitterData.twitter.setOAuthConsumer(
+								CONS.TwitterData.TWITTER_CONSUMER_KEY,
+								CONS.TwitterData.TWITTER_CONSUMER_SECRET);
+				
+				CONS.TwitterData.twitter.setOAuthAccessToken(at);
+				
+//	            builder.setOAuthConsumerKey(CONS.TwitterData.TWITTER_CONSUMER_KEY);
+//	            builder.setOAuthConsumerSecret(CONS.TwitterData.TWITTER_CONSUMER_SECRET);
+
+			}
+			
+		} else {//if (CONS.TwitterData.twitter == null)
+			
+			// Log
+			String log_msg = "CONS.TwitterData.twitter => not null";
+
+			Log.d("["
+					+ "Methods_twt.java : "
+					+ +Thread.currentThread().getStackTrace()[2]
+							.getLineNumber() + " : "
+					+ Thread.currentThread().getStackTrace()[2].getMethodName()
+					+ "]", log_msg);
+			
+		}//if (CONS.TwitterData.twitter == null)
+		
+	}
+	
+	private static AccessToken loadAccessToken() {
+		
+		String token = CONS.PREFS.mSharedPreferences
+					.getString(CONS.PREFS.PREF_KEY_OAUTH_TOKEN, null);
+		
+		String tokenSecret = CONS.PREFS.mSharedPreferences
+				.getString(CONS.PREFS.PREF_KEY_OAUTH_SECRET, null);
+		
+		if (token == null || tokenSecret == null) {
+			
+			// Log
+			String log_msg = "AccessToken => can't create";
+
+			Log.d("["
+					+ "Methods_twt.java : "
+					+ +Thread.currentThread().getStackTrace()[2]
+							.getLineNumber() + " : "
+					+ Thread.currentThread().getStackTrace()[2].getMethodName()
+					+ "]", log_msg);
+			
+			return null;
+			
+		}
+		
+	    // load from a persistent store
+	    return new AccessToken(token, tokenSecret);
+	    
+	}//private static AccessToken loadAccessToken(int useId)
 	
 }//public class Methods_twt
