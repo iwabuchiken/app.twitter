@@ -20,11 +20,13 @@ import android.net.Uri;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.Toast;
 import app.twitter.R;
 import app.twitter.TLActv;
 import app.twitter.TwtActv;
+import app.twitter.listeners.dialogs.DOI_CL;
 import app.twitter.models.Twt;
 import app.twitter.tasks.Task_SendTweet;
 
@@ -710,7 +712,7 @@ public class Methods_twt {
 		/*********************************
 		 * View: GridView
 		 *********************************/
-		GridView gv = (GridView) actv.findViewById(R.id.dlg_add_memos_gv);
+		GridView gv = (GridView) actv.findViewById(R.id.actv_twt_gv);
 		
 		/*********************************
 		 * Setup: DB
@@ -743,45 +745,9 @@ public class Methods_twt {
 		/*********************************
 		 * Get: Patterns list
 		 *********************************/
-		Cursor c = rdb.query(
-						CONS.DB.tname_Patterns,
-						CONS.DB.cols_Patterns_Names,
-						null, null, null, null, null);
-//		CONS.cols_full, null, null, null, null, null);
+		List<String> patterns =
+				_setup_GridView__GetPatternsList(actv, rdb);
 		
-		if (c == null) {
-			
-			// Log
-			Log.d("["
-					+ "Methods_twt.java : "
-					+ +Thread.currentThread().getStackTrace()[2]
-							.getLineNumber() + "]", "c == null");
-			
-			rdb.close();
-			
-			return;
-			
-		}//if (c == null)
-
-		/*********************************
-		 * Get: strings
-		 *********************************/
-		List<String> patterns = new ArrayList<String>();
-		
-		while (c.moveToNext()) {
-			
-			String val = c.getString(3);
-//			String val = c.getString(8);
-			
-			if (val != null) {
-				
-				patterns.add(val);
-				
-			}
-			
-			
-		}//while (c.moveToNext()) {
-
 		/*********************************
 		 * Close: DB
 		 *********************************/
@@ -798,6 +764,100 @@ public class Methods_twt {
 
 		gv.setAdapter(adapter);
 		
+		/*********************************
+		 * Set: Listener
+		 *********************************/
+		gv.setTag(Tags.DialogItemTags.Tweet_GV);
+		
+		gv.setOnItemClickListener(new DOI_CL(actv));
+		
 	}//setup_GridView(Activity actv)
+
+	/*********************************
+	 * @return null => Query failed
+	 *********************************/
+	private static List<String>
+	_setup_GridView__GetPatternsList
+	(Activity actv, SQLiteDatabase rdb) {
+		// TODO Auto-generated method stub
+		Cursor c = rdb.query(
+				CONS.DB.tname_Patterns,
+				CONS.DB.cols_Patterns_Names,
+				null, null, null, null, null);
+		//CONS.cols_full, null, null, null, null, null);
+		
+		if (c == null) {
+			
+			// Log
+			Log.d("["
+					+ "Methods_twt.java : "
+					+ +Thread.currentThread().getStackTrace()[2]
+							.getLineNumber() + "]", "c == null");
+			
+			rdb.close();
+			
+			return null;
+			
+		}//if (c == null)
+		
+		/*********************************
+		 * Get: strings
+		 *********************************/
+		List<String> patterns = new ArrayList<String>();
+		
+		while (c.moveToNext()) {
+			
+			String val = c.getString(3);
+		//	String val = c.getString(8);
+			
+			if (val != null) {
+				
+				patterns.add(val);
+				
+			}
+			
+			
+		}//while (c.moveToNext()) {
+
+		return patterns;
+		
+	}//_setup_GridView__GetPatternsList
+
+	
+	public static void
+	add_Pattern2Text(Activity actv, String item) {
+		// TODO Auto-generated method stub
+		EditText et = CONS.UIS_Twt.et_Twt;
+		
+		if (et == null) {
+			
+			// Log
+			String log_msg = "CONS.UIS_Twt.et_Twt => null";
+
+			Log.d("["
+					+ "Methods_twt.java : "
+					+ +Thread.currentThread().getStackTrace()[2]
+							.getLineNumber() + " : "
+					+ Thread.currentThread().getStackTrace()[2].getMethodName()
+					+ "]", log_msg);
+			
+			// debug
+			String toa_msg = "Sorry. EditText is null";
+			Toast.makeText(actv, toa_msg, Toast.LENGTH_SHORT).show();
+			
+			return;
+			
+		}
+		
+		String content = et.getText().toString();
+		
+		content += item;
+//		content += item + " ";
+		
+		et.setText(content);
+		
+		et.setSelection(et.getText().toString().length());
+		
+	}//add_Pattern2Text(Activity actv, String item)
 	
 }//public class Methods_twt

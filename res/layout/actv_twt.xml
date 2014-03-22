@@ -7,22 +7,36 @@
     android:orientation="vertical" >
 
     <EditText
-        android:id="@+id/dlg_add_memos_et_content"
+        android:id="@+id/actv_twt_et_content"
         android:layout_width="fill_parent"
-        android:layout_height="250dp"
+        android:layout_height="200dp"
         android:layout_gravity="center_horizontal"
         android:layout_margin="20dp"
         android:gravity="top|left"
         android:textSize="20sp" />
 
+    <!-- REF Spacing http://stackoverflow.com/questions/12047369/how-to-set-border-of-gridview-on-android -->
     <GridView
-        android:id="@+id/dlg_add_memos_gv"
+        android:id="@+id/actv_twt_gv"
         android:layout_width="fill_parent"
-        android:layout_height="200dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="30dp"
-        android:numColumns="3" >
+        android:layout_height="150dp"
+        android:layout_margin="5dp"
+        android:background="@color/blue1"
+        android:gravity="center_vertical"
+        android:horizontalSpacing="5dp"
+        android:numColumns="3"
+        android:verticalSpacing="5dp" >
+
     </GridView>
+
+    <ListView
+        android:id="@+id/actv_twt_gv_lv"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_margin="3dp"
+        android:background="@color/gray1" >
+
+    </ListView>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -32,32 +46,32 @@
         android:background="@color/darkgreen" >
 
         <Button
-            android:id="@+id/dlg_add_memos_bt_back"
+            android:id="@+id/actv_twt_bt_back"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
             android:layout_weight="1"
-            android:text="@string/dlg_add_memos_bt_back"
+            android:text="@string/actv_twt_bt_back"
             android:textColor="@color/red"
             android:textSize="25sp" />
 
         <Button
-            android:id="@+id/dlg_add_memos_bt_tweet"
+            android:id="@+id/actv_twt_bt_tweet"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
             android:layout_weight="1"
-            android:text="@string/dlg_add_memos_bt_tweet"
+            android:text="@string/actv_twt_bt_tweet"
             android:textColor="@color/blue1"
             android:textSize="25sp" />
 
         <Button
-            android:id="@+id/dlg_add_memos_bt_pattern"
+            android:id="@+id/actv_twt_bt_pattern"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
             android:layout_weight="1"
-            android:text="@string/dlg_add_memos_bt_add_patterns"
+            android:text="@string/actv_twt_bt_add_patterns"
             android:textColor="@color/black"
             android:textSize="20sp" />
 

@@ -67,24 +67,25 @@ public final class R {
         public static final int success=0x7f020016;
     }
     public static final class id {
-        public static final int action_settings=0x7f090015;
+        public static final int action_settings=0x7f090016;
+        public static final int actv_twt_bt_back=0x7f09000d;
+        public static final int actv_twt_bt_pattern=0x7f09000f;
+        public static final int actv_twt_bt_tweet=0x7f09000e;
+        public static final int actv_twt_et_content=0x7f09000a;
+        public static final int actv_twt_gv=0x7f09000b;
+        public static final int actv_twt_gv_lv=0x7f09000c;
         public static final int btnLoginTwitter=0x7f090000;
         public static final int btnLogoutTwitter=0x7f090003;
         public static final int btnTimeLine=0x7f090002;
         public static final int btnTweet=0x7f090001;
-        public static final int dlg_add_memos_bt_back=0x7f09000c;
-        public static final int dlg_add_memos_bt_pattern=0x7f09000e;
-        public static final int dlg_add_memos_bt_tweet=0x7f09000d;
-        public static final int dlg_add_memos_et_content=0x7f09000a;
-        public static final int dlg_add_memos_gv=0x7f09000b;
-        public static final int dlg_tmpl_list_cancel_bt_cancel=0x7f090010;
-        public static final int dlg_tmpl_list_cancel_lv=0x7f09000f;
-        public static final int list_row_simple_1_tv=0x7f090011;
-        public static final int listrow_twt_list_tv_date=0x7f090012;
-        public static final int listrow_twt_list_tv_time=0x7f090013;
-        public static final int listrow_twt_list_tv_txt=0x7f090014;
-        public static final int menu_main_admin=0x7f090017;
-        public static final int menu_main_logout=0x7f090016;
+        public static final int dlg_tmpl_list_cancel_bt_cancel=0x7f090011;
+        public static final int dlg_tmpl_list_cancel_lv=0x7f090010;
+        public static final int list_row_simple_1_tv=0x7f090012;
+        public static final int listrow_twt_list_tv_date=0x7f090013;
+        public static final int listrow_twt_list_tv_time=0x7f090014;
+        public static final int listrow_twt_list_tv_txt=0x7f090015;
+        public static final int menu_main_admin=0x7f090018;
+        public static final int menu_main_logout=0x7f090017;
         public static final int thumb_activity_LL_buttons=0x7f090004;
         public static final int thumb_activity_ib_back=0x7f090007;
         public static final int thumb_activity_ib_next_page=0x7f090008;
@@ -106,16 +107,16 @@ public final class R {
     }
     public static final class string {
         public static final int action_settings=0x7f060009;
+        public static final int actv_twt_bt_add_patterns=0x7f060017;
+        public static final int actv_twt_bt_back=0x7f060016;
+        /**  actv_twt.xml 
+         */
+        public static final int actv_twt_bt_tweet=0x7f060015;
         public static final int app_name=0x7f060008;
         public static final int btn_lbl_memo_patterns=0x7f060014;
         /**  UI labels 
          */
         public static final int btn_lbl_time_line=0x7f060013;
-        public static final int dlg_add_memos_bt_add_patterns=0x7f060017;
-        public static final int dlg_add_memos_bt_back=0x7f060016;
-        /**  actv_twt.xml 
-         */
-        public static final int dlg_add_memos_bt_tweet=0x7f060015;
         public static final int dlg_admin_backup_db=0x7f06001a;
         public static final int dlg_admin_exec_sql=0x7f060019;
         /**  Dialog: Admin 

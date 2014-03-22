@@ -109,13 +109,13 @@ public class TwtActv extends Activity {
 
 	private void _Setup_UIs() {
 		
-		CONS.UIS_Twt.btn_Back = (Button) findViewById(R.id.dlg_add_memos_bt_back);
-		CONS.UIS_Twt.btn_Twt = (Button) findViewById(R.id.dlg_add_memos_bt_tweet);
+		CONS.UIS_Twt.btn_Back = (Button) findViewById(R.id.actv_twt_bt_back);
+		CONS.UIS_Twt.btn_Twt = (Button) findViewById(R.id.actv_twt_bt_tweet);
 		CONS.UIS_Twt.btn_Pattern =
-						(Button) findViewById(R.id.dlg_add_memos_bt_pattern);
+						(Button) findViewById(R.id.actv_twt_bt_pattern);
 		
 		CONS.UIS_Twt.et_Twt =
-				(EditText) findViewById(R.id.dlg_add_memos_et_content);
+				(EditText) findViewById(R.id.actv_twt_et_content);
 		
 	}
 

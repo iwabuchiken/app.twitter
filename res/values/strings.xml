@@ -34,9 +34,9 @@
     	<string name="btn_lbl_memo_patterns">Pattern</string>
     
     <!-- actv_twt.xml -->
-    	<string name="dlg_add_memos_bt_tweet">Tweet</string>
-    	<string name="dlg_add_memos_bt_back">Back</string>
-    	<string name="dlg_add_memos_bt_add_patterns">Pattern</string>
+    	<string name="actv_twt_bt_tweet">Tweet</string>
+    	<string name="actv_twt_bt_back">Back</string>
+    	<string name="actv_twt_bt_add_patterns">Pattern</string>
     	
     <!-- Dialog: Admin -->
     	<string name="dlg_admin_title">Admin</string>

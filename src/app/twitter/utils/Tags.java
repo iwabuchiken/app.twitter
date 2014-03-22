@@ -38,6 +38,8 @@ public class Tags {
 		// dlg_db_admin.xml
 		Admin_LV,
 		
+		Tweet_GV,
+		
 	}//public static enum DialogItemTags
 
 }

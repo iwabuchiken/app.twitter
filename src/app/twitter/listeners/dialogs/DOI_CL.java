@@ -13,6 +13,7 @@ import app.twitter.R;
 import app.twitter.utils.CONS;
 import app.twitter.utils.M_sql;
 import app.twitter.utils.Methods;
+import app.twitter.utils.Methods_twt;
 import app.twitter.utils.Tags;
 
 public class DOI_CL implements OnItemClickListener {
@@ -35,6 +36,14 @@ public class DOI_CL implements OnItemClickListener {
 		
 	}//public DialogOnItemClickListener(Activity actv, Dialog dlg)
 	
+	public DOI_CL(Activity actv) {
+		// TODO Auto-generated constructor stub
+		this.actv = actv;
+		
+		vib = (Vibrator) actv.getSystemService(Context.VIBRATOR_SERVICE);
+		
+	}
+
 	@Override
 	public void onItemClick
 	(AdapterView<?> parent, View v, int position, long id) {
@@ -63,11 +72,24 @@ public class DOI_CL implements OnItemClickListener {
 			
 			break;//case Admin_LV
 		
+		case Tweet_GV://------------------------------------
+			
+			item = (String) parent.getItemAtPosition(position);
+			
+			_case_Tweet_GV(item);
+			
+			break;//case Admin_LV
+			
 		default:
 			break;
 		}//switch (tag)
 		
 	}//public void onItemClick
+
+	private void _case_Tweet_GV(String item) {
+		// TODO Auto-generated method stub
+		Methods_twt.add_Pattern2Text(actv, item);
+	}
 
 	private void _case_Admin_LV(String item) {
 		// TODO Auto-generated method stub

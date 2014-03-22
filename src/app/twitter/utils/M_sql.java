@@ -69,5 +69,44 @@ public class M_sql {
 		}//try
 		
 	}//public boolean createTable(SQLiteDatabase db, String tableName)
+	
+	public static boolean
+	exec_Sql(Activity actv, String dbName, String sql) {
+		/*----------------------------
+		 * Steps
+		 * 1. Table exists?
+		 * 2. Build sql
+		 * 3. Exec sql
+			----------------------------*/
+		DBUtils dbu = new DBUtils(actv, dbName);
+		
+		SQLiteDatabase wdb = dbu.getWritableDatabase();
+		
+		/*********************************
+		 * Exec sql
+		 *********************************/
+		try {
+//			db.execSQL(sql);
+			wdb.execSQL(sql);
+			
+			// Log
+			Log.d(actv.getClass().getName() + 
+					"["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", "Sql done => " + sql);
+			
+			
+			return true;
+			
+		} catch (SQLException e) {
+			// Log
+			Log.d(actv.getClass().getName() + 
+					"[" + Thread.currentThread().getStackTrace()[2].getLineNumber() + "]", 
+					"Exception => " + e.toString());
+			
+			return false;
+		}//try
+		
+	}//public boolean createTable(SQLiteDatabase db, String tableName)
 
 }
