@@ -133,7 +133,7 @@ public class CONS {
 				"modified_at",						// 2
 
 				"word",						// 3
-				"uploaded_at"						// 6
+				"uploaded_at"						// 4
 				
 		};
 		
@@ -289,6 +289,10 @@ public class CONS {
 	}//public static class Others
 
 	public static class Sqls {
+		
+		//REF http://zetcode.com/db/sqlite/datamanipulation/
+		public static String _InsertDummyData_Patterns_20140322_174245 =
+				"INSERT INTO patterns (word) VALUES(' => ');";
 		
 		public static String _CreateTable_Patterns_20140321_113430 =
 				"CREATE TABLE"

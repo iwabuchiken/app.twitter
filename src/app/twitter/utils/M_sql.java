@@ -28,16 +28,19 @@ public class M_sql {
 		
 		SQLiteDatabase wdb = dbu.getWritableDatabase();
 		//
-//		if (!tableExists(db, tableName)) {
-		if (dbu.tableExists(wdb, tName)) {
-			// Log
-			Log.d("DBUtils.java" + "["
-					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
-					+ "]", "Table exists => " + tName);
-			
-			return false;
-			
-		}//if (!tableExists(SQLiteDatabase db, String tableName))
+//		/*********************************
+//		 * Table => Exists?
+//		 *********************************/
+////		if (!tableExists(db, tableName)) {
+//		if (dbu.tableExists(wdb, tName)) {
+//			// Log
+//			Log.d("DBUtils.java" + "["
+//					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+//					+ "]", "Table exists => " + tName);
+//			
+//			return false;
+//			
+//		}//if (!tableExists(SQLiteDatabase db, String tableName))
 		
 		/*----------------------------
 		 * 3. Exec sql

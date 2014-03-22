@@ -75,7 +75,8 @@ public class DOI_CL implements OnItemClickListener {
 		if (item.equals(actv.getString(
 				R.string.dlg_admin_exec_sql))) {
 			
-			String sql = CONS.Sqls._CreateTable_Patterns_20140321_113430;
+//			String sql = CONS.Sqls._CreateTable_Patterns_20140321_113430;
+			String sql = CONS.Sqls._InsertDummyData_Patterns_20140322_174245;
 			
 			boolean res = M_sql.exec_Sql(
 							actv,

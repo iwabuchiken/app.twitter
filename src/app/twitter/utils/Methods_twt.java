@@ -14,10 +14,15 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences.Editor;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.GridView;
 import android.widget.Toast;
+import app.twitter.R;
 import app.twitter.TLActv;
 import app.twitter.TwtActv;
 import app.twitter.models.Twt;
@@ -698,5 +703,101 @@ public class Methods_twt {
 	    return new AccessToken(token, tokenSecret);
 	    
 	}//private static AccessToken loadAccessToken(int useId)
+
+	public static void
+	setup_GridView(Activity actv) {
+		// TODO Auto-generated method stub
+		/*********************************
+		 * View: GridView
+		 *********************************/
+		GridView gv = (GridView) actv.findViewById(R.id.dlg_add_memos_gv);
+		
+		/*********************************
+		 * Setup: DB
+		 *********************************/
+		DBUtils dbu = new DBUtils(actv, CONS.DB.dbName_twt);
+		
+		SQLiteDatabase rdb = dbu.getReadableDatabase();
+		
+		boolean res = dbu.tableExists(rdb, CONS.DB.tname_Patterns);
+		
+		if (res == true) {
+			
+			// Log
+			Log.d("Methods.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", "Table exists: " + CONS.DB.tname_Patterns);
+			
+		} else {//if (res == false)
+			// Log
+			Log.d("Methods.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", "Table doesn't exist: " + CONS.DB.tname_Patterns);
+
+			rdb.close();
+			
+			return;
+			
+		}		
+		
+		/*********************************
+		 * Get: Patterns list
+		 *********************************/
+		Cursor c = rdb.query(
+						CONS.DB.tname_Patterns,
+						CONS.DB.cols_Patterns_Names,
+						null, null, null, null, null);
+//		CONS.cols_full, null, null, null, null, null);
+		
+		if (c == null) {
+			
+			// Log
+			Log.d("["
+					+ "Methods_twt.java : "
+					+ +Thread.currentThread().getStackTrace()[2]
+							.getLineNumber() + "]", "c == null");
+			
+			rdb.close();
+			
+			return;
+			
+		}//if (c == null)
+
+		/*********************************
+		 * Get: strings
+		 *********************************/
+		List<String> patterns = new ArrayList<String>();
+		
+		while (c.moveToNext()) {
+			
+			String val = c.getString(3);
+//			String val = c.getString(8);
+			
+			if (val != null) {
+				
+				patterns.add(val);
+				
+			}
+			
+			
+		}//while (c.moveToNext()) {
+
+		/*********************************
+		 * Close: DB
+		 *********************************/
+		rdb.close();
+		
+		/*********************************
+		 * Adapter
+		 *********************************/
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+				actv,
+				R.layout.actv_tweet_grid_view,
+				patterns
+		);
+
+		gv.setAdapter(adapter);
+		
+	}//setup_GridView(Activity actv)
 	
 }//public class Methods_twt

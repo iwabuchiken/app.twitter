@@ -95,10 +95,11 @@ public final class R {
     public static final class layout {
         public static final int actv_main=0x7f030000;
         public static final int actv_tl=0x7f030001;
-        public static final int actv_twt=0x7f030002;
-        public static final int dlg_tmpl_list_cancel=0x7f030003;
-        public static final int list_row_simple_1=0x7f030004;
-        public static final int list_row_twt_list=0x7f030005;
+        public static final int actv_tweet_grid_view=0x7f030002;
+        public static final int actv_twt=0x7f030003;
+        public static final int dlg_tmpl_list_cancel=0x7f030004;
+        public static final int list_row_simple_1=0x7f030005;
+        public static final int list_row_twt_list=0x7f030006;
     }
     public static final class menu {
         public static final int main_actv=0x7f080000;

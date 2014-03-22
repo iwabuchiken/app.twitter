@@ -86,9 +86,16 @@ public class TwtActv extends Activity {
 		
 		_Setup_UIs();
 		
+		_Setup_UIs__GridView();
+		
 		_Setup_Listeners();
 		
 	}//protected void onStart()
+
+	private void _Setup_UIs__GridView() {
+		// TODO Auto-generated method stub
+		Methods_twt.setup_GridView(this);
+	}
 
 	private void _Setup_Listeners() {
 		// TODO Auto-generated method stub
