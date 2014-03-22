@@ -197,6 +197,11 @@ public class CONS {
 		public static final int DB_RESTORE_SUCCESSFUL	= 11;
 		
 		/*********************************
+		 * Tweet
+		 *********************************/
+		public static final int SendTweet_Success		= 20;
+		
+		/*********************************
 		 * Operation failed: -10 ~
 		 *********************************/
 		public static final int QueryFailed		= -10;
@@ -236,7 +241,11 @@ public class CONS {
 		public static final int FileNotFoundException	= -30;
 		
 		public static final int IOException			= -31;
-		
+
+		/*********************************
+		 * Tweet
+		 *********************************/
+		public static final int SendTweet_Failed		= -40;
 		
 		/*********************************
 		 * Others: > 0, <= -90
@@ -256,6 +265,8 @@ public class CONS {
 		public static Vibrator vib;
 		
 		public static final int VIB_LENGTH = 50;
+		
+		public static final int VIB_LENGTH_LONG = 100;
 		
 		public static enum TimeLabelTypes {
 			
@@ -299,4 +310,15 @@ public class CONS {
 				+ ")";
 				
 	}//public static class Sqls
+
+	public static class TaskData {
+		
+		public static enum TaskItems {
+			
+			SendTweet,
+			
+		}
+		
+	}
+
 }

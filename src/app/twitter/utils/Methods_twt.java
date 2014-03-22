@@ -21,6 +21,7 @@ import android.widget.Toast;
 import app.twitter.TLActv;
 import app.twitter.TwtActv;
 import app.twitter.models.Twt;
+import app.twitter.tasks.Task_SendTweet;
 
 public class Methods_twt {
 
@@ -233,6 +234,17 @@ public class Methods_twt {
 //			List<Status> statuses = new ArrayList<Status>();
 			
 			while (statuses.size () < numberOfTweets) {
+				
+				// Log
+				log_msg = "Starting => get time line";
+
+				Log.d("["
+						+ "Methods_twt.java : "
+						+ +Thread.currentThread().getStackTrace()[2]
+								.getLineNumber()
+						+ " : "
+						+ Thread.currentThread().getStackTrace()[2]
+								.getMethodName() + "]", log_msg);
 				
 				try {
 					statuses.addAll(CONS.TwitterData.twitter.getHomeTimeline(pg));
@@ -484,15 +496,20 @@ public class Methods_twt {
 		
 	}
 
-	public static void send_Tweet(Activity actv) {
-		// TODO Auto-generated method stub
-		if (Methods_twt.isTwitterLoggedInAlready()) {
-			
-			String msg = CONS.UIS_Twt.et_Twt.getText().toString();
+	/*********************************
+	 * @return success => 20 (SendTweet_Success)<br>
+	 * 		failed => -40 (SendTweet_Failed)
+	 *********************************/
+	public static int
+	send_Tweet_Execute(Activity actv, String msg) {
+
+	    try {
+    	
+			Status status = CONS.TwitterData.twitter.updateStatus(msg);
 			
 			// Log
-			String log_msg = "msg=" + msg;
-
+			String log_msg = "update => done: " + status.getText();
+	
 			Log.d("["
 					+ "Methods_twt.java : "
 					+ +Thread.currentThread().getStackTrace()[2]
@@ -500,30 +517,81 @@ public class Methods_twt {
 					+ Thread.currentThread().getStackTrace()[2].getMethodName()
 					+ "]", log_msg);
 			
-		    try {
-		    	
-				Status status = CONS.TwitterData.twitter.updateStatus(msg);
-				
-				// Log
-				log_msg = "update => done: " + status.getText();
+			return CONS.ReturnValues.SendTweet_Success;
+			
+		} catch (TwitterException e) {
+			// TODO Auto-generated catch block
+			
+			e.printStackTrace();
+			
+			return CONS.ReturnValues.SendTweet_Failed;
+			
+		}//try
+
+	}//send_Tweet_Execute(Activity actv, String msg)
 	
-				Log.d("["
-						+ "Methods_twt.java : "
-						+ +Thread.currentThread().getStackTrace()[2]
-								.getLineNumber() + " : "
-						+ Thread.currentThread().getStackTrace()[2].getMethodName()
-						+ "]", log_msg);
-				
-				// debug
-				String toa_msg = "update => done: " + status.getText();
-				Toast.makeText(actv, toa_msg, Toast.LENGTH_SHORT).show();
-				
-			} catch (TwitterException e) {
-				// TODO Auto-generated catch block
-				
-				e.printStackTrace();
-				
-			}//try
+	public static void send_Tweet(Activity actv) {
+		// TODO Auto-generated method stub
+//		if (Methods_twt.isTwitterLoggedInAlready()) {
+		if (Methods_twt.isTwitterLoggedInAlready()
+				&& CONS.UIS_Twt.et_Twt != null
+				&& CONS.UIS_Twt.et_Twt.getText() != null) {
+			
+			// Get: text
+			String msg = CONS.UIS_Twt.et_Twt.getText().toString();
+
+			Log.d("["
+			+ "Methods_twt.java : "
+			+ +Thread.currentThread().getStackTrace()[2]
+					.getLineNumber() + " : "
+			+ Thread.currentThread().getStackTrace()[2].getMethodName()
+			+ "]", msg);
+
+			Task_SendTweet task_ = new Task_SendTweet(actv, msg);
+			
+			// debug
+			Toast.makeText(actv, "Starting a task...", Toast.LENGTH_LONG)
+					.show();
+			
+			task_.execute(CONS.TaskData.TaskItems.SendTweet.toString());
+			
+			
+//			String msg = CONS.UIS_Twt.et_Twt.getText().toString();
+//			
+//			// Log
+//			String log_msg = "msg=" + msg;
+//
+//			Log.d("["
+//					+ "Methods_twt.java : "
+//					+ +Thread.currentThread().getStackTrace()[2]
+//							.getLineNumber() + " : "
+//					+ Thread.currentThread().getStackTrace()[2].getMethodName()
+//					+ "]", log_msg);
+//			
+//		    try {
+//		    	
+//				Status status = CONS.TwitterData.twitter.updateStatus(msg);
+//				
+//				// Log
+//				log_msg = "update => done: " + status.getText();
+//	
+//				Log.d("["
+//						+ "Methods_twt.java : "
+//						+ +Thread.currentThread().getStackTrace()[2]
+//								.getLineNumber() + " : "
+//						+ Thread.currentThread().getStackTrace()[2].getMethodName()
+//						+ "]", log_msg);
+//				
+//				// debug
+//				String toa_msg = "update => done: " + status.getText();
+//				Toast.makeText(actv, toa_msg, Toast.LENGTH_SHORT).show();
+//				
+//			} catch (TwitterException e) {
+//				// TODO Auto-generated catch block
+//				
+//				e.printStackTrace();
+//				
+//			}//try
 	    
 		} else {//if (isTwitterLoggedInAlready)
 			
