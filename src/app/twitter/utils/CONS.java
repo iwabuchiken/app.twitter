@@ -28,7 +28,8 @@ public class CONS {
 	    public static Twitter twitter;
 	    public static RequestToken requestToken;
 	    
-	    public static int numOfTweets	= 40;
+	    public static int numOfTweets	= 20;
+//	    public static int numOfTweets	= 40;
 		
 	    public static List<Status> statuses	= null;
 	    

@@ -41,5 +41,6 @@
     <!-- Dialog: Admin -->
     	<string name="dlg_admin_title">Admin</string>
     	<string name="dlg_admin_exec_sql">Exec sql</string>
+    	<string name="dlg_admin_backup_db">Backup DB</string>
     	
 </resources>

@@ -38,12 +38,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import app.twitter.dialogs.Methods_Dlg;
 import app.twitter.listeners.button.BOCL;
 import app.twitter.utils.AlertDialogManager;
 import app.twitter.utils.CONS;
 import app.twitter.utils.ConnectionDetector;
 import app.twitter.utils.Methods;
+import app.twitter.utils.Methods_Dlg;
 import app.twitter.utils.Methods_twt;
 import app.twitter.utils.Tags;
 
@@ -463,7 +463,7 @@ public class MainActv extends Activity {
 	private void case_Menu_Admin() {
 		// TODO Auto-generated method stub
 		
-		Methods_Dlg.dlg_DbAdmin(this);
+		Methods_Dlg.dlg_Admin(this);
 		
 	}
 

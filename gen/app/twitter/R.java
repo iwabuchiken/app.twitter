@@ -115,6 +115,7 @@ public final class R {
         /**  actv_twt.xml 
          */
         public static final int dlg_add_memos_bt_tweet=0x7f060015;
+        public static final int dlg_admin_backup_db=0x7f06001a;
         public static final int dlg_admin_exec_sql=0x7f060019;
         /**  Dialog: Admin 
          */

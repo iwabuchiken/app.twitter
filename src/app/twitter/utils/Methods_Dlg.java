@@ -1,4 +1,4 @@
-package app.twitter.dialogs;
+package app.twitter.utils;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -13,12 +13,11 @@ import app.twitter.adapters.Adp_Admin;
 import app.twitter.listeners.dialogs.DB_OCL;
 import app.twitter.listeners.dialogs.DB_OTL;
 import app.twitter.listeners.dialogs.DOI_CL;
-import app.twitter.utils.Tags;
 
 public class Methods_Dlg {
 
 	public static void
-	dlg_DbAdmin(Activity actv) {
+	dlg_Admin(Activity actv) {
 		// TODO Auto-generated method stub
 		Dialog dlg = Methods_Dlg.dlg_Template_Cancel(
 				actv, R.layout.dlg_tmpl_list_cancel, 
@@ -29,6 +28,7 @@ public class Methods_Dlg {
 
 		String[] choices = {
 				actv.getString(R.string.dlg_admin_exec_sql),
+				actv.getString(R.string.dlg_admin_backup_db),
 		};
 		
 		List<String> list = new ArrayList<String>();

@@ -11,6 +11,8 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Toast;
 import app.twitter.R;
 import app.twitter.utils.CONS;
+import app.twitter.utils.M_sql;
+import app.twitter.utils.Methods;
 import app.twitter.utils.Tags;
 
 public class DOI_CL implements OnItemClickListener {
@@ -70,21 +72,35 @@ public class DOI_CL implements OnItemClickListener {
 	private void _case_Admin_LV(String item) {
 		// TODO Auto-generated method stub
 		
-		if (item.equals(actv.getString(R.string.dlg_admin_exec_sql))) {
+		if (item.equals(actv.getString(
+				R.string.dlg_admin_exec_sql))) {
 			
-			// Log
-			String log_msg = CONS.Sqls._CreateTable_Patterns_20140321_113430;
+			String sql = CONS.Sqls._CreateTable_Patterns_20140321_113430;
+			
+			boolean res = M_sql.exec_Sql(
+							actv,
+							CONS.DB.dbName_twt,
+							CONS.DB.tname_Patterns,
+							sql);
 
-			Log.d("["
-					+ "DOI_CL.java : "
-					+ +Thread.currentThread().getStackTrace()[2]
-							.getLineNumber() + " : "
-					+ Thread.currentThread().getStackTrace()[2].getMethodName()
-					+ "]", log_msg);
-			
 			// debug
-			String toa_msg = "Exec sql";
-			Toast.makeText(actv, toa_msg, Toast.LENGTH_SHORT).show();
+			if (res == true) {
+				
+				String toa_msg = "Exec sql => successful";
+				Toast.makeText(actv, toa_msg, Toast.LENGTH_SHORT).show();
+				
+			} else {//if (res == true)
+				
+				String toa_msg = "Exec sql => failed";
+				Toast.makeText(actv, toa_msg, Toast.LENGTH_SHORT).show();
+				
+			}//if (res == true)
+			
+			
+		} else if (item.equals(actv.getString(
+				R.string.dlg_admin_backup_db))) {//if (item.equals(actv.getString(R.string.dl)))
+			
+			_case_Admin_LV__BackupDB();
 			
 		} else {//if (item.equals(actv.getString(R.string.dl)))
 			
@@ -94,8 +110,15 @@ public class DOI_CL implements OnItemClickListener {
 			
 		}//if (item.equals(actv.getString(R.string.dl)))
 		
-		
+	}//private void _case_Admin_LV(String item)
+
+	private void _case_Admin_LV__BackupDB() {
+		// TODO Auto-generated method stub
+		int res = Methods.backupDb(
+					actv,
+					CONS.DB.dbName_twt,
+					CONS.DB.dpath_Db_Backup);
 		
 	}
 
-}
+}//public class DOI_CL implements OnItemClickListener
