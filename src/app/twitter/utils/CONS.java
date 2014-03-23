@@ -151,7 +151,7 @@ public class CONS {
 		public static final String[] cols_Patterns_Names_skimmed	= {
 			
 			"word",						// 0
-			"uploaded_at"						// 3
+			"uploaded_at"				// 1
 			
 		};
 		

@@ -13,6 +13,7 @@ import app.twitter.R;
 import app.twitter.utils.CONS;
 import app.twitter.utils.M_sql;
 import app.twitter.utils.Methods;
+import app.twitter.utils.Methods_Dlg;
 import app.twitter.utils.Methods_twt;
 import app.twitter.utils.Tags;
 
@@ -80,11 +81,51 @@ public class DOI_CL implements OnItemClickListener {
 			
 			break;//case Admin_LV
 			
+		case AdminPatterns_LV://------------------------------------
+			
+			item = (String) parent.getItemAtPosition(position);
+			
+			_case_AdminPatterns_LV(item);
+			
+			break;//case Admin_LV
+			
 		default:
 			break;
 		}//switch (tag)
 		
 	}//public void onItemClick
+
+	private void
+	_case_AdminPatterns_LV(String item) {
+		// TODO Auto-generated method stub
+		// Log
+		String log_msg = "item => " + item;
+
+		Log.d("[" + "DOI_CL.java : "
+				+ +Thread.currentThread().getStackTrace()[2].getLineNumber()
+				+ " : "
+				+ Thread.currentThread().getStackTrace()[2].getMethodName()
+				+ "]", log_msg);
+		
+		if (item.equals(actv.getString(
+				R.string.generic_tv_register))) {
+			
+			Methods_Dlg.dlg_RegisterPatterns(actv, dlg1);
+			
+		} else if (item.equals(actv.getString(
+				R.string.generic_tv_edit))) {
+		
+//			Methods_Dlg.dlg_EditPatterns(actv, dlg1);
+			
+		} else if (item.equals(actv.getString(
+				R.string.generic_tv_delete))) {
+			
+//			Methods_Dlg.dlg_DeletePatterns(actv, dlg1);
+			
+		}
+			
+		
+	}//_case_AdminPatterns_LV(String item)
 
 	private void _case_Tweet_GV(String item) {
 		// TODO Auto-generated method stub

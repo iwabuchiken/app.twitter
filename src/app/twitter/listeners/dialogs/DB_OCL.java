@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import app.twitter.utils.CONS;
+import app.twitter.utils.Methods_Dlg;
 import app.twitter.utils.Tags;
 
 //DB=DialogButton
@@ -95,11 +96,27 @@ public class DB_OCL implements OnClickListener {
 			
 			break;
 
+		case dlg_register_patterns_register://------------------------------------------------
+			
+			vib.vibrate(CONS.Others.VIB_LENGTH);
+			
+			case_Dlg_RegisterPatterns_Register();
+			
+			break;
+			
 		default: //----------------------------------------------------
 			break;
 			
 		}//switch (tag_name)
 		
 	}//public void onClick(View v)
+
+	private void case_Dlg_RegisterPatterns_Register() {
+		// TODO Auto-generated method stub
+		
+		Methods_Dlg
+			.dlg_RegisterPatterns_isInputEmpty(actv, dlg1, dlg2);
+		
+	}
 
 }//DialogButtonOnClickListener

@@ -105,6 +105,9 @@ public class TwtActv extends Activity {
 		CONS.UIS_Twt.btn_Twt.setTag(Tags.ButtonTags.SEND_TWEET);
 		CONS.UIS_Twt.btn_Twt.setOnClickListener(new BOCL(this));
 		
+		CONS.UIS_Twt.btn_Pattern.setTag(Tags.ButtonTags.PATTERN);
+		CONS.UIS_Twt.btn_Pattern.setOnClickListener(new BOCL(this));
+		
 	}//private void _Setup_Listeners()
 
 	private void _Setup_UIs() {

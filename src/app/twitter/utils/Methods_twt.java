@@ -859,5 +859,27 @@ public class Methods_twt {
 		et.setSelection(et.getText().toString().length());
 		
 	}//add_Pattern2Text(Activity actv, String item)
+
+	public static boolean
+	insertData_Patterns(Activity actv, String word) {
+		// TODO Auto-generated method stub
+		DBUtils dbu = new DBUtils(actv, CONS.DB.dbName_twt);
+		
+		SQLiteDatabase wdb = dbu.getWritableDatabase();
+		
+		boolean result = dbu.insertData(
+						wdb,
+						CONS.DB.tname_Patterns,
+						new String[]{
+							CONS.DB.cols_Patterns_Names_skimmed[0]
+						}
+						,
+						new String[]{word});
+		
+		wdb.close();
+		
+		return result;
+		
+	}//insertData_Patterns(Activity actv, String word)
 	
 }//public class Methods_twt

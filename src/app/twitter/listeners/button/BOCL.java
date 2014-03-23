@@ -12,6 +12,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import app.twitter.utils.CONS;
+import app.twitter.utils.Methods_Dlg;
 import app.twitter.utils.Methods_twt;
 import app.twitter.utils.Tags;
 
@@ -81,12 +82,24 @@ public class BOCL implements OnClickListener {
 			
 			break;
 			
+		case PATTERN://-------------------------------------
+			
+			_case_PATTERN();
+			
+			break;
+			
 		default:
 			break;
 			
 		}//switch (tag)
 		
 	}//public void onClick(View v)
+
+	private void _case_PATTERN() {
+		// TODO Auto-generated method stub
+		Methods_Dlg.dlg_Patterns(actv);
+		
+	}
 
 	private void _case_SendTweet() {
 		// TODO Auto-generated method stub
