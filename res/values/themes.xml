@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <style name="PrefActv">
+        <!-- REF @color/... http://stackoverflow.com/questions/11607302/how-to-change-text-color-of-preference-category-in-android answered Jul 23 '12 at 7:29 -->
+        <item name="android:textColor">@color/white</item>
+    </style>
+    
+</resources>

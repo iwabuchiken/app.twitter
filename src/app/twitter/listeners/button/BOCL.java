@@ -132,7 +132,8 @@ public class BOCL implements OnClickListener {
 	
 	private void _case_TimeLine() {
 		
-		Methods_twt.start_TimeLine(actv, CONS.TwitterData.numOfTweets);
+		Methods_twt.start_TimeLine(actv);
+//		Methods_twt.start_TimeLine(actv, CONS.TwitterData.defaultNumOfTweets);
 //		Methods_twt.get_TimeLine(actv, CONS.TwitterData.numOfTweets);
 		
 	}//private void _case_TimeLine()

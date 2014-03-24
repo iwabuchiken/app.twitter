@@ -49,5 +49,26 @@
    	<!-- dlg_register_patterns.xml -->
 	    <string name="dlg_register_patterns_title">Register pattern</string>
 	    <string name="dlg_register_patterns_tv_word">Pattern</string>
-    
+
+	<!-- preferences.xml -->
+		<string name="prefs_save_text_title">
+		    					Save text</string>
+		<string name="prefs_save_text_summary">
+		    					When leaving the activity</string>
+		<string name="prefs_save_text_key">
+		    					pref_save_text</string>
+		    					
+		<string name="prefs_timeline_size_title">
+		    					Timeline size</string>
+		<string name="prefs_timeline_size_summary">
+		    					How many tweets in the line?</string>
+		<string name="prefs_timeline_size_key">
+		    					pref_timeline_size</string>
+		    					
+		<string name="prefs_temp_saved_text_key">
+		    					temp_pref_saved_text</string>
+		
+	<!-- Preferences -->	
+		<string name="prefs_shared_prefs_name">TwtApp_prefs</string>
+		
 </resources>

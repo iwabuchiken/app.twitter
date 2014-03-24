@@ -13,6 +13,7 @@ import twitter4j.conf.ConfigurationBuilder;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -23,6 +24,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.Toast;
+import app.twitter.PrefActv;
 import app.twitter.R;
 import app.twitter.TLActv;
 import app.twitter.TwtActv;
@@ -233,14 +235,14 @@ public class Methods_twt {
 			
 			Paging pg = new Paging();
 			
-			int numberOfTweets = 40;
+//			int numberOfTweets = 40;
 //			int numberOfTweets = 50;
 //			int numberOfTweets = 100;
 			long lastID = Long.MAX_VALUE;
 			
 //			List<Status> statuses = new ArrayList<Status>();
 			
-			while (statuses.size () < numberOfTweets) {
+			while (statuses.size () < numOfTweets) {
 				
 				// Log
 				log_msg = "Starting => get time line";
@@ -279,26 +281,53 @@ public class Methods_twt {
 				
 			}//while (statuses.size () < numberOfTweets)
 			
-			for (Status st : statuses) {
+			if (statuses.size() > numOfTweets) {
 				
-				// Log
-				log_msg = "st.getText()=" + st.getText()
-								+ "(id="
-								+ st.getId()
-								+ "/"
-								+ "created="
-								+ st.getCreatedAt()
-								+ ")";
-
+				statuses = statuses.subList(0, numOfTweets);
+				
+				log_msg = "statuses.size() => " + statuses.size();
+				
 				Log.d("["
 						+ "Methods_twt.java : "
 						+ +Thread.currentThread().getStackTrace()[2]
 								.getLineNumber()
-						+ " : "
-						+ Thread.currentThread().getStackTrace()[2]
-								.getMethodName() + "]", log_msg);
+								+ " : "
+								+ Thread.currentThread().getStackTrace()[2]
+										.getMethodName() + "]", log_msg);
 				
-			}
+			}//if (statuses.size() > numOfTweets)
+			
+			// Log
+			
+
+			Log.d("["
+					+ "Methods_twt.java : "
+					+ +Thread.currentThread().getStackTrace()[2]
+							.getLineNumber() + " : "
+					+ Thread.currentThread().getStackTrace()[2].getMethodName()
+					+ "]", log_msg);
+			
+			
+//			for (Status st : statuses) {
+//				
+//				// Log
+//				log_msg = "st.getText()=" + st.getText()
+//								+ "(id="
+//								+ st.getId()
+//								+ "/"
+//								+ "created="
+//								+ st.getCreatedAt()
+//								+ ")";
+//
+//				Log.d("["
+//						+ "Methods_twt.java : "
+//						+ +Thread.currentThread().getStackTrace()[2]
+//								.getLineNumber()
+//						+ " : "
+//						+ Thread.currentThread().getStackTrace()[2]
+//								.getMethodName() + "]", log_msg);
+//				
+//			}
 			
 		} else {//if (isTwitterLoggedInAlready)
 			
@@ -411,15 +440,45 @@ public class Methods_twt {
 			
 	}//setPref_ResetLoggedIn(Activity actv)
 
-	public static void start_TimeLine(Activity actv, int numOfTweets) {
+	public static void start_TimeLine(Activity actv) {
+//		public static void start_TimeLine(Activity actv, int numOfTweets) {
 		// TODO Auto-generated method stub
+		/*********************************
+		 * Get: num of tweets
+		 *********************************/
+		SharedPreferences prefs = actv
+				.getSharedPreferences(
+					actv.getString(R.string.prefs_shared_prefs_name),
+					Context.MODE_PRIVATE);
+		
+		String timeLineSize = prefs.getString(
+//				int timeLineSize = prefs.getInt(
+				actv.getString(R.string.prefs_timeline_size_key), "-1");
+		
+		int numOfTweets = CONS.TwitterData.defaultNumOfTweets;
+		
+		if (Methods.is_numeric(timeLineSize)) {
+			
+			numOfTweets = Integer.parseInt(timeLineSize);
+			
+		}//if (Methods.is_numeric(timeLineSize))
+
+		// Log
+		String log_msg = "numOfTweets => " + String.valueOf(numOfTweets);
+
+		Log.d("[" + "Methods_twt.java : "
+				+ +Thread.currentThread().getStackTrace()[2].getLineNumber()
+				+ " : "
+				+ Thread.currentThread().getStackTrace()[2].getMethodName()
+				+ "]", log_msg);
+		
 		CONS.TwitterData.statuses = Methods_twt.get_TimeLine(actv, numOfTweets);
 //		List<Status> statuses = Methods_twt.get_TimeLine(actv, numOfTweets);
 		
 		if (CONS.TwitterData.statuses == null) {
 			
 			// Log
-			String log_msg = "statuses => null";
+			log_msg = "statuses => null";
 
 			Log.d("["
 					+ "Methods_twt.java : "
@@ -448,6 +507,24 @@ public class Methods_twt {
 		actv.overridePendingTransition(0, 0);
 
 	}
+	
+	public static void start_Settings(Activity actv) {
+		/*********************************
+		 * Start: Activity
+		 *********************************/
+		Intent i = new Intent();
+		
+		i.setClass(actv, PrefActv.class);
+		
+		/*********************************
+		 * 3. Start
+		 *********************************/
+		actv.startActivity(i);
+		
+		//REF no animation http://stackoverflow.com/questions/6972295/switching-activities-without-animation answered Nov 19 '13 at 21:42
+		actv.overridePendingTransition(0, 0);
+		
+	}//public static void start_Settings(Activity actv)
 
 	public static List<Twt>
 	get_TwtsFromStatuses
@@ -497,6 +574,9 @@ public class Methods_twt {
 
 	public static void backTo_MainActv(Activity actv) {
 		// TODO Auto-generated method stub
+		
+		Methods_twt.saveTempText(actv);
+		
 		actv.finish();
 		
 		actv.overridePendingTransition(0, 0);
@@ -881,5 +961,44 @@ public class Methods_twt {
 		return result;
 		
 	}//insertData_Patterns(Activity actv, String word)
+
+	public static void saveTempText(Activity actv) {
+		// TODO Auto-generated method stub
+		SharedPreferences prefs = actv
+				.getSharedPreferences(
+						actv.getString(R.string.prefs_shared_prefs_name),
+						Context.MODE_PRIVATE);
+		
+		boolean saveText = prefs.getBoolean(
+				actv.getString(R.string.prefs_save_text_key), false);
+		
+		if (saveText == true
+				&& CONS.UIS_Twt.et_Twt != null
+				&& CONS.UIS_Twt.et_Twt.getText() != null) {
+			
+			String msg = CONS.UIS_Twt.et_Twt.getText().toString();
+			
+			
+			SharedPreferences.Editor editor = prefs.edit();
+			
+			editor.putString(
+						actv.getString(R.string.prefs_temp_saved_text_key),
+						msg);
+			
+			editor.commit();
+			
+			// Log
+			String log_msg = "Tweet text => saved";
+
+			Log.d("["
+					+ "TwtActv.java : "
+					+ +Thread.currentThread().getStackTrace()[2]
+							.getLineNumber() + " : "
+					+ Thread.currentThread().getStackTrace()[2].getMethodName()
+					+ "]", log_msg);
+			
+		}//if (saveText == true
+
+	}//public static void saveTempText()
 	
 }//public class Methods_twt

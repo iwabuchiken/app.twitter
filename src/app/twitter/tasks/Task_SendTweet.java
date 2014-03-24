@@ -2,10 +2,12 @@ package app.twitter.tasks;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Vibrator;
 import android.util.Log;
 import android.widget.Toast;
+import app.twitter.R;
 import app.twitter.utils.CONS;
 import app.twitter.utils.Methods_twt;
 
@@ -80,6 +82,38 @@ public class Task_SendTweet extends AsyncTask<String, Integer, Integer> {
 		
 		vib.vibrate(CONS.Others.VIB_LENGTH_LONG);
 		
+		/*********************************
+		 * Clear: temp text
+		 *********************************/
+		if (result.intValue() == CONS.ReturnValues.SendTweet_Success) {
+			
+			SharedPreferences prefs = actv
+					.getSharedPreferences(
+							actv.getString(R.string.prefs_shared_prefs_name),
+							Context.MODE_PRIVATE);
+			
+			SharedPreferences.Editor editor = prefs.edit();
+			
+			editor.putString(
+						actv.getString(R.string.prefs_temp_saved_text_key),
+						null);
+			
+			editor.commit();
+			
+			// Log
+			String log_msg = "temp text => removed";
+	
+			Log.d("[" + "Task_SendTweet.java : "
+					+ +Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ " : "
+					+ Thread.currentThread().getStackTrace()[2].getMethodName()
+					+ "]", log_msg);
+
+		}//if (result.intValue() == CONS.ReturnValues.SendTweet_Success)
+		
+		/*********************************
+		 * Messages
+		 *********************************/
 		// Log
 		String log_msg = "Send tweet => Done (Result="
 				+ String.valueOf(result.intValue())

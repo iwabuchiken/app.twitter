@@ -68,6 +68,8 @@ public class MainActv extends Activity {
 		
 		_Setup_RefreshScreen();
 		
+//		do_test();
+		
 	}
 
     
@@ -175,7 +177,54 @@ public class MainActv extends Activity {
         
 //        _Setup_RefreshScreen();
         
+//        do_test();
+        
 	}//protected void onCreate(Bundle savedInstanceState)
+
+	private void do_test() {
+		// TODO Auto-generated method stub
+		
+		_do_test__GetPrefValues();
+	}
+
+
+	private void _do_test__GetPrefValues() {
+		// TODO Auto-generated method stub
+		SharedPreferences prefs = this
+							.getSharedPreferences(
+								this.getString(R.string.prefs_shared_prefs_name),
+								Context.MODE_PRIVATE);
+		
+		boolean saveText = prefs.getBoolean(
+					this.getString(R.string.prefs_save_text_key), false);
+		
+		String timeLineSize = prefs.getString(
+//				int timeLineSize = prefs.getInt(
+				this.getString(R.string.prefs_timeline_size_key), "-1");
+		
+		String log_msg = "saveText => " + saveText
+				+ "/"
+				+ "timeLineSize => ";
+		
+		if (Methods.is_numeric(timeLineSize)) {
+			
+			log_msg += timeLineSize;
+			
+		} else {//if (Methods.is_numeric(timeLineSize))
+			
+			log_msg += "Not a number: " + timeLineSize;
+			
+		}//if (Methods.is_numeric(timeLineSize))
+		
+		
+		Log.d("[" + "MainActv.java : "
+				+ +Thread.currentThread().getStackTrace()[2].getLineNumber()
+				+ " : "
+				+ Thread.currentThread().getStackTrace()[2].getMethodName()
+				+ "]", log_msg);
+		
+	}
+
 
 	private void _Setup_Validate_Login_2() {
 		// TODO Auto-generated method stub
@@ -451,6 +500,13 @@ public class MainActv extends Activity {
 			
 			break;
 			
+		case R.id.menu_main_settings://--------------------
+			
+			case_Menu_Settings();
+//			this.logoutFromTwitter();
+			
+			break;
+			
 		default://-------------------------------------
 			break;
 	
@@ -459,6 +515,14 @@ public class MainActv extends Activity {
 		return super.onOptionsItemSelected(item);
 		
 	}//public boolean onOptionsItemSelected(MenuItem item)
+
+	private void case_Menu_Settings() {
+		
+		// TODO Auto-generated method stub
+		Methods_twt.start_Settings(this);
+		
+	}
+
 
 	private void case_Menu_Admin() {
 		// TODO Auto-generated method stub

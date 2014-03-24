@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+    
+    <CheckBoxPreference
+        android:title="@string/prefs_save_text_title"
+        android:key="@string/prefs_save_text_key"
+        android:summary="@string/prefs_save_text_summary"
+        android:defaultValue="false"
+        
+        />
+    
+    <EditTextPreference
+        android:title="@string/prefs_timeline_size_title"
+        android:key="@string/prefs_timeline_size_key"
+        android:summary="@string/prefs_timeline_size_summary"
+        
+    >
+        
+    </EditTextPreference>
+</PreferenceScreen>

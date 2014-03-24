@@ -30,6 +30,7 @@
         </activity>
         <activity android:name=".TLActv"></activity>
         <activity android:name=".TwtActv"></activity>
+        <activity android:name=".PrefActv"></activity>
     </application>
      
     <!-- Permission - Internet Connect -->
