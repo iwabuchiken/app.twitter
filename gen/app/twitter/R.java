@@ -84,13 +84,17 @@ public final class R {
         public static final int dlg_register_patterns_tv_word=0x7f0a0012;
         public static final int dlg_tmpl_list_cancel_bt_cancel=0x7f0a0018;
         public static final int dlg_tmpl_list_cancel_lv=0x7f0a0017;
-        public static final int list_row_simple_1_tv=0x7f0a0019;
-        public static final int listrow_twt_list_tv_date=0x7f0a001a;
-        public static final int listrow_twt_list_tv_time=0x7f0a001b;
-        public static final int listrow_twt_list_tv_txt=0x7f0a001c;
-        public static final int menu_main_admin=0x7f0a001f;
-        public static final int menu_main_logout=0x7f0a001e;
-        public static final int menu_main_settings=0x7f0a001d;
+        public static final int dlg_tmpl_ok_cancel_btn_cancel=0x7f0a001c;
+        public static final int dlg_tmpl_ok_cancel_btn_ok=0x7f0a001b;
+        public static final int dlg_tmpl_ok_cancel_tv_item=0x7f0a001a;
+        public static final int dlg_tmpl_ok_cancel_tv_message=0x7f0a0019;
+        public static final int list_row_simple_1_tv=0x7f0a001d;
+        public static final int listrow_twt_list_tv_date=0x7f0a001e;
+        public static final int listrow_twt_list_tv_time=0x7f0a001f;
+        public static final int listrow_twt_list_tv_txt=0x7f0a0020;
+        public static final int menu_main_admin=0x7f0a0023;
+        public static final int menu_main_logout=0x7f0a0022;
+        public static final int menu_main_settings=0x7f0a0021;
         public static final int tableRow1=0x7f0a0011;
         public static final int tableRow3=0x7f0a0014;
         public static final int thumb_activity_LL_buttons=0x7f0a0004;
@@ -108,73 +112,78 @@ public final class R {
         public static final int dlg_admin_patterns=0x7f030004;
         public static final int dlg_register_patterns=0x7f030005;
         public static final int dlg_tmpl_list_cancel=0x7f030006;
-        public static final int list_row_simple_1=0x7f030007;
-        public static final int list_row_twt_list=0x7f030008;
-        public static final int main_pref=0x7f030009;
-        public static final int pref_textview=0x7f03000a;
+        public static final int dlg_tmpl_ok_cancel=0x7f030007;
+        public static final int list_row_simple_1=0x7f030008;
+        public static final int list_row_twt_list=0x7f030009;
+        public static final int main_pref=0x7f03000a;
+        public static final int pref_textview=0x7f03000b;
     }
     public static final class menu {
         public static final int main_actv=0x7f090000;
     }
     public static final class string {
-        public static final int action_settings=0x7f070009;
-        public static final int actv_twt_bt_add_patterns=0x7f070017;
-        public static final int actv_twt_bt_back=0x7f070016;
+        public static final int action_settings=0x7f07000a;
+        public static final int actv_twt_bt_add_patterns=0x7f070018;
+        public static final int actv_twt_bt_back=0x7f070017;
         /**  actv_twt.xml 
          */
-        public static final int actv_twt_bt_tweet=0x7f070015;
-        public static final int app_name=0x7f070008;
-        public static final int btn_lbl_memo_patterns=0x7f070014;
+        public static final int actv_twt_bt_tweet=0x7f070016;
+        public static final int app_name=0x7f070009;
+        public static final int btn_lbl_memo_patterns=0x7f070015;
         /**  UI labels 
          */
-        public static final int btn_lbl_time_line=0x7f070013;
-        public static final int dlg_admin_backup_db=0x7f07001a;
-        public static final int dlg_admin_exec_sql=0x7f070019;
+        public static final int btn_lbl_time_line=0x7f070014;
+        public static final int dlg_admin_backup_db=0x7f07001b;
+        public static final int dlg_admin_exec_sql=0x7f07001a;
+        /**  dlg_admin_patterns_item 
+         */
+        public static final int dlg_admin_patterns_item_title=0x7f07001f;
         /**  dlg_admin_patterns.xml 
          */
-        public static final int dlg_admin_patterns_title=0x7f07001b;
+        public static final int dlg_admin_patterns_title=0x7f07001c;
         /**  Dialog: Admin 
          */
-        public static final int dlg_admin_title=0x7f070018;
+        public static final int dlg_admin_title=0x7f070019;
         /**  dlg_register_patterns.xml 
          */
-        public static final int dlg_register_patterns_title=0x7f07001c;
-        public static final int dlg_register_patterns_tv_word=0x7f07001d;
+        public static final int dlg_register_patterns_title=0x7f07001d;
+        public static final int dlg_register_patterns_tv_word=0x7f07001e;
         public static final int generic_bt_cancel=0x7f070001;
         /**  Generics 
          */
         public static final int generic_bt_ok=0x7f070000;
         public static final int generic_tv_confirm=0x7f070002;
+        public static final int generic_tv_confirm_delete_en=0x7f070007;
         public static final int generic_tv_delete=0x7f070006;
         public static final int generic_tv_edit=0x7f070005;
         public static final int generic_tv_menu=0x7f070003;
         public static final int generic_tv_register=0x7f070004;
-        public static final int generic_tv_upload=0x7f070007;
-        public static final int hello_world=0x7f07000a;
-        public static final int menu_main_admin=0x7f070011;
+        public static final int generic_tv_upload=0x7f070008;
+        public static final int hello_world=0x7f07000b;
+        public static final int menu_main_admin=0x7f070012;
         /**  Menu: main 
          */
-        public static final int menu_main_logout=0x7f07000c;
-        public static final int menu_main_query=0x7f07000d;
-        public static final int menu_main_refresh_screen=0x7f070010;
-        public static final int menu_main_timeline=0x7f07000e;
-        public static final int menu_main_tweet=0x7f07000f;
+        public static final int menu_main_logout=0x7f07000d;
+        public static final int menu_main_query=0x7f07000e;
+        public static final int menu_main_refresh_screen=0x7f070011;
+        public static final int menu_main_timeline=0x7f07000f;
+        public static final int menu_main_tweet=0x7f070010;
         /**  Menu: Tweet 
          */
-        public static final int menu_twt_add_pattern=0x7f070012;
-        public static final int prefs_save_text_key=0x7f070020;
-        public static final int prefs_save_text_summary=0x7f07001f;
+        public static final int menu_twt_add_pattern=0x7f070013;
+        public static final int prefs_save_text_key=0x7f070022;
+        public static final int prefs_save_text_summary=0x7f070021;
         /**  preferences.xml 
          */
-        public static final int prefs_save_text_title=0x7f07001e;
+        public static final int prefs_save_text_title=0x7f070020;
         /**  Preferences 
          */
-        public static final int prefs_shared_prefs_name=0x7f070025;
-        public static final int prefs_temp_saved_text_key=0x7f070024;
-        public static final int prefs_timeline_size_key=0x7f070023;
-        public static final int prefs_timeline_size_summary=0x7f070022;
-        public static final int prefs_timeline_size_title=0x7f070021;
-        public static final int title_activity_main=0x7f07000b;
+        public static final int prefs_shared_prefs_name=0x7f070027;
+        public static final int prefs_temp_saved_text_key=0x7f070026;
+        public static final int prefs_timeline_size_key=0x7f070025;
+        public static final int prefs_timeline_size_summary=0x7f070024;
+        public static final int prefs_timeline_size_title=0x7f070023;
+        public static final int title_activity_main=0x7f07000c;
     }
     public static final class style {
         /** 

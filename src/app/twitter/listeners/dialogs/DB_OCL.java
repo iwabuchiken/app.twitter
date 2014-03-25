@@ -9,6 +9,7 @@ import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import app.twitter.utils.CONS;
 import app.twitter.utils.Methods_Dlg;
+import app.twitter.utils.Methods_twt;
 import app.twitter.utils.Tags;
 
 //DB=DialogButton
@@ -25,6 +26,8 @@ public class DB_OCL implements OnClickListener {
 	AdapterView<?> parent;
 	int position;
 	String original_Memo;
+	
+	String item;	//=> Used in: Delete_PatternsItem
 	
 	//
 	Vibrator vib;
@@ -61,6 +64,19 @@ public class DB_OCL implements OnClickListener {
 		vib = (Vibrator) actv.getSystemService(actv.VIBRATOR_SERVICE);
 	}
 
+	public DB_OCL
+	(Activity actv, Dialog dlg1, Dialog dlg2, String item) {
+		// TODO Auto-generated constructor stub
+		this.actv = actv;
+		this.dlg1 = dlg1;
+		this.dlg2 = dlg2;
+		
+		this.item	= item;
+		
+		vib = (Vibrator) actv.getSystemService(actv.VIBRATOR_SERVICE);
+		
+	}
+
 	public void onClick(View v) {
 		//
 		Tags.DialogTags tag_name = (Tags.DialogTags) v.getTag();
@@ -69,12 +85,13 @@ public class DB_OCL implements OnClickListener {
 		Log.d("DialogButtonOnClickListener.java" + "["
 				+ Thread.currentThread().getStackTrace()[2].getLineNumber()
 				+ "]", "tag_name.name()=" + tag_name.name());
+		
+		vib.vibrate(CONS.Others.VIB_LENGTH);
+		
 		//
 		switch (tag_name) {
 		
 		case dlg_generic_dismiss://------------------------------------------------
-			
-			vib.vibrate(CONS.Others.VIB_LENGTH);
 			
 			dlg1.dismiss();
 			
@@ -82,15 +99,11 @@ public class DB_OCL implements OnClickListener {
 
 		case dlg_generic_dismiss_second_dialog: // ----------------------------------------------------
 			
-			vib.vibrate(CONS.Others.VIB_LENGTH);
-			
 			dlg2.dismiss();
 			
 			break;// case dlg_generic_dismiss_second_dialog
 
 		case dlg_generic_dismiss_third_dialog://------------------------------------------------
-			
-			vib.vibrate(CONS.Others.VIB_LENGTH);
 			
 			dlg3.dismiss();
 			
@@ -98,9 +111,13 @@ public class DB_OCL implements OnClickListener {
 
 		case dlg_register_patterns_register://------------------------------------------------
 			
-			vib.vibrate(CONS.Others.VIB_LENGTH);
-			
 			case_Dlg_RegisterPatterns_Register();
+			
+			break;
+			
+		case dlg_Delete_PatternsItem_OK://------------------------------------------------
+			
+			case_dlg_Delete_PatternsItem_OK();
 			
 			break;
 			
@@ -110,6 +127,14 @@ public class DB_OCL implements OnClickListener {
 		}//switch (tag_name)
 		
 	}//public void onClick(View v)
+
+	private void case_dlg_Delete_PatternsItem_OK() {
+		// TODO Auto-generated method stub
+		String pattItem = this.item;
+		
+		Methods_twt.delete_PatternsItem(actv, dlg1, dlg2, pattItem);
+		
+	}
 
 	private void case_Dlg_RegisterPatterns_Register() {
 		// TODO Auto-generated method stub

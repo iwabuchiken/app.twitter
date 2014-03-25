@@ -7,6 +7,7 @@ import twitter4j.Twitter;
 import twitter4j.auth.RequestToken;
 import android.content.SharedPreferences;
 import android.os.Vibrator;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
@@ -32,6 +33,10 @@ public class CONS {
 //	    public static int numOfTweets	= 40;
 		
 	    public static List<Status> statuses	= null;
+	    
+	    public static List<String> patternsList = null;
+	    
+	    public static ArrayAdapter<String> adp_Patterns  = null;
 	    
 	}
 	

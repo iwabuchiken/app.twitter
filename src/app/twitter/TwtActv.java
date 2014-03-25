@@ -290,6 +290,9 @@ public class TwtActv extends Activity {
 		Methods_twt.setup_GridView(this);
 	}
 
+	/*********************************
+	 * @see GridView => _Setup_UIs__GridView()
+	 *********************************/
 	private void _Setup_Listeners() {
 		// TODO Auto-generated method stub
 		CONS.UIS_Twt.btn_Back.setTag(Tags.ButtonTags.BACK);

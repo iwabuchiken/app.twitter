@@ -1,6 +1,10 @@
 package app.twitter.utils;
 
+import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import twitter4j.Paging;
@@ -11,11 +15,13 @@ import twitter4j.auth.AccessToken;
 import twitter4j.conf.Configuration;
 import twitter4j.conf.ConfigurationBuilder;
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.util.Log;
@@ -28,6 +34,7 @@ import app.twitter.PrefActv;
 import app.twitter.R;
 import app.twitter.TLActv;
 import app.twitter.TwtActv;
+import app.twitter.listeners.ILCL;
 import app.twitter.listeners.dialogs.DOI_CL;
 import app.twitter.models.Twt;
 import app.twitter.tasks.Task_SendTweet;
@@ -825,8 +832,11 @@ public class Methods_twt {
 		/*********************************
 		 * Get: Patterns list
 		 *********************************/
-		List<String> patterns =
+//		List<String> patterns =
+		CONS.TwitterData.patternsList =
 				_setup_GridView__GetPatternsList(actv, rdb);
+		
+		Methods_twt.sort_PatternsList(CONS.TwitterData.patternsList);
 		
 		/*********************************
 		 * Close: DB
@@ -836,27 +846,34 @@ public class Methods_twt {
 		/*********************************
 		 * Adapter
 		 *********************************/
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+		CONS.TwitterData.adp_Patterns = new ArrayAdapter<String>(
+//				ArrayAdapter<String> adapter = new ArrayAdapter<String>(
 				actv,
 				R.layout.actv_tweet_grid_view,
-				patterns
+				CONS.TwitterData.patternsList
+//				patterns
 		);
 
-		gv.setAdapter(adapter);
+		gv.setAdapter(CONS.TwitterData.adp_Patterns);
+//		gv.setAdapter(adapter);
 		
 		/*********************************
 		 * Set: Listener
 		 *********************************/
 		gv.setTag(Tags.DialogItemTags.Tweet_GV);
 		
+		// OnClick
 		gv.setOnItemClickListener(new DOI_CL(actv));
+		
+		// OnItemLongClick
+		gv.setOnItemLongClickListener(new ILCL(actv));
 		
 	}//setup_GridView(Activity actv)
 
 	/*********************************
 	 * @return null => Query failed
 	 *********************************/
-	private static List<String>
+	public static List<String>
 	_setup_GridView__GetPatternsList
 	(Activity actv, SQLiteDatabase rdb) {
 		// TODO Auto-generated method stub
@@ -1000,5 +1017,135 @@ public class Methods_twt {
 		}//if (saveText == true
 
 	}//public static void saveTempText()
+
+	public static void sort_PatternsList(List<String> patternsList) {
+		// REF=> http://android-coding.blogspot.jp/2011/10/sort-file-list-in-order-by-implementing.html
+		/*----------------------------
+		 * 1. Prep => Comparator
+		 * 2. Sort
+			----------------------------*/
+		/*----------------------------
+		 * 1. Prep => Comparator
+			----------------------------*/
+		Comparator<String> filecomparator = new Comparator<String>(){
+			
+			public int compare(String s1, String s2) {
+				/*----------------------------
+				 * 1. Prep => Directory
+				 * 2. Calculate
+				 * 3. Return
+					----------------------------*/
+				
+				int res = s1.compareTo(s2);
+				
+				return res;
+			} 
+		 };//Comparator<? super File> filecomparator = new Comparator<File>()
+		 
+		/*----------------------------
+		 * 2. Sort
+			----------------------------*/
+		Collections.sort(patternsList, filecomparator);
+//		Arrays.sort(patternsList, filecomparator);
+
+	}//public static void sortFileList(File[] files)
+
+	public static void
+	delete_PatternsItem
+	(Activity actv, Dialog dlg1, Dialog dlg2, String pattItem) {
+		// TODO Auto-generated method stub
+		/*********************************
+		 * Delete item: From DB
+		 *********************************/
+		DBUtils dbu = new DBUtils(actv, CONS.DB.dbName_twt);
+		
+		SQLiteDatabase wdb = dbu.getWritableDatabase();
+		
+		String sql = "DELETE FROM " + CONS.DB.tname_Patterns +
+				" WHERE word='" + pattItem + "'";
+
+		try {
+			
+			wdb.execSQL(sql);
+			
+			// debug
+			Toast.makeText(actv, "Pattern deleted", Toast.LENGTH_LONG).show();
+			
+			// Log
+			Log.d("Methods.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", "Pattern deleted => " + pattItem);
+			
+			/*----------------------------
+			 * 3. Dismiss dialogues
+				----------------------------*/
+			dlg2.dismiss();
+			dlg1.dismiss();
+			
+			/*********************************
+			 * Refresh: Patterns list
+			 *********************************/
+			Methods_twt.refresh_PatternsList(actv, wdb);
+			
+		} catch (SQLException e) {
+			
+			// Log
+			Log.e("Methods.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", "Pattern deletion => Failed:  " + pattItem);
+			
+			// debug
+			String toa_Msg = "Pattern deletion => Failed:  " + pattItem;
+			Toast.makeText(
+					actv,
+					toa_Msg,
+					Toast.LENGTH_LONG).show();
+			
+			
+		} finally {
+		
+			wdb.close();
+		
+		}//try
+		
+		// Log
+//		String log_msg = "Delete pattern => " + pattItem;
+//
+//		Log.d("[" + "Methods_twt.java : "
+//				+ +Thread.currentThread().getStackTrace()[2].getLineNumber()
+//				+ " : "
+//				+ Thread.currentThread().getStackTrace()[2].getMethodName()
+//				+ "]", log_msg);
+		
+		
+	}//delete_PatternsItem
+
+	public static void
+	refresh_PatternsList(Activity actv, SQLiteDatabase wdb) {
+		
+		CONS.TwitterData.patternsList.clear();
+		
+		CONS.TwitterData.patternsList.addAll(
+				Methods_twt._setup_GridView__GetPatternsList(actv, wdb));
+				
+		/*********************************
+		 * Sort: Patterns list
+		 *********************************/
+		Methods_twt.sort_PatternsList(CONS.TwitterData.patternsList);
+
+		/*********************************
+		 * Notify: Adapter
+		 *********************************/
+		CONS.TwitterData.adp_Patterns.notifyDataSetChanged();
+		
+		// Log
+		String log_msg = "Patterns list => Refreshed";
+
+		Log.d("[" + "Methods_twt.java : "
+				+ +Thread.currentThread().getStackTrace()[2].getLineNumber()
+				+ " : "
+				+ Thread.currentThread().getStackTrace()[2].getMethodName()
+				+ "]", log_msg);
+	}//refresh_PatternsList(Activity actv)
 	
 }//public class Methods_twt

@@ -34,6 +34,8 @@ public class Tags {
 		
 		dlg_register_patterns_register,
 		
+		dlg_Delete_PatternsItem_OK,
+		
 	}//public static enum DialogTags
 
 	public static enum DialogItemTags {
@@ -43,6 +45,8 @@ public class Tags {
 		Tweet_GV,
 		
 		AdminPatterns_LV,
+		
+		AdminPatterns_Item_LV,
 		
 	}//public static enum DialogItemTags
 

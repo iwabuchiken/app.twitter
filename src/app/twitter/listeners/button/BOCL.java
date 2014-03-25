@@ -103,9 +103,74 @@ public class BOCL implements OnClickListener {
 
 	private void _case_SendTweet() {
 		// TODO Auto-generated method stub
+		/*********************************
+		 * Text there?
+		 *********************************/
+		// UI there?
+		if (CONS.UIS_Twt.et_Twt == null) {
+			
+			// Log
+			String log_msg = "CONS.UIS_Twt.et_Twt => null";
+
+			Log.d("["
+					+ "BOCL.java : "
+					+ +Thread.currentThread().getStackTrace()[2]
+							.getLineNumber() + " : "
+					+ Thread.currentThread().getStackTrace()[2].getMethodName()
+					+ "]", log_msg);
+			
+			// debug
+			String toa_msg = "EditText => null";
+			Toast.makeText(actv, toa_msg, Toast.LENGTH_SHORT).show();
+			
+			return;
+			
+		} else if (CONS.UIS_Twt.et_Twt.getText() == null) {
+			
+			// Log
+			String log_msg = "getText() => null";
+
+			Log.d("["
+					+ "BOCL.java : "
+					+ +Thread.currentThread().getStackTrace()[2]
+							.getLineNumber() + " : "
+					+ Thread.currentThread().getStackTrace()[2].getMethodName()
+					+ "]", log_msg);
+			
+			// debug
+			String toa_msg = "EditText => Can't get text";
+			Toast.makeText(actv, toa_msg, Toast.LENGTH_SHORT).show();
+			
+			return;
+			
+		}
+		
+		// Any text?
+		String text = CONS.UIS_Twt.et_Twt.getText().toString();
+		
+		if (text == null || text.equals("")) {
+			
+			// Log
+			String log_msg = "text => null, or no content";
+			
+			Log.d("["
+					+ "BOCL.java : "
+					+ +Thread.currentThread().getStackTrace()[2]
+							.getLineNumber() + " : "
+							+ Thread.currentThread().getStackTrace()[2].getMethodName()
+							+ "]", log_msg);
+			
+			// debug
+			Toast.makeText(actv, log_msg, Toast.LENGTH_SHORT).show();
+			
+			return;
+			
+		}
+		
+		// Send tweet
 		Methods_twt.send_Tweet(actv);
 		
-	}
+	}//private void _case_SendTweet()
 
 	private void _case_Back() {
 		// TODO Auto-generated method stub

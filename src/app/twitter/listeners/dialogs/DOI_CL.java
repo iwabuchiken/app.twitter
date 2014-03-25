@@ -23,6 +23,8 @@ public class DOI_CL implements OnItemClickListener {
 	Dialog dlg1;
 	Dialog dlg2;
 
+	String item;
+	
 	//
 	Vibrator vib;
 	
@@ -43,6 +45,17 @@ public class DOI_CL implements OnItemClickListener {
 		
 		vib = (Vibrator) actv.getSystemService(Context.VIBRATOR_SERVICE);
 		
+	}
+
+	public DOI_CL(Activity actv, Dialog dlg1, String item) {
+		// TODO Auto-generated constructor stub
+		this.actv = actv;
+		this.dlg1 = dlg1;
+		
+		this.item = item;
+		
+		vib = (Vibrator) actv.getSystemService(Context.VIBRATOR_SERVICE);
+
 	}
 
 	@Override
@@ -89,6 +102,14 @@ public class DOI_CL implements OnItemClickListener {
 			
 			break;//case Admin_LV
 			
+		case AdminPatterns_Item_LV://------------------------------------
+			
+			String listItem = (String) parent.getItemAtPosition(position);
+			
+			_case_AdminPatterns_Item_LV(listItem);
+			
+			break;//case Admin_LV
+			
 		default:
 			break;
 		}//switch (tag)
@@ -124,6 +145,35 @@ public class DOI_CL implements OnItemClickListener {
 			
 		}
 			
+		
+	}//_case_AdminPatterns_LV(String item)
+	
+	private void
+	_case_AdminPatterns_Item_LV(String listItem) {
+		// TODO Auto-generated method stub
+		// Log
+		String log_msg = "item => " + listItem;
+		
+		Log.d("[" + "DOI_CL.java : "
+				+ +Thread.currentThread().getStackTrace()[2].getLineNumber()
+				+ " : "
+				+ Thread.currentThread().getStackTrace()[2].getMethodName()
+				+ "]", log_msg);
+		
+		if (listItem.equals(actv.getString(
+				R.string.generic_tv_edit))) {
+			
+//			Methods_Dlg.dlg_EditPatterns(actv, dlg1);
+			
+		} else if (listItem.equals(actv.getString(
+				R.string.generic_tv_delete))) {
+			
+			String pattItem = this.item;
+			
+			Methods_Dlg.dlg_Conf_Delete_PatternsItem(actv, dlg1, pattItem);
+			
+		}
+		
 		
 	}//_case_AdminPatterns_LV(String item)
 

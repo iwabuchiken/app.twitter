@@ -109,6 +109,8 @@ public class TLActv extends ListActivity {
 			String toa_msg = "No tweet obtained";
 			Toast.makeText(this, toa_msg, Toast.LENGTH_SHORT).show();
 			
+			return;
+			
 		}
 		
 		/*********************************
