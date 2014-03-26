@@ -29,8 +29,10 @@
         android:id="@+id/btnTweet"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
         android:layout_marginLeft="10dip"
         android:layout_marginRight="10dip"
+        android:layout_marginTop="30dp"
         android:text="Tweet"
         android:textSize="25sp"
         android:visibility="gone" />
@@ -41,8 +43,10 @@
         android:id="@+id/btnTimeLine"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
         android:layout_marginLeft="10dip"
         android:layout_marginRight="10dip"
+        android:layout_marginTop="30dp"
         android:text="@string/btn_lbl_time_line"
         android:textSize="25sp"
         android:visibility="gone" />

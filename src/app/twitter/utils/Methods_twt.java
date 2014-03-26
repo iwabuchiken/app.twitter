@@ -711,42 +711,44 @@ public class Methods_twt {
 	public static void validate_Login_2(Activity actv) {
 		// TODO Auto-generated method stub
 		if (CONS.TwitterData.twitter == null) {
-			
-			String accessToken = CONS.PREFS.mSharedPreferences
-							.getString(CONS.PREFS.PREF_KEY_OAUTH_TOKEN, null);
-			
-			String accessTokenSecret = CONS.PREFS.mSharedPreferences
-					.getString(CONS.PREFS.PREF_KEY_OAUTH_SECRET, null);
-			
-			// Log
-			String log_msg = "token=" + accessToken
-							+ "/"
-							+ "secret=" + accessTokenSecret;
 
-			Log.d("["
-					+ "Methods_twt.java : "
-					+ +Thread.currentThread().getStackTrace()[2]
-							.getLineNumber() + " : "
-					+ Thread.currentThread().getStackTrace()[2].getMethodName()
-					+ "]", log_msg);
+			Methods_twt._validate_Login_2__SetToken(actv);
 			
-			if (accessToken != null && accessTokenSecret != null) {
-				//REF http://twitter4j.org/en/code-examples.html
-				AccessToken at = new AccessToken(accessToken, accessTokenSecret);
-				
-				TwitterFactory factory = new TwitterFactory();
-				CONS.TwitterData.twitter = factory.getInstance();
-				
-				CONS.TwitterData.twitter.setOAuthConsumer(
-								CONS.TwitterData.TWITTER_CONSUMER_KEY,
-								CONS.TwitterData.TWITTER_CONSUMER_SECRET);
-				
-				CONS.TwitterData.twitter.setOAuthAccessToken(at);
-				
-//	            builder.setOAuthConsumerKey(CONS.TwitterData.TWITTER_CONSUMER_KEY);
-//	            builder.setOAuthConsumerSecret(CONS.TwitterData.TWITTER_CONSUMER_SECRET);
-
-			}
+//			String accessToken = CONS.PREFS.mSharedPreferences
+//							.getString(CONS.PREFS.PREF_KEY_OAUTH_TOKEN, null);
+//			
+//			String accessTokenSecret = CONS.PREFS.mSharedPreferences
+//					.getString(CONS.PREFS.PREF_KEY_OAUTH_SECRET, null);
+//			
+//			// Log
+//			String log_msg = "token=" + accessToken
+//							+ "/"
+//							+ "secret=" + accessTokenSecret;
+//
+//			Log.d("["
+//					+ "Methods_twt.java : "
+//					+ +Thread.currentThread().getStackTrace()[2]
+//							.getLineNumber() + " : "
+//					+ Thread.currentThread().getStackTrace()[2].getMethodName()
+//					+ "]", log_msg);
+//			
+//			if (accessToken != null && accessTokenSecret != null) {
+//				//REF http://twitter4j.org/en/code-examples.html
+//				AccessToken at = new AccessToken(accessToken, accessTokenSecret);
+//				
+//				TwitterFactory factory = new TwitterFactory();
+//				CONS.TwitterData.twitter = factory.getInstance();
+//				
+//				CONS.TwitterData.twitter.setOAuthConsumer(
+//								CONS.TwitterData.TWITTER_CONSUMER_KEY,
+//								CONS.TwitterData.TWITTER_CONSUMER_SECRET);
+//				
+//				CONS.TwitterData.twitter.setOAuthAccessToken(at);
+//				
+////	            builder.setOAuthConsumerKey(CONS.TwitterData.TWITTER_CONSUMER_KEY);
+////	            builder.setOAuthConsumerSecret(CONS.TwitterData.TWITTER_CONSUMER_SECRET);
+//
+//			}
 			
 		} else {//if (CONS.TwitterData.twitter == null)
 			
@@ -763,6 +765,48 @@ public class Methods_twt {
 		}//if (CONS.TwitterData.twitter == null)
 		
 	}
+	
+	
+	public static void
+	_validate_Login_2__SetToken(Activity actv) {
+
+		String accessToken = CONS.PREFS.mSharedPreferences
+				.getString(CONS.PREFS.PREF_KEY_OAUTH_TOKEN, null);
+
+		String accessTokenSecret = CONS.PREFS.mSharedPreferences
+				.getString(CONS.PREFS.PREF_KEY_OAUTH_SECRET, null);
+
+		// Log
+		String log_msg = "token=" + accessToken
+						+ "/"
+						+ "secret=" + accessTokenSecret;
+		
+		Log.d("["
+				+ "Methods_twt.java : "
+				+ +Thread.currentThread().getStackTrace()[2]
+						.getLineNumber() + " : "
+				+ Thread.currentThread().getStackTrace()[2].getMethodName()
+				+ "]", log_msg);
+		
+		if (accessToken != null && accessTokenSecret != null) {
+			//REF http://twitter4j.org/en/code-examples.html
+			AccessToken at = new AccessToken(accessToken, accessTokenSecret);
+			
+			TwitterFactory factory = new TwitterFactory();
+			CONS.TwitterData.twitter = factory.getInstance();
+			
+			CONS.TwitterData.twitter.setOAuthConsumer(
+							CONS.TwitterData.TWITTER_CONSUMER_KEY,
+							CONS.TwitterData.TWITTER_CONSUMER_SECRET);
+			
+			CONS.TwitterData.twitter.setOAuthAccessToken(at);
+			
+		//    builder.setOAuthConsumerKey(CONS.TwitterData.TWITTER_CONSUMER_KEY);
+		//    builder.setOAuthConsumerSecret(CONS.TwitterData.TWITTER_CONSUMER_SECRET);
+
+		}//if (accessToken != null && accessTokenSecret != null)
+
+	}//_validate_Login_2__SetToken(Activity actv)
 	
 	private static AccessToken loadAccessToken() {
 		
