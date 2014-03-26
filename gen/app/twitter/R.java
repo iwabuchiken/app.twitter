@@ -30,6 +30,10 @@ public final class R {
          */
         public static final int white=0x7f050000;
         public static final int yello=0x7f050009;
+        /**  TwtActv::Timeline::background 
+         */
+        public static final int yellow_bright=0x7f05000c;
+        public static final int yellow_dark=0x7f05000d;
     }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 

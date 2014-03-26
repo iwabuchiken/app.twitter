@@ -23,5 +23,9 @@
 	
 	<!-- REF color names http://www.workwithcolor.com/color-chart-full-01.htm -->
 	<color name="Arsenic">#3B444B</color>
+
+<!-- TwtActv::Timeline::background -->
+	<color name="yellow_bright">#ecf42a</color>
+	<color name="yellow_dark">#c2c166</color>
 	
 </resources>
