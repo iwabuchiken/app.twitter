@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.TextView;
+import app.twitter.adapters.Adp_Twt;
+import app.twitter.models.Twt;
 
 public class CONS {
 
@@ -36,7 +38,21 @@ public class CONS {
 	    
 	    public static List<String> patternsList = null;
 	    
+	    /*********************************
+		 * Adapters
+		 *********************************/
 	    public static ArrayAdapter<String> adp_Patterns  = null;
+	    
+	    public static Adp_Twt adp_Twt = null;
+	    
+	    /*********************************
+		 * List: Twts
+		 *********************************/
+	    public static List<Twt> twts_Full		= null;
+	    
+	    public static List<Twt> twts_Filtered	= null;
+	    
+	    public static List<Twt> twts_Show		= null;
 	    
 	}
 	

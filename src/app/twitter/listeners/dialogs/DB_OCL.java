@@ -7,6 +7,9 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
+import android.widget.EditText;
+import android.widget.Toast;
+import app.twitter.R;
 import app.twitter.utils.CONS;
 import app.twitter.utils.Methods_Dlg;
 import app.twitter.utils.Methods_twt;
@@ -121,12 +124,94 @@ public class DB_OCL implements OnClickListener {
 			
 			break;
 			
+		case dlg_Filter_Timeline_OK://------------------------------------------------
+			
+			case_Dlg_Filter_Timeline_OK();
+			
+			break;
+			
 		default: //----------------------------------------------------
 			break;
 			
 		}//switch (tag_name)
 		
 	}//public void onClick(View v)
+
+	private void case_Dlg_Filter_Timeline_OK() {
+		// TODO Auto-generated method stub
+		/*********************************
+		 * Get: text
+		 * If no content => show toast
+		 * If content => Build twts list
+		 *********************************/
+		/*********************************
+		 * Get: text
+		 *********************************/
+		EditText et = (EditText) dlg1.findViewById(R.id.dlg_filter_timeline_et_content);
+		
+		/*********************************
+		 * If no content => show toast
+		 *********************************/
+		if (et == null || et.getText() == null) {
+			
+			// Log
+			String log_msg = "EditText => null";
+
+			Log.d("["
+					+ "DB_OCL.java : "
+					+ +Thread.currentThread().getStackTrace()[2]
+							.getLineNumber() + " : "
+					+ Thread.currentThread().getStackTrace()[2].getMethodName()
+					+ "]", log_msg);
+			
+			// debug
+			String toa_msg = "EditText => null";
+			Toast.makeText(actv, toa_msg, Toast.LENGTH_SHORT).show();
+			
+			return;
+			
+		} else if (et.getText() == null) {
+			
+			// Log
+			String log_msg = "EditText.getText() => null";
+			
+			Log.d("["
+					+ "DB_OCL.java : "
+					+ +Thread.currentThread().getStackTrace()[2]
+							.getLineNumber() + " : "
+							+ Thread.currentThread().getStackTrace()[2].getMethodName()
+							+ "]", log_msg);
+			
+			// debug
+			Toast.makeText(actv, log_msg, Toast.LENGTH_SHORT).show();
+			
+			return;
+			
+		} else if (et.getText().toString().equals("")) {
+			
+			// Log
+			String log_msg = "No content";
+			
+			Log.d("["
+					+ "DB_OCL.java : "
+					+ +Thread.currentThread().getStackTrace()[2]
+							.getLineNumber() + " : "
+							+ Thread.currentThread().getStackTrace()[2].getMethodName()
+							+ "]", log_msg);
+			
+			// debug
+			Toast.makeText(actv, log_msg, Toast.LENGTH_SHORT).show();
+			
+			return;
+			
+		}//if (et == null || et.getText() == null)
+		
+		/*********************************
+		 * If content => Build twts list
+		 *********************************/
+		Methods_twt.filter_Timeline(actv, dlg1);
+		
+	}//private void case_Dlg_Filter_Timeline_OK()
 
 	private void case_dlg_Delete_PatternsItem_OK() {
 		// TODO Auto-generated method stub

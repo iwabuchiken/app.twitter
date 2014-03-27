@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
+import app.twitter.R;
 import app.twitter.utils.Tags;
 
 public class BOTL implements OnTouchListener {
@@ -43,6 +44,18 @@ public class BOTL implements OnTouchListener {
 				
 				break;
 				
+			case TIMELINE:
+				
+				v.setBackgroundColor(Color.GRAY);
+				
+				break;
+				
+			case TWEET:
+				
+				v.setBackgroundColor(Color.GRAY);
+				
+				break;
+				
 			default:
 				
 				v.setBackgroundColor(Color.GRAY);
@@ -59,6 +72,20 @@ public class BOTL implements OnTouchListener {
 			case LOGIN:
 				
 				v.setBackgroundColor(Color.WHITE);
+				
+				break;
+
+			case TIMELINE:
+				
+				v.setBackgroundColor(
+						actv.getResources().getColor(R.color.green4));
+				
+				break;
+				
+			case TWEET:
+				
+				v.setBackgroundColor(
+						actv.getResources().getColor(R.color.blue1));
 				
 				break;
 

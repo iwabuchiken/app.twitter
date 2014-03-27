@@ -39,6 +39,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import app.twitter.listeners.button.BOCL;
+import app.twitter.listeners.button.BOTL;
 import app.twitter.utils.AlertDialogManager;
 import app.twitter.utils.CONS;
 import app.twitter.utils.ConnectionDetector;
@@ -449,25 +450,28 @@ public class MainActv extends Activity {
          * */
 		CONS.UIS.btnLoginTwitter.setTag(Tags.ButtonTags.LOGIN);
         CONS.UIS.btnLoginTwitter.setOnClickListener(new BOCL(this));
+        CONS.UIS.btnLoginTwitter.setOnTouchListener(new BOTL(this));
         
         /**
          * Button click event for logout from twitter
          * */
         CONS.UIS.btnLogoutTwitter.setTag(Tags.ButtonTags.LOGOUT);
-        
         CONS.UIS.btnLogoutTwitter.setOnClickListener(new BOCL(this));
+        CONS.UIS.btnLogoutTwitter.setOnTouchListener(new BOTL(this));
          
         /**
          * Button click event: Timeline
          * */
         CONS.UIS.btnTimeLine.setTag(Tags.ButtonTags.TIMELINE);
         CONS.UIS.btnTimeLine.setOnClickListener(new BOCL(this));
+        CONS.UIS.btnTimeLine.setOnTouchListener(new BOTL(this));
         	
         /**
          * Button click event: Tweet
          * */
         CONS.UIS.btnTweet.setTag(Tags.ButtonTags.TWEET);
         CONS.UIS.btnTweet.setOnClickListener(new BOCL(this));
+        CONS.UIS.btnTweet.setOnTouchListener(new BOTL(this));
         
 	}//private void _Setup_SetListeners()
 

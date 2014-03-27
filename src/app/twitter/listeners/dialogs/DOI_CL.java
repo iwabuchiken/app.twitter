@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.EditText;
 import android.widget.Toast;
 import app.twitter.R;
 import app.twitter.utils.CONS;
@@ -86,7 +87,7 @@ public class DOI_CL implements OnItemClickListener {
 			
 			break;//case Admin_LV
 		
-		case Tweet_GV://------------------------------------
+		case GV_Tweet://------------------------------------
 			
 			item = (String) parent.getItemAtPosition(position);
 			
@@ -110,11 +111,47 @@ public class DOI_CL implements OnItemClickListener {
 			
 			break;//case Admin_LV
 			
+		case GV_Filter_Timeline://------------------------------------
+			
+			listItem = (String) parent.getItemAtPosition(position);
+			
+			_case_GV_Filter_Timeline(listItem);
+			
+			break;//case Admin_LV
+			
 		default:
 			break;
 		}//switch (tag)
 		
 	}//public void onItemClick
+
+	private void _case_GV_Filter_Timeline(String listItem) {
+		// TODO Auto-generated method stub
+		/*********************************
+		 * Get: EditText
+		 * Set: Text
+		 *********************************/
+		EditText et = (EditText) dlg1.findViewById(R.id.dlg_filter_timeline_et_content);
+		
+		String content = "";
+		
+		if (et.getText() != null) {
+//		if (et.getText() != null
+//				&& et.getText().toString().equals("")) {
+//			
+//			return;
+//			
+//		} else if (et.getText() != null) {
+			
+			content += et.getText().toString();
+			
+		}
+		
+		et.setText(content + listItem);
+		
+		et.setSelection(et.getText().toString().length());
+		
+	}
 
 	private void
 	_case_AdminPatterns_LV(String item) {

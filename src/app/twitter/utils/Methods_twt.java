@@ -904,7 +904,7 @@ public class Methods_twt {
 		/*********************************
 		 * Set: Listener
 		 *********************************/
-		gv.setTag(Tags.DialogItemTags.Tweet_GV);
+		gv.setTag(Tags.DialogItemTags.GV_Tweet);
 		
 		// OnClick
 		gv.setOnItemClickListener(new DOI_CL(actv));
@@ -1191,5 +1191,348 @@ public class Methods_twt {
 				+ Thread.currentThread().getStackTrace()[2].getMethodName()
 				+ "]", log_msg);
 	}//refresh_PatternsList(Activity actv)
+
+	public static void
+	setup_GridView_Filter_Timeline
+	(Activity actv, Dialog dlg) {
+		// TODO Auto-generated method stub
+		/*********************************
+		 * Get: GV
+		 *********************************/
+		GridView gv_Patterns =
+				(GridView) dlg.findViewById(R.id.dlg_filter_timeline_gv);
+		
+		/*********************************
+		 * Setup: DB
+		 *********************************/
+		if (CONS.TwitterData.patternsList == null) {
+			
+			DBUtils dbu = new DBUtils(actv, CONS.DB.dbName_twt);
+			
+			SQLiteDatabase rdb = dbu.getReadableDatabase();
+			
+			boolean res = dbu.tableExists(rdb, CONS.DB.tname_Patterns);
+			
+			if (res == true) {
+				
+				// Log
+				Log.d("Methods.java" + "["
+						+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+						+ "]", "Table exists: " + CONS.DB.tname_Patterns);
+				
+			} else {//if (res == false)
+				// Log
+				Log.d("Methods.java" + "["
+						+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+						+ "]", "Table doesn't exist: " + CONS.DB.tname_Patterns);
+	
+				rdb.close();
+				
+				return;
+				
+			}		
+			
+			/*********************************
+			 * Get: Patterns list
+			 *********************************/
+	//		List<String> patterns =
+			CONS.TwitterData.patternsList =
+					_setup_GridView__GetPatternsList(actv, rdb);
+			
+			Methods_twt.sort_PatternsList(CONS.TwitterData.patternsList);
+			
+			/*********************************
+			 * Close: DB
+			 *********************************/
+			rdb.close();
+			
+		}
+		
+		/*********************************
+		 * Adapter
+		 *********************************/
+		if (CONS.TwitterData.adp_Patterns == null) {
+			
+			CONS.TwitterData.adp_Patterns = new ArrayAdapter<String>(
+	//				ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+					actv,
+					R.layout.actv_tweet_grid_view,
+					CONS.TwitterData.patternsList
+	//				patterns
+			);
+
+		}
+		
+		gv_Patterns.setAdapter(CONS.TwitterData.adp_Patterns);
+//		gv.setAdapter(adapter);
+		
+		/*********************************
+		 * Set: Listener
+		 *********************************/
+		gv_Patterns.setTag(Tags.DialogItemTags.GV_Filter_Timeline);
+		
+		// OnClick
+		gv_Patterns.setOnItemClickListener(new DOI_CL(actv, dlg));
+		
+	}//setup_GridView_Filter_Timeline(GridView gv_Patterns)
+
+	public static void
+	filter_Timeline(Activity actv, Dialog dlg1) {
+		// TODO Auto-generated method stub
+		/*********************************
+		 * memo
+		 *********************************/
+		EditText et = (EditText) dlg1.findViewById(R.id.dlg_filter_timeline_et_content);
+		
+		String[] kwList = et.getText().toString().split(" |　");
+		
+		Methods_twt.build_TwtsList_Filtered(actv, kwList, dlg1);
+		
+//		// Log
+//		String log_msg = "";
+//		
+//		for (String kw : kwList) {
+//			
+//			log_msg += kw + "/";
+//					
+//		}
+//
+//		Log.d("[" + "Methods_twt.java : "
+//				+ +Thread.currentThread().getStackTrace()[2].getLineNumber()
+//				+ " : "
+//				+ Thread.currentThread().getStackTrace()[2].getMethodName()
+//				+ "]", log_msg);
+		
+	}//filter_Timeline(Activity actv, Dialog dlg1)
+
+	private static void
+	build_TwtsList_Filtered
+	(Activity actv, String[] kwList, Dialog dlg1) {
+		// TODO Auto-generated method stub
+		// Log
+		String log_msg = "Starts => build_TwtsList_Filtered()";
+
+		Log.d("[" + "Methods_twt.java : "
+				+ +Thread.currentThread().getStackTrace()[2].getLineNumber()
+				+ " : "
+				+ Thread.currentThread().getStackTrace()[2].getMethodName()
+				+ "]", log_msg);
+		/*********************************
+		 * Validate: CONS.TwitterData.statuses
+		 *********************************/
+		if (CONS.TwitterData.statuses == null) {
+			
+			// Log
+			log_msg = "CONS.TwitterData.statuses => null";
+
+			Log.d("["
+					+ "Methods_twt.java : "
+					+ +Thread.currentThread().getStackTrace()[2]
+							.getLineNumber() + " : "
+					+ Thread.currentThread().getStackTrace()[2].getMethodName()
+					+ "]", log_msg);
+			
+			// debug
+			Toast.makeText(actv, log_msg, Toast.LENGTH_SHORT).show();
+		
+			return;
+			
+		}
+		
+		/*********************************
+		 * Validate: twts_Full
+		 *********************************/
+		if (CONS.TwitterData.twts_Full == null) {
+			
+			// Log
+			log_msg = "CONS.TwitterData.twts_Full => null";
+
+			Log.d("["
+					+ "Methods_twt.java : "
+					+ +Thread.currentThread().getStackTrace()[2]
+							.getLineNumber() + " : "
+					+ Thread.currentThread().getStackTrace()[2].getMethodName()
+					+ "]", log_msg);
+			
+			CONS.TwitterData.twts_Full =
+					Methods_twt.get_TwtsFromStatuses(
+							actv,
+							CONS.TwitterData.statuses);
+			
+		} else {
+			
+			// Log
+			log_msg = "CONS.TwitterData.twts_Full => not null"
+							+ "("
+							+ "size="
+							+ String.valueOf(CONS.TwitterData.twts_Full.size());
+
+			Log.d("["
+					+ "Methods_twt.java : "
+					+ +Thread.currentThread().getStackTrace()[2]
+							.getLineNumber() + " : "
+					+ Thread.currentThread().getStackTrace()[2].getMethodName()
+					+ "]", log_msg);
+		}
+
+		/*********************************
+		 * Reset: twts_Filtered
+		 *********************************/
+		if (CONS.TwitterData.twts_Filtered != null) {
+			
+			CONS.TwitterData.twts_Filtered.clear();
+			
+			// Log
+			log_msg = "CONS.TwitterData.twts_Filtered => cleared";
+
+			Log.d("["
+					+ "Methods_twt.java : "
+					+ +Thread.currentThread().getStackTrace()[2]
+							.getLineNumber() + " : "
+					+ Thread.currentThread().getStackTrace()[2].getMethodName()
+					+ "]", log_msg);
+			
+		} else if (CONS.TwitterData.twts_Filtered == null) {
+			
+			// Log
+			log_msg = "CONS.TwitterData.twts_Filtered => null";
+
+			Log.d("["
+					+ "Methods_twt.java : "
+					+ +Thread.currentThread().getStackTrace()[2]
+							.getLineNumber() + " : "
+					+ Thread.currentThread().getStackTrace()[2].getMethodName()
+					+ "]", log_msg);
+			
+			CONS.TwitterData.twts_Filtered = new ArrayList<Twt>();
+			
+		}
+		
+		/*********************************
+		 * Build
+		 *********************************/
+		// Log
+		log_msg = "CONS.TwitterData.twts_Full => "
+						+ String.valueOf(CONS.TwitterData.twts_Full.size());
+
+		Log.d("[" + "Methods_twt.java : "
+				+ +Thread.currentThread().getStackTrace()[2].getLineNumber()
+				+ " : "
+				+ Thread.currentThread().getStackTrace()[2].getMethodName()
+				+ "]", log_msg);
+		
+		for (Twt twt : CONS.TwitterData.twts_Full) {
+			
+			String text = twt.getText();
+			
+			boolean contained = true;
+			
+			for (String kw : kwList) {
+				
+				if (!text.toLowerCase().contains(kw.toLowerCase())) {
+					
+					contained = false;
+					
+					break;
+							
+				}
+				
+			}//for (String kw : kwList)
+			
+			if (contained == true) {
+				
+				CONS.TwitterData.twts_Filtered.add(twt);
+				
+				// Log
+				log_msg = "tweet => added// " + twt.getText();
+
+				Log.d("["
+						+ "Methods_twt.java : "
+						+ +Thread.currentThread().getStackTrace()[2]
+								.getLineNumber()
+						+ " : "
+						+ Thread.currentThread().getStackTrace()[2]
+								.getMethodName() + "]", log_msg);
+				
+			} else {
+				
+				// Log
+				log_msg = "contained => false"
+								+ "//"
+								+ twt.getText();
+
+				Log.d("["
+						+ "Methods_twt.java : "
+						+ +Thread.currentThread().getStackTrace()[2]
+								.getLineNumber()
+						+ " : "
+						+ Thread.currentThread().getStackTrace()[2]
+								.getMethodName() + "]", log_msg);
+			}
+			
+		}//for (Twt twt : CONS.TwitterData.twts_Full)
+		
+		/*********************************
+		 * Refresh: twts_Show
+		 *********************************/
+		if (CONS.TwitterData.twts_Show == null) {
+			
+			// Log
+			log_msg = "CONS.TwitterData.twts_Show => null";
+
+			Log.d("["
+					+ "Methods_twt.java : "
+					+ +Thread.currentThread().getStackTrace()[2]
+							.getLineNumber() + " : "
+					+ Thread.currentThread().getStackTrace()[2].getMethodName()
+					+ "]", log_msg);
+			
+			CONS.TwitterData.twts_Show = new ArrayList<Twt>();
+			
+			CONS.TwitterData.twts_Show.addAll(CONS.TwitterData.twts_Filtered);
+//			CONS.TwitterData.twts_Show = CONS.TwitterData.twts_Filtered;
+			
+		} else {//if (CONS.TwitterData.twts_Show == null)
+			
+			// Log
+			log_msg = "CONS.TwitterData.twts_Show => not null";
+
+			Log.d("["
+					+ "Methods_twt.java : "
+					+ +Thread.currentThread().getStackTrace()[2]
+							.getLineNumber() + " : "
+					+ Thread.currentThread().getStackTrace()[2].getMethodName()
+					+ "]", log_msg);
+			
+			CONS.TwitterData.twts_Show.clear();
+			
+			CONS.TwitterData.twts_Show.addAll(CONS.TwitterData.twts_Filtered);
+			
+		}//if (CONS.TwitterData.twts_Show == null)
+		
+		/*********************************
+		 * Notify: Adapter
+		 *********************************/
+		CONS.TwitterData.adp_Twt.notifyDataSetChanged();
+		
+		// Log
+		log_msg = "Adapter => notified"
+						+ "("
+						+ "CONS.TwitterData.twts_Show => now "
+						+ String.valueOf(CONS.TwitterData.twts_Show.size());
+
+		Log.d("[" + "Methods_twt.java : "
+				+ +Thread.currentThread().getStackTrace()[2].getLineNumber()
+				+ " : "
+				+ Thread.currentThread().getStackTrace()[2].getMethodName()
+				+ "]", log_msg);
+		
+		/*********************************
+		 * Dismiss: dlg1
+		 *********************************/
+		dlg1.dismiss();
+		
+		
+	}//build_TwtsList_Filtered
 	
 }//public class Methods_twt

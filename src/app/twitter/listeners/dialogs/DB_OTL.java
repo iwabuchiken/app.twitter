@@ -50,6 +50,8 @@ public class DB_OTL implements OnTouchListener {
 				case dlg_generic_dismiss:
 				case dlg_generic_dismiss_third_dialog:
 				case dlg_generic_dismiss_second_dialog:
+				case dlg_Filter_Timeline_OK:
+				case dlg_Filter_Timeline_Reset:
 					
 					v.setBackgroundColor(Color.GRAY);
 					
@@ -64,6 +66,9 @@ public class DB_OTL implements OnTouchListener {
 			case dlg_generic_dismiss:
 			case dlg_generic_dismiss_second_dialog:
 			case dlg_generic_dismiss_third_dialog:
+			case dlg_Filter_Timeline_OK:
+			case dlg_Filter_Timeline_Reset:
+
 
 				v.setBackgroundColor(Color.WHITE);
 					

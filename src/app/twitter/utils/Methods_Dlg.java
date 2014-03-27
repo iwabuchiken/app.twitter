@@ -10,6 +10,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -560,5 +561,67 @@ public class Methods_Dlg {
 		
 		
 	}//dlg_Conf_Delete_PatternsItem
+
+	public static void
+	dlg_Filter_TimeLine(Activity actv) {
+		// TODO Auto-generated method stub
+		Dialog dlg1 = _dlg_Filter_TimeLine__GetDialog1(actv);
+		
+		dlg1.show();
+		
+	}//dlg_Filter_TimeLine(Activity actv)
+
+	private static Dialog
+	_dlg_Filter_TimeLine__GetDialog1(Activity actv) {
+		// TODO Auto-generated method stub
+		/*********************************
+		 * Setup
+		 *********************************/
+		Dialog dlg = new Dialog(actv);
+		
+		//
+		dlg.setContentView(R.layout.dlg_filter_timeline);
+		
+		// Title
+		dlg.setTitle(actv.getString(R.string.dlg_filter_timeline_title));
+		
+		/*********************************
+		 * Set: GridView
+		 *********************************/
+//		GridView gv_Patterns =
+//				(GridView) dlg.findViewById(R.id.dlg_filter_timeline_gv);
+		
+		Methods_twt.setup_GridView_Filter_Timeline(actv, dlg);
+//		Methods_twt.setup_GridView_Filter_Timeline(actv, gv_Patterns);
+
+		/*********************************
+		 * Get: Buttons
+		 *********************************/
+		Button bt_OK	= (Button) dlg.findViewById(R.id.dlg_filter_timeline_bt_ok);
+		Button bt_Cancel =
+				(Button) dlg.findViewById(R.id.dlg_filter_timeline_bt_cancel);
+		Button bt_Reset	=
+				(Button) dlg.findViewById(R.id.dlg_filter_timeline_bt_reset);
+		
+		/*********************************
+		 * Listeners: Buttons
+		 *********************************/
+		// Set: tag
+		bt_OK.setTag(Tags.DialogTags.dlg_Filter_Timeline_OK);
+		bt_Cancel.setTag(Tags.DialogTags.dlg_generic_dismiss);
+		bt_Reset.setTag(Tags.DialogTags.dlg_Filter_Timeline_Reset);
+		
+		// On touch
+		bt_OK.setOnTouchListener(new DB_OTL(actv));
+		bt_Cancel.setOnTouchListener(new DB_OTL(actv));
+		bt_Reset.setOnTouchListener(new DB_OTL(actv));
+		
+		// On click
+		bt_OK.setOnClickListener(new DB_OCL(actv, dlg));
+		bt_Cancel.setOnClickListener(new DB_OCL(actv, dlg));
+		bt_Reset.setOnClickListener(new DB_OCL(actv, dlg));
+		
+		return dlg;
+	}//dlg_Filter_TimeLine__GetDialog1(Activity actv)
 
 }//public class Methods_Dlg

@@ -32,7 +32,7 @@ public class ILCL implements OnItemLongClickListener {
 		
 		switch (tag) {
 		
-		case Tweet_GV://--------------------------------------
+		case GV_Tweet://--------------------------------------
 			
 			case_Tweet_GV(parent, position);
 			

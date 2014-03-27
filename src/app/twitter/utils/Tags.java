@@ -36,13 +36,18 @@ public class Tags {
 		
 		dlg_Delete_PatternsItem_OK,
 		
+		// dlg_filter_timeline
+		dlg_Filter_Timeline_OK, dlg_Filter_Timeline_Reset,
+		
 	}//public static enum DialogTags
 
 	public static enum DialogItemTags {
 		// dlg_db_admin.xml
 		Admin_LV,
 		
-		Tweet_GV,
+		GV_Tweet,
+		
+		GV_Filter_Timeline,
 		
 		AdminPatterns_LV,
 		
