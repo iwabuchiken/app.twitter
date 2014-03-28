@@ -62,14 +62,15 @@ public final class R {
         public static final int ifm8_thumb_up_50x50=0x7f02000d;
         public static final int ifm8_thumb_up_50x50_disenabled=0x7f02000e;
         public static final int menu_icon_admin_32x32=0x7f02000f;
-        public static final int menu_icon_logout_32x32=0x7f020010;
-        public static final int menu_icon_logout_64x64=0x7f020011;
-        public static final int menu_icon_query_32x32=0x7f020012;
-        public static final int menu_icon_refresh_screen_32x32=0x7f020013;
-        public static final int menu_icon_timeline_32x32=0x7f020014;
-        public static final int menu_icon_tweet_32x32=0x7f020015;
-        public static final int menu_timeline_filter=0x7f020016;
-        public static final int success=0x7f020017;
+        public static final int menu_icon_horizontal_listview_32x32=0x7f020010;
+        public static final int menu_icon_logout_32x32=0x7f020011;
+        public static final int menu_icon_logout_64x64=0x7f020012;
+        public static final int menu_icon_query_32x32=0x7f020013;
+        public static final int menu_icon_refresh_screen_32x32=0x7f020014;
+        public static final int menu_icon_timeline_32x32=0x7f020015;
+        public static final int menu_icon_tweet_32x32=0x7f020016;
+        public static final int menu_timeline_filter=0x7f020017;
+        public static final int success=0x7f020018;
     }
     public static final class id {
         public static final int actv_twt_bt_back=0x7f0a000c;
@@ -81,6 +82,7 @@ public final class R {
         public static final int btnLogoutTwitter=0x7f0a0003;
         public static final int btnTimeLine=0x7f0a0002;
         public static final int btnTweet=0x7f0a0001;
+        public static final int clickbutton=0x7f0a0029;
         public static final int dlg_admin_patterns_bt_cancel=0x7f0a0010;
         public static final int dlg_admin_patterns_lv=0x7f0a000f;
         public static final int dlg_filter_timeline_bt_cancel=0x7f0a0014;
@@ -98,14 +100,17 @@ public final class R {
         public static final int dlg_tmpl_ok_cancel_btn_ok=0x7f0a0020;
         public static final int dlg_tmpl_ok_cancel_tv_item=0x7f0a001f;
         public static final int dlg_tmpl_ok_cancel_tv_message=0x7f0a001e;
+        public static final int image=0x7f0a0027;
         public static final int list_row_simple_1_tv=0x7f0a0022;
         public static final int listrow_twt_list_tv_date=0x7f0a0023;
         public static final int listrow_twt_list_tv_time=0x7f0a0024;
         public static final int listrow_twt_list_tv_txt=0x7f0a0025;
-        public static final int menu_main_admin=0x7f0a0028;
-        public static final int menu_main_logout=0x7f0a0027;
-        public static final int menu_main_settings=0x7f0a0026;
-        public static final int menu_timeline_filter=0x7f0a0029;
+        public static final int listview=0x7f0a0026;
+        public static final int menu_main_admin=0x7f0a002c;
+        public static final int menu_main_horizontal_listview=0x7f0a002d;
+        public static final int menu_main_logout=0x7f0a002b;
+        public static final int menu_main_settings=0x7f0a002a;
+        public static final int menu_timeline_filter=0x7f0a002e;
         public static final int tableRow1=0x7f0a0016;
         public static final int tableRow3=0x7f0a0019;
         public static final int thumb_activity_LL_buttons=0x7f0a0004;
@@ -114,6 +119,7 @@ public final class R {
         public static final int thumb_activity_ib_prev_page=0x7f0a0006;
         public static final int thumb_activity_ib_toBottom=0x7f0a0009;
         public static final int thumb_activity_ib_toTop=0x7f0a0005;
+        public static final int title=0x7f0a0028;
     }
     public static final class layout {
         public static final int actv_main=0x7f030000;
@@ -127,8 +133,11 @@ public final class R {
         public static final int dlg_tmpl_ok_cancel=0x7f030008;
         public static final int list_row_simple_1=0x7f030009;
         public static final int list_row_twt_list=0x7f03000a;
-        public static final int main_pref=0x7f03000b;
-        public static final int pref_textview=0x7f03000c;
+        public static final int listviewdemo=0x7f03000b;
+        public static final int main=0x7f03000c;
+        public static final int main_pref=0x7f03000d;
+        public static final int pref_textview=0x7f03000e;
+        public static final int viewitem=0x7f03000f;
     }
     public static final class menu {
         public static final int main_actv=0x7f090000;
@@ -136,34 +145,34 @@ public final class R {
     }
     public static final class string {
         public static final int action_settings=0x7f07000c;
-        public static final int actv_twt_bt_add_patterns=0x7f07001b;
-        public static final int actv_twt_bt_back=0x7f07001a;
+        public static final int actv_twt_bt_add_patterns=0x7f07001c;
+        public static final int actv_twt_bt_back=0x7f07001b;
         /**  actv_twt.xml 
          */
-        public static final int actv_twt_bt_tweet=0x7f070019;
+        public static final int actv_twt_bt_tweet=0x7f07001a;
         public static final int app_name=0x7f07000b;
-        public static final int btn_lbl_memo_patterns=0x7f070018;
+        public static final int btn_lbl_memo_patterns=0x7f070019;
         /**  UI labels 
          */
-        public static final int btn_lbl_time_line=0x7f070017;
-        public static final int dlg_admin_backup_db=0x7f07001e;
-        public static final int dlg_admin_exec_sql=0x7f07001d;
+        public static final int btn_lbl_time_line=0x7f070018;
+        public static final int dlg_admin_backup_db=0x7f07001f;
+        public static final int dlg_admin_exec_sql=0x7f07001e;
         /**  dlg_admin_patterns_item 
          */
-        public static final int dlg_admin_patterns_item_title=0x7f070022;
+        public static final int dlg_admin_patterns_item_title=0x7f070023;
         /**  dlg_admin_patterns.xml 
          */
-        public static final int dlg_admin_patterns_title=0x7f07001f;
+        public static final int dlg_admin_patterns_title=0x7f070020;
         /**  Dialog: Admin 
          */
-        public static final int dlg_admin_title=0x7f07001c;
+        public static final int dlg_admin_title=0x7f07001d;
         /**  dlg_filter_timeline.xml 
          */
-        public static final int dlg_filter_timeline_title=0x7f070023;
+        public static final int dlg_filter_timeline_title=0x7f070024;
         /**  dlg_register_patterns.xml 
          */
-        public static final int dlg_register_patterns_title=0x7f070020;
-        public static final int dlg_register_patterns_tv_word=0x7f070021;
+        public static final int dlg_register_patterns_title=0x7f070021;
+        public static final int dlg_register_patterns_tv_word=0x7f070022;
         public static final int generic_bt_cancel=0x7f070001;
         public static final int generic_bt_cancel_en=0x7f070002;
         /**  Generics 
@@ -177,8 +186,12 @@ public final class R {
         public static final int generic_tv_menu=0x7f070005;
         public static final int generic_tv_register=0x7f070006;
         public static final int generic_tv_upload=0x7f07000a;
+        /**  listview demo 
+         */
+        public static final int hello=0x7f07002d;
         public static final int hello_world=0x7f07000d;
         public static final int menu_main_admin=0x7f070014;
+        public static final int menu_main_horizontal_listview=0x7f070015;
         /**  Menu: main 
          */
         public static final int menu_main_logout=0x7f07000f;
@@ -188,22 +201,22 @@ public final class R {
         public static final int menu_main_tweet=0x7f070012;
         /**  Menu: Timeline 
          */
-        public static final int menu_timeline_filter=0x7f070016;
+        public static final int menu_timeline_filter=0x7f070017;
         /**  Menu: Tweet 
          */
-        public static final int menu_twt_add_pattern=0x7f070015;
-        public static final int prefs_save_text_key=0x7f070026;
-        public static final int prefs_save_text_summary=0x7f070025;
+        public static final int menu_twt_add_pattern=0x7f070016;
+        public static final int prefs_save_text_key=0x7f070027;
+        public static final int prefs_save_text_summary=0x7f070026;
         /**  preferences.xml 
          */
-        public static final int prefs_save_text_title=0x7f070024;
+        public static final int prefs_save_text_title=0x7f070025;
         /**  Preferences 
          */
-        public static final int prefs_shared_prefs_name=0x7f07002b;
-        public static final int prefs_temp_saved_text_key=0x7f07002a;
-        public static final int prefs_timeline_size_key=0x7f070029;
-        public static final int prefs_timeline_size_summary=0x7f070028;
-        public static final int prefs_timeline_size_title=0x7f070027;
+        public static final int prefs_shared_prefs_name=0x7f07002c;
+        public static final int prefs_temp_saved_text_key=0x7f07002b;
+        public static final int prefs_timeline_size_key=0x7f07002a;
+        public static final int prefs_timeline_size_summary=0x7f070029;
+        public static final int prefs_timeline_size_title=0x7f070028;
         public static final int title_activity_main=0x7f07000e;
     }
     public static final class style {

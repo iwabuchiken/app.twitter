@@ -511,6 +511,13 @@ public class MainActv extends Activity {
 			
 			break;
 			
+		case R.id.menu_main_horizontal_listview://--------------------
+			
+			case_Menu_HorizontalListview();
+//			this.logoutFromTwitter();
+			
+			break;
+			
 		default://-------------------------------------
 			break;
 	
@@ -519,6 +526,16 @@ public class MainActv extends Activity {
 		return super.onOptionsItemSelected(item);
 		
 	}//public boolean onOptionsItemSelected(MenuItem item)
+
+	private void case_Menu_HorizontalListview() {
+		// TODO Auto-generated method stub
+		
+		String className = "app.twitter.specials.HorizontalListViewDemo";
+		
+		Methods_twt.start_Activity(this, className);
+		
+	}
+
 
 	private void case_Menu_Settings() {
 		

@@ -29,6 +29,7 @@
     	<string name="menu_main_tweet">Tweet</string>
     	<string name="menu_main_refresh_screen">Refresh screen</string>
     	<string name="menu_main_admin">Admin</string>
+    	<string name="menu_main_horizontal_listview">Horizontal LV</string>
     
     <!-- Menu: Tweet -->
     	<string name="menu_twt_add_pattern">Add pattern</string>
@@ -83,5 +84,7 @@
 		
 	<!-- Preferences -->	
 		<string name="prefs_shared_prefs_name">TwtApp_prefs</string>
-		
+
+	<!-- listview demo -->
+		<string name="hello">HELLO</string>
 </resources>

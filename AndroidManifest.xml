@@ -31,6 +31,11 @@
         <activity android:name=".TLActv"></activity>
         <activity android:name=".TwtActv"></activity>
         <activity android:name=".PrefActv"></activity>
+        
+        <activity
+            android:name="app.twitter.specials.HorizontalListViewDemo">
+        </activity>
+        
     </application>
      
     <!-- Permission - Internet Connect -->

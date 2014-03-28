@@ -532,6 +532,52 @@ public class Methods_twt {
 		actv.overridePendingTransition(0, 0);
 		
 	}//public static void start_Settings(Activity actv)
+	
+	public static void
+	start_Activity(Activity actv, String className) {
+		/*********************************
+		 * Start: Activity
+		 *********************************/
+		Intent i = new Intent();
+		
+		Class cl;
+		
+		try {
+			
+			cl = Class.forName(className);
+			
+			i.setClass(actv, cl);
+			
+			// Log
+			String log_msg = "Class => set: "
+							+ cl.getName();
+
+			Log.d("["
+					+ "Methods_twt.java : "
+					+ +Thread.currentThread().getStackTrace()[2]
+							.getLineNumber() + " : "
+					+ Thread.currentThread().getStackTrace()[2].getMethodName()
+					+ "]", log_msg);
+			
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			
+			return;
+			
+		}
+		
+//		i.setClass(actv, PrefActv.class);
+		
+		/*********************************
+		 * 3. Start
+		 *********************************/
+		actv.startActivity(i);
+		
+		//REF no animation http://stackoverflow.com/questions/6972295/switching-activities-without-animation answered Nov 19 '13 at 21:42
+		actv.overridePendingTransition(0, 0);
+		
+	}//public static void start_Settings(Activity actv)
 
 	public static List<Twt>
 	get_TwtsFromStatuses

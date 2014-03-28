@@ -19,4 +19,11 @@
         >
     </item>
     
+    <item 
+        android:id="@+id/menu_main_horizontal_listview"
+        android:title="@string/menu_main_horizontal_listview"
+        android:icon="@drawable/menu_icon_horizontal_listview_32x32"
+        >
+    </item>
+    
 </menu>

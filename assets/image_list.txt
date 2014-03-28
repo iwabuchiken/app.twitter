@@ -10,3 +10,4 @@
 10	background_main_actv_512x512.png	biomineralization.png	https://twitter.com/bishoyh
 11	menu_icon_admin_32x32.png	1395384533_Stop.png	https://www.iconfinder.com/icons/27882/stop_icon#size=128
 12	menu_timeline_filter.png	1395906884_Find.png	https://www.iconfinder.com/icons/27847/binoculars_find_search_icon#size=128
+13	menu_icon_listview_32x32	1396008260_muffin_32x32.png	https://www.iconfinder.com/icons/34652/cake_cupcake_food_muffin_icon#size=128
