@@ -1534,5 +1534,141 @@ public class Methods_twt {
 		
 		
 	}//build_TwtsList_Filtered
+
+	public static void
+	reset_Filter(Activity actv, Dialog dlg1) {
+		// TODO Auto-generated method stub
+		/*********************************
+		 * Clear: twts_Filtered
+		 *********************************/
+		if (CONS.TwitterData.twts_Filtered != null) {
+			
+			CONS.TwitterData.twts_Filtered.clear();
+			
+			// Log
+			String log_msg = "CONS.TwitterData.twts_Filtered => cleared";
+
+			Log.d("["
+					+ "Methods_twt.java : "
+					+ +Thread.currentThread().getStackTrace()[2]
+							.getLineNumber() + " : "
+					+ Thread.currentThread().getStackTrace()[2].getMethodName()
+					+ "]", log_msg);
+			
+		} else if (CONS.TwitterData.twts_Filtered == null) {
+			
+			// Log
+			String log_msg = "CONS.TwitterData.twts_Filtered => null";
+
+			Log.d("["
+					+ "Methods_twt.java : "
+					+ +Thread.currentThread().getStackTrace()[2]
+							.getLineNumber() + " : "
+					+ Thread.currentThread().getStackTrace()[2].getMethodName()
+					+ "]", log_msg);
+			
+			CONS.TwitterData.twts_Filtered = new ArrayList<Twt>();
+			
+		}
+		
+		/*********************************
+		 * Validate: twts_Full
+		 *********************************/
+		if (CONS.TwitterData.twts_Full == null) {
+			
+			// Log
+			String log_msg = "CONS.TwitterData.twts_Full => null";
+
+			Log.d("["
+					+ "Methods_twt.java : "
+					+ +Thread.currentThread().getStackTrace()[2]
+							.getLineNumber() + " : "
+					+ Thread.currentThread().getStackTrace()[2].getMethodName()
+					+ "]", log_msg);
+			
+			CONS.TwitterData.twts_Full =
+					Methods_twt.get_TwtsFromStatuses(
+							actv,
+							CONS.TwitterData.statuses);
+			
+		} else {
+			
+			// Log
+			String log_msg = "CONS.TwitterData.twts_Full => not null"
+							+ "("
+							+ "size="
+							+ String.valueOf(CONS.TwitterData.twts_Full.size());
+
+			Log.d("["
+					+ "Methods_twt.java : "
+					+ +Thread.currentThread().getStackTrace()[2]
+							.getLineNumber() + " : "
+					+ Thread.currentThread().getStackTrace()[2].getMethodName()
+					+ "]", log_msg);
+		}
+
+		/*********************************
+		 * Set: twts_Full to twts_Filtered
+		 *********************************/
+		CONS.TwitterData.twts_Filtered.addAll(CONS.TwitterData.twts_Full);
+		
+		/*********************************
+		 * Set: twts_Filtered to twts_Show
+		 *********************************/
+		if (CONS.TwitterData.twts_Show == null) {
+			
+			// Log
+			String log_msg = "CONS.TwitterData.twts_Show => null";
+
+			Log.d("["
+					+ "Methods_twt.java : "
+					+ +Thread.currentThread().getStackTrace()[2]
+							.getLineNumber() + " : "
+					+ Thread.currentThread().getStackTrace()[2].getMethodName()
+					+ "]", log_msg);
+			
+			CONS.TwitterData.twts_Show = new ArrayList<Twt>();
+			
+		} else {//if (CONS.TwitterData.twts_Show == null)
+			
+			// Log
+			String log_msg = "CONS.TwitterData.twts_Show => not null";
+
+			Log.d("["
+					+ "Methods_twt.java : "
+					+ +Thread.currentThread().getStackTrace()[2]
+							.getLineNumber() + " : "
+					+ Thread.currentThread().getStackTrace()[2].getMethodName()
+					+ "]", log_msg);
+			
+			CONS.TwitterData.twts_Show.clear();
+			
+		}//if (CONS.TwitterData.twts_Show == null)
+		
+		CONS.TwitterData.twts_Show.addAll(CONS.TwitterData.twts_Filtered);
+		
+		/*********************************
+		 * Notify: Adapter
+		 *********************************/
+		CONS.TwitterData.adp_Twt.notifyDataSetChanged();
+		
+		// Log
+		String log_msg = "Adapter => notified"
+						+ "("
+						+ "CONS.TwitterData.twts_Show => now "
+						+ String.valueOf(CONS.TwitterData.twts_Show.size());
+
+		Log.d("[" + "Methods_twt.java : "
+				+ +Thread.currentThread().getStackTrace()[2].getLineNumber()
+				+ " : "
+				+ Thread.currentThread().getStackTrace()[2].getMethodName()
+				+ "]", log_msg);
+		
+		/*********************************
+		 * Dismiss: dlg1
+		 *********************************/
+		dlg1.dismiss();
+		
+	}//reset_Filter(Activity actv, Dialog dlg1)
 	
 }//public class Methods_twt

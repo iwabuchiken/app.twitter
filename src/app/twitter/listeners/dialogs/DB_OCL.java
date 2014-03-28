@@ -130,12 +130,23 @@ public class DB_OCL implements OnClickListener {
 			
 			break;
 			
+		case dlg_Filter_Timeline_Reset://------------------------------------------------
+			
+			case_Dlg_Filter_Timeline_Reset();
+			
+			break;
+			
 		default: //----------------------------------------------------
 			break;
 			
 		}//switch (tag_name)
 		
 	}//public void onClick(View v)
+
+	private void case_Dlg_Filter_Timeline_Reset() {
+		// TODO Auto-generated method stub
+		Methods_twt.reset_Filter(actv, dlg1);
+	}
 
 	private void case_Dlg_Filter_Timeline_OK() {
 		// TODO Auto-generated method stub
