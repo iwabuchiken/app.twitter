@@ -29,14 +29,17 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.GridView;
+import android.widget.ListView;
 import android.widget.Toast;
 import app.twitter.PrefActv;
 import app.twitter.R;
 import app.twitter.TLActv;
 import app.twitter.TwtActv;
+import app.twitter.adapters.Adp_HoriLV;
 import app.twitter.listeners.ILCL;
 import app.twitter.listeners.dialogs.DOI_CL;
 import app.twitter.models.Twt;
+import app.twitter.specials.HorizontalListView;
 import app.twitter.tasks.Task_SendTweet;
 
 public class Methods_twt {
@@ -544,6 +547,7 @@ public class Methods_twt {
 		
 		try {
 			
+			//REF http://stackoverflow.com/questions/11168973/how-to-convert-string-to-class-name answered Jun 23 '12 at 11:06
 			cl = Class.forName(className);
 			
 			i.setClass(actv, cl);
@@ -1716,5 +1720,76 @@ public class Methods_twt {
 		dlg1.dismiss();
 		
 	}//reset_Filter(Activity actv, Dialog dlg1)
+
+	public static void setup_HoriLV(Activity actv) {
+		// TODO Auto-generated method stub
+		
+		if (CONS.TwitterData.patternsList == null) {
+			
+			_setHoriLV__GetPatternsList(actv);
+			
+		}
+
+		Adp_HoriLV horiLV = new Adp_HoriLV(actv);
+		
+		HorizontalListView lv_Hori =
+				(HorizontalListView) actv.findViewById(R.id.actv_twt_lv_horizontal);
+		
+		lv_Hori.setAdapter(horiLV);
+		
+		/*********************************
+		 * Set: Listener
+		 *********************************/
+		lv_Hori.setTag(Tags.DialogItemTags.HoriLV_TwtActv);
+		lv_Hori.setOnItemClickListener(new DOI_CL(actv));
+		
+	}//public static void setHoriLV(Activity actv)
+
+	private static void
+	_setHoriLV__GetPatternsList(Activity actv) {
+		// TODO Auto-generated method stub
+		/*********************************
+		 * Setup: DB
+		 *********************************/
+		DBUtils dbu = new DBUtils(actv, CONS.DB.dbName_twt);
+		
+		SQLiteDatabase rdb = dbu.getReadableDatabase();
+		
+		boolean res = dbu.tableExists(rdb, CONS.DB.tname_Patterns);
+		
+		if (res == true) {
+			
+			// Log
+			Log.d("Methods.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", "Table exists: " + CONS.DB.tname_Patterns);
+			
+		} else {//if (res == false)
+			// Log
+			Log.d("Methods.java" + "["
+					+ Thread.currentThread().getStackTrace()[2].getLineNumber()
+					+ "]", "Table doesn't exist: " + CONS.DB.tname_Patterns);
+
+			rdb.close();
+			
+			return;
+			
+		}		
+		
+		/*********************************
+		 * Get: Patterns list
+		 *********************************/
+//		List<String> patterns =
+		CONS.TwitterData.patternsList =
+				_setup_GridView__GetPatternsList(actv, rdb);
+		
+		Methods_twt.sort_PatternsList(CONS.TwitterData.patternsList);
+		
+		/*********************************
+		 * Close: DB
+		 *********************************/
+		rdb.close();
+		
+	}//_setHoriLV__GetPatternsList(Activity actv)
 	
 }//public class Methods_twt

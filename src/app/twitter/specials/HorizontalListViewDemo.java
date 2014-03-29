@@ -20,7 +20,7 @@ public class HorizontalListViewDemo extends Activity {
        
         setContentView(R.layout.listviewdemo);
        
-        HorizontalListView listview = (HorizontalListView) findViewById(R.id.listview);
+        HorizontalListView listview = (HorizontalListView) findViewById(R.id.actv_twt_lv_horizontal);
         listview.setAdapter(mAdapter);
        
     }

@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import app.twitter.R;
 import app.twitter.utils.CONS;
@@ -119,11 +120,96 @@ public class DOI_CL implements OnItemClickListener {
 			
 			break;//case Admin_LV
 			
+		case HoriLV_TwtActv://------------------------------------
+			
+//			// Log
+//			log_msg = "v => " + v.getClass().getName();
+//			
+//			Log.d("["
+//					+ "DOI_CL.java : "
+//					+ +Thread.currentThread().getStackTrace()[2]
+//							.getLineNumber() + " : "
+//							+ Thread.currentThread().getStackTrace()[2].getMethodName()
+//							+ "]", log_msg);
+//			
+//			TextView tv = (TextView) v;
+//			
+//			// Log
+//			log_msg = "text => " + tv.getText().toString();
+//
+//			Log.d("["
+//					+ "DOI_CL.java : "
+//					+ +Thread.currentThread().getStackTrace()[2]
+//							.getLineNumber() + " : "
+//					+ Thread.currentThread().getStackTrace()[2].getMethodName()
+//					+ "]", log_msg);
+//			
+//			// Log
+//			log_msg = "parent => " + parent.getClass().toString();
+//
+//			Log.d("["
+//					+ "DOI_CL.java : "
+//					+ +Thread.currentThread().getStackTrace()[2]
+//							.getLineNumber() + " : "
+//					+ Thread.currentThread().getStackTrace()[2].getMethodName()
+//					+ "]", log_msg);
+//			
+//			listItem = (String) parent.getItemAtPosition(position);
+			
+			_case_HoriLV_TwtActv(v);
+//			_case_HoriLV_TwtActv(listItem);
+			
+			break;//case Admin_LV
+			
 		default:
 			break;
 		}//switch (tag)
 		
 	}//public void onItemClick
+
+	private void _case_HoriLV_TwtActv(View v) {
+		// TODO Auto-generated method stub
+		
+		TextView tv = (TextView) v;
+		
+		String item = tv.getText().toString();
+		
+		String text = CONS.UIS_Twt.et_Twt.getText().toString();
+		
+		text += item;
+		
+		CONS.UIS_Twt.et_Twt.setText(text);
+		
+		/*********************************
+		 * Set: Cursor position
+		 *********************************/
+		if (item.equals("「」")
+				|| item.equals("『』")
+				|| item.equals("（）")
+				|| item.equals("()")
+				) {
+			
+			CONS.UIS_Twt.et_Twt.setSelection(
+					CONS.UIS_Twt.et_Twt.getText().toString().length() - 1);
+			
+		} else {//if (item.equals("「」"))
+			
+			CONS.UIS_Twt.et_Twt.setSelection(
+					CONS.UIS_Twt.et_Twt.getText().toString().length());
+			
+		}//if (item.equals("「」"))
+		
+		
+//		// Log
+//		String log_msg = "item => " + v;
+//
+//		Log.d("[" + "DOI_CL.java : "
+//				+ +Thread.currentThread().getStackTrace()[2].getLineNumber()
+//				+ " : "
+//				+ Thread.currentThread().getStackTrace()[2].getMethodName()
+//				+ "]", log_msg);
+		
+	}
 
 	private void _case_GV_Filter_Timeline(String listItem) {
 		// TODO Auto-generated method stub

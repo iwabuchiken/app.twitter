@@ -209,7 +209,16 @@ public class TwtActv extends Activity {
 		
 		_Setup_TempText();
 		
+		_Setup_HoriLV();
+		
 	}//protected void onStart()
+
+	private void _Setup_HoriLV() {
+		// TODO Auto-generated method stub
+
+		Methods_twt.setup_HoriLV(this);
+		
+	}
 
 	private void _Setup_TempText() {
 		// TODO Auto-generated method stub

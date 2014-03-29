@@ -31,6 +31,19 @@
 
     </GridView>
 
+      <!-- com.sandy.demo.HorizontalListView -->
+
+	  <app.twitter.specials.HorizontalListView
+	      android:id="@+id/actv_twt_lv_horizontal"
+	      android:layout_width="wrap_content"
+	      android:layout_height="60dp"
+	      android:layout_margin="5dp"
+	      android:layout_marginBottom="3dp"
+	      android:layout_marginLeft="10dp"
+	      android:layout_marginRight="10dp"
+	      android:layout_marginTop="3dp"
+	      android:background="#ddd" />
+	    
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

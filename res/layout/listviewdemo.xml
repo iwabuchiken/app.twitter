@@ -9,7 +9,7 @@
   
   <!-- com.sandy.demo.HorizontalListView -->
   <app.twitter.specials.HorizontalListView
-      android:id="@+id/listview"
+      android:id="@+id/actv_twt_lv_horizontal"
       android:layout_width="fill_parent"
       android:layout_height="wrap_content"
       android:background="#ddd"

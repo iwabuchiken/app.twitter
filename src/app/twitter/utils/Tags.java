@@ -53,6 +53,8 @@ public class Tags {
 		
 		AdminPatterns_Item_LV,
 		
+		HoriLV_TwtActv,
+		
 	}//public static enum DialogItemTags
 
 }

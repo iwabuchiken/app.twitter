@@ -34,10 +34,6 @@ public class HorizontalListView extends AdapterView<ListAdapter> {
     private OnItemLongClickListener mOnItemLongClicked;
     private boolean mDataChanged = false;
     
-    //special
-    int marginRight = 70;
-    int marginLeft = -marginRight;
-//    int marginLeft = -40;
 
     public HorizontalListView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -160,7 +156,12 @@ public class HorizontalListView extends AdapterView<ListAdapter> {
         
         if(mDataChanged){
         	
-        	String log_msg = "mDataChanged => true";
+        	log_msg = "mCurrentX=" + String.valueOf(mCurrentX)
+					+ "/"
+					+ "mNextX=" + String.valueOf(mNextX)
+					+ "/"
+					+ "mMaxX=" + String.valueOf(mMaxX)
+					;
 
 			Log.d("[" + "HorizontalListView.java : "
 					+ +Thread.currentThread().getStackTrace()[2].getLineNumber()
@@ -177,58 +178,17 @@ public class HorizontalListView extends AdapterView<ListAdapter> {
         }
 
         if(mScroller.computeScrollOffset()){
-        	
-        	String log_msg = "mScroller.computeScrollOffset() => true";
-
-			Log.d("[" + "HorizontalListView.java : "
-					+ +Thread.currentThread().getStackTrace()[2].getLineNumber()
-					+ " : "
-					+ Thread.currentThread().getStackTrace()[2].getMethodName()
-					+ "]", log_msg);
-        	
-        	
             int scrollx = mScroller.getCurrX();
             mNextX = scrollx;
         }
         
-        if(mNextX <= marginLeft){
-//        	if(mNextX <= -50){
-//        	if(mNextX <= 0){
-        	
-        	String log_msg = "(mNextX <= 0) => true";
-
-			Log.d("[" + "HorizontalListView.java : "
-					+ +Thread.currentThread().getStackTrace()[2].getLineNumber()
-					+ " : "
-					+ Thread.currentThread().getStackTrace()[2].getMethodName()
-					+ "]", log_msg);
-
-        	
-        	
-            mNextX = this.marginLeft;
-//            mNextX = 0;
+        if(mNextX <= 0){
+            mNextX = 0;
             mScroller.forceFinished(true);
         }
-        
-        if(mNextX >= mMaxX + this.marginRight) {
-//        	if(mNextX >= mMaxX + 50) {
-//        	if(mNextX >= mMaxX + 100) {
-//        	if(mNextX >= mMaxX + 10) {
-//        	if(mNextX >= mMaxX - 5) {
-//        	if(mNextX >= mMaxX) {
-        	
-        	String log_msg = "(mNextX >= mMaxX) => true";
-
-			Log.d("[" + "HorizontalListView.java : "
-					+ +Thread.currentThread().getStackTrace()[2].getLineNumber()
-					+ " : "
-					+ Thread.currentThread().getStackTrace()[2].getMethodName()
-					+ "]", log_msg);
-        	
-//            mNextX = mMaxX + this.marginRight;
+        if(mNextX >= mMaxX) {
             mNextX = mMaxX;
             mScroller.forceFinished(true);
-            
         }
         
         int dx = mCurrentX - mNextX;
@@ -255,16 +215,6 @@ public class HorizontalListView extends AdapterView<ListAdapter> {
         mCurrentX = mNextX;
         
         if(!mScroller.isFinished()){
-        	
-        	log_msg = "(!mScroller.isFinished()) => true";
-
-			Log.d("[" + "HorizontalListView.java : "
-					+ +Thread.currentThread().getStackTrace()[2].getLineNumber()
-					+ " : "
-					+ Thread.currentThread().getStackTrace()[2].getMethodName()
-					+ "]", log_msg);
-
-        	
             post(new Runnable(){
                 @Override
                 public void run() {
